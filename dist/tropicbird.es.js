@@ -10910,18 +10910,27 @@ class TropicBird extends Sargasso {
 			const element = elements[i];
 			if (!elementTools.hasClass(element, 'mdc-instantiated')) {
 				elementTools.addClass(element, 'mdc-instantiated');
+
 				if (elementTools.hasClass(element, 'mdc-top-app-bar')) {
 					this.topAppBar = new MDCTopAppBar(element);
 					new Reaper(element, {
 						MDCThing: this.topAppBar
 					});
 				}
+
 				if (elementTools.hasClass(element, 'mdc-drawer')) {
 					this.drawer = new MDCDrawer(element);
 					new Reaper(element, {
 						MDCThing: this.drawer
 					});
 
+					// close the drawer on any click
+					element.onclick = (e) => {
+						e.preventDefault();
+						this.drawer.open = !this.drawer.open;
+					};
+
+					// close the drawer when click outside drawer
 					const scrim = document.querySelector('.mdc-drawer-scrim');
 					if (scrim) {
 						scrim.onclick = (e) => {
@@ -10929,46 +10938,52 @@ class TropicBird extends Sargasso {
 							this.drawer.open = !this.drawer.open;
 						};
 					}
+
+					// toggle the drawer when hamburger clicked
 					const hamburger = document.querySelector('.hamburger');
 					if (hamburger) {
 						hamburger.onclick = (e) => {
 							e.preventDefault();
-							if (this.drawer) {
-								this.drawer.open = !this.drawer.open;
-							}
+							this.drawer.open = !this.drawer.open;
 						};
 					}
 				}
+
 				if (elementTools.hasClass(element, 'mdc-snackbar')) {
 					this.snackBar = new MDCSnackbar(element);
 					new Reaper(element, {
 						MDCThing: this.snackBar
 					});
 				}
+
 				if (elementTools.hasClass(element, 'mdc-linear-progress')) {
 					this.linearProgress = new MDCLinearProgress(element);
 					new Reaper(element, {
 						MDCThing: this.linearProgress
 					});
 				}
+
 				if (elementTools.hasClass(element, 'mdc-text-field')) {
 					const thing = new MDCTextField(element);
 					new Reaper(element, {
 						MDCThing: thing
 					});
 				}
+
 				if (elementTools.hasClass(element, 'mdc-select')) {
 					const thing = new MDCSelect(element);
 					new Reaper(element, {
 						MDCThing: thing
 					});
 				}
+
 				if (elementTools.hasClass(element, 'mdc-switch')) {
 					const thing = new MDCSwitch(element);
 					new Reaper(element, {
 						MDCThing: thing
 					});
 				}
+
 				if (elementTools.hasClass(element, 'mdc-chip-set')) {
 					const thing = new MDCChipSet(element);
 					new Reaper(element, {

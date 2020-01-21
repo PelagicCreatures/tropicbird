@@ -1,11 +1,15 @@
 <html>
 	<head>
-	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link rel='stylesheet' href='/dist/bundle.css'>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href='https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css' rel='stylesheet'>
 		<style>
 			body {
 				margin:0;
 				padding:0;
+			}
+
+			#content {
+				padding-top:65px;
 			}
 		</style>
 	</head>
@@ -13,19 +17,19 @@
 		<script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso@0.6.1/dist/sargasso.es.js"></script>
 		<script type="module" src="./dist/tropicbird.es.js"></script>
 		<script type="module">
-			bootSargasso({})
+			bootSargasso({hijax:{}})
 		</script>
 
 		<aside class="nav-drawer drawer-top mdc-drawer mdc-drawer--dismissible">
 			<div class="mdc-drawer__content">
 				<nav class="mdc-list">
-					<a class="nav-item mdc-list-item" href="#">
+					<a class="nav-item mdc-list-item" href="/">
 						<i class="material-icons mdc-list-item__graphic">person_add</i>
-						<span class="mdc-list-item__text">Menu Item</span>
+						<span class="mdc-list-item__text">Home</span>
 					</a>
-					<a class="nav-item mdc-list-item" href="#">
+					<a class="nav-item mdc-list-item" href="page-1.html">
 						<i class="material-icons mdc-list-item__graphic">person_add</i>
-						<span class="mdc-list-item__text">Menu Item</span>
+						<span class="mdc-list-item__text">Demo Page</span>
 					</a>
 				</nav>
 			</div>
@@ -40,6 +44,16 @@
 					</section>
 				</div>
 			</header>
+		</div>
+
+		<div class="mdc-layout-grid">
+			<div class="mdc-layout-grid__inner">
+				<div class="mdc-layout-grid__cell--span-12">
+					<div data-hijax id="content">
+						<a href="page-1.html">next page in HIJAX</a>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</body>
