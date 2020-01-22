@@ -10853,11 +10853,6 @@ from '@material/textfield/helper-text';
 */
 
 class Reaper extends Sargasso {
-	constructor (element, options = {}) {
-		options.watchDOM = true;
-		super(element, options);
-	}
-
 	destroy () {
 		if (this.options.MDCThing && this.options.MDCThing.destroy) {
 			this.options.MDCThing.destroy();

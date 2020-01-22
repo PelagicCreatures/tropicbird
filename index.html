@@ -17,10 +17,11 @@
 		<script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso@0.6.1/dist/sargasso.es.js"></script>
 		<script type="module" src="./dist/tropicbird.es.js"></script>
 		<script type="module">
+			bootSargasso({hijax:{}})
+
 			import {TropicBird} from "./dist/tropicbird.es.js"
 			let tropicBird = new TropicBird(document.body, {})
-			
-			bootSargasso({hijax:{}})
+			tropicBird.start()
 
 			tropicBird.pushSnackBar('info','hi!',3000)
 
