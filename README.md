@@ -2,7 +2,7 @@
 
 ### Sargasso supervised Google Material Design Objects (MDC)
 
-This uses the @PelagicCreatures/Sargasso to watch the DOM and Instantiate and destroy MDC Javascript classes on elements when they are added and removed from the DOM making MDC more HIJAX friendly.
+This uses @PelagicCreatures/Sargasso to watch the DOM and Instantiate and destroy MDC Javascript classes on elements when they are added and removed from the DOM making MDC more HIJAX friendly.
 
 Package also provides a quick rollup of the MDC css classes in @PelagicCreatures/TropicBird/dist/bundle.css
 

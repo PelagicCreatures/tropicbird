@@ -10876,10 +10876,77 @@ class TropicBird extends Sargasso {
 		this.drawer = null;
 		this.snackBar = null;
 		this.linearProgress = null;
+		this.snackBarTimer = null;
+		this.snackBarQueue = [];
+		this.manageMDCInstances();
 	}
 
 	DOMChanged () {
 		this.manageMDCInstances();
+	}
+
+	dialog (target, title, content, canCancel) {
+		const template = document.querySelector(target).outerHTML;
+		document.getElementById('ephemeral').innerHTML = template;
+		const dialogContainer = document.getElementById('ephemeral').getElementsByClassName('mdc-dialog')[0];
+		const titleContainer = dialogContainer.getElementsByClassName('mdc-dialog__title')[0];
+		const contentContainer = dialogContainer.getElementsByClassName('mdc-dialog__content')[0];
+		const cancelButton = dialogContainer.getElementsByClassName('mdc-dialog-cancel')[0];
+
+		titleContainer.textContent = title;
+		contentContainer.textContent = content;
+		if (canCancel) {
+			cancelButton.style.display = 'flex';
+		} else {
+			cancelButton.style.display = 'none';
+		}
+
+		return new Promise((resolve, reject) => {
+			this.dialog = new MDCDialog(dialogContainer);
+			this.dialog.listen('MDCDialog:closed', (e) => {
+				elementTools.removeClass(document.body, 'modal-open');
+				document.getElementById('ephemeral').getElementsByClassName('mdc-dialog')[0].remove();
+				resolve(e.detail.action);
+			});
+			elementTools.addClass(document.body, 'modal-open');
+			this.dialog.open();
+		})
+	}
+
+	pushSnackBar (level, message, timer = 6000) {
+		this.snackBarQueue.push({
+			level: level,
+			message: message,
+			timer: timer
+		});
+
+		if (!this.snackBarTimer) {
+			this.popSnackBar();
+		}
+	}
+
+	popSnackBar () {
+		const item = this.snackBarQueue.shift();
+
+		const elem = document.querySelector('.mdc-snackbar__label');
+		if (!elem || !this.snackBar) {
+			confirm(item.message);
+			if (this.snackBarQueue.length) {
+				this.popSnackBar();
+			}
+		} else {
+			elem.innerText = item.message;
+
+			this.snackBar.open();
+
+			this.snackBarTimer = setTimeout(() => {
+				this.snackBarTimer = null;
+				this.snackBar.close();
+				if (this.snackBarQueue.length) {
+					this.popSnackBar();
+				}
+			}, item.timer);
+		}
 	}
 
 	manageMDCInstances () {
@@ -11004,6 +11071,10 @@ class TropicBird extends Sargasso {
 	}
 }
 
+if (window) {
+	window.TropicBird = TropicBird;
+}
+
 registerSargassoClass('TropicBird', TropicBird);
 
-export { MDCCheckbox, MDCChipSet, MDCDialog, MDCDrawer, MDCFormField, MDCLineRipple, MDCLinearProgress, MDCRipple, MDCSelect, MDCSnackbar, MDCSwitch, MDCTextField, MDCTopAppBar };
+export { MDCCheckbox, MDCChipSet, MDCDialog, MDCDrawer, MDCFormField, MDCLineRipple, MDCLinearProgress, MDCRipple, MDCSelect, MDCSnackbar, MDCSwitch, MDCTextField, MDCTopAppBar, TropicBird };
