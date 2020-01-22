@@ -10902,14 +10902,14 @@ class TropicBird extends Sargasso {
 		}
 
 		return new Promise((resolve, reject) => {
-			this.dialog = new MDCDialog(dialogContainer);
-			this.dialog.listen('MDCDialog:closed', (e) => {
+			this.mdcDialog = new MDCDialog(dialogContainer);
+			this.mdcDialog.listen('MDCDialog:closed', (e) => {
 				elementTools.removeClass(document.body, 'modal-open');
 				document.getElementById('ephemeral').getElementsByClassName('mdc-dialog')[0].remove();
 				resolve(e.detail.action);
 			});
 			elementTools.addClass(document.body, 'modal-open');
-			this.dialog.open();
+			this.mdcDialog.open();
 		})
 	}
 

@@ -19,8 +19,11 @@
 		<script type="module">
 			import {TropicBird} from "./dist/tropicbird.es.js"
 			let tropicBird = new TropicBird(document.body, {})
-			tropicBird.pushSnackBar('info','hi!',3000)
+			
 			bootSargasso({hijax:{}})
+
+			tropicBird.pushSnackBar('info','hi!',3000)
+
 			document.getElementById('dialog-test').onclick = (e) => {
 				tropicBird.dialog('#dialog','title','content',false).then((action) =>{
 					tropicBird.pushSnackBar('info',action,3000)
@@ -28,6 +31,7 @@
 					console.log(e)
 				})
 			}
+
 		</script>
 
 		<aside class="nav-drawer drawer-top mdc-drawer mdc-drawer--dismissible">
