@@ -21,10 +21,11 @@ Any MDC elements in your document will be now be automatically instantiated.
 
 
 | method | description |
-| ====== | =========== |
+| ------ | ----------- |
 | dialog (target, title, content, canCancel) | open a dialog box. `target` is a selector for the dialog template, `title` and `content` are the text of the dialog and `canCancel` controls whether the cancel button is shown |
 | progressBar (show, delay = 500)  | show  to toggle the progress "loading" bar |
 | pushSnackBar (level, message, timer = 6000) | Pop up a message in the snack bar |
+
 
 ```javascript
 tropicBird.pushSnackBar('info','hi!',3000)
@@ -76,7 +77,7 @@ tropicBird.dialog('#dialog','title','content',true).then((action) =>{
 The package provide a quick rollup of the un-themed MDC css classes in @PelagicCreatures/TropicBird/dist/bundle.css but you can also roll your own as follows:
 
 
-```css
+```scss
 $mdc-theme-primary: #333;
 $mdc-theme-accent: #b2e800;
 $mdc-theme-hint: #1a237e;
@@ -85,7 +86,7 @@ $darker-accent: #95c200;
 @import "@pelagiccreatures/tropicbird/mdc-bundle.css";
 ```
 
-### Example HTML w/MDC nav, drawer and a switch
+### Example HTML w/MDC nav, drawer and a switch just for fun
 
 ```html
 <html>
