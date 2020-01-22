@@ -10873,6 +10873,7 @@ class TropicBird extends Sargasso {
 		this.linearProgress = null;
 		this.snackBarTimer = null;
 		this.snackBarQueue = [];
+		this.linearProgressTimer = null;
 		this.manageMDCInstances();
 	}
 
@@ -10880,7 +10881,16 @@ class TropicBird extends Sargasso {
 		this.manageMDCInstances();
 	}
 
+	makeEphemeral () {
+		if (!document.getElementById('ephemeral')) {
+			const ephemeral = document.createElement('div');
+			ephemeral.setAttribute('id', 'ephemeral');
+			document.body.append(ephemeral);
+		}
+	}
+
 	dialog (target, title, content, canCancel) {
+		this.makeEphemeral();
 		const template = document.querySelector(target).outerHTML;
 		document.getElementById('ephemeral').innerHTML = template;
 		const dialogContainer = document.getElementById('ephemeral').getElementsByClassName('mdc-dialog')[0];
@@ -10906,6 +10916,26 @@ class TropicBird extends Sargasso {
 			elementTools.addClass(document.body, 'modal-open');
 			this.mdcDialog.open();
 		})
+	}
+
+	progressBar (show, delay = 500) {
+		if (show === true) {
+			if (this.linearProgressTimer) {
+				clearTimeout(this.linearProgressTimer);
+				this.linearProgressTimer = null;
+			}
+			this.linearProgressTimer = setTimeout(() => {
+				this.linearProgressTimer = null;
+				this.linearProgress.open();
+			}, delay);
+		} else {
+			if (this.linearProgressTimer) {
+				clearTimeout(this.linearProgressTimer);
+				this.linearProgressTimer = null;
+			} else {
+				this.linearProgress.close();
+			}
+		}
 	}
 
 	pushSnackBar (level, message, timer = 6000) {

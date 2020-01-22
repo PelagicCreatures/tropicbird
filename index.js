@@ -108,7 +108,16 @@ class TropicBird extends Sargasso {
 		this.manageMDCInstances()
 	}
 
+	makeEphemeral () {
+		if (!document.getElementById('ephemeral')) {
+			const ephemeral = document.createElement('div')
+			ephemeral.setAttribute('id', 'ephemeral')
+			document.body.append(ephemeral)
+		}
+	}
+
 	dialog (target, title, content, canCancel) {
+		this.makeEphemeral()
 		const template = document.querySelector(target).outerHTML
 		document.getElementById('ephemeral').innerHTML = template
 		const dialogContainer = document.getElementById('ephemeral').getElementsByClassName('mdc-dialog')[0]

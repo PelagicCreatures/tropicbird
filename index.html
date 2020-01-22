@@ -4,8 +4,8 @@
 		<link href='https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css' rel='stylesheet'>
 		<style type="text/css">
 			body { margin:0; padding:0; }
-			#content { padding-top:65px; }
-			hamburger { text-decoration:none; }
+			.hamburger { text-decoration:none; }
+			.under-nav { height: 64px; }
 		</style>
 	</head>
 	<body >
@@ -21,13 +21,21 @@
 			tropicBird.pushSnackBar('info','hi!',3000)
 
 			document.getElementById('dialog-test').onclick = (e) => {
-				tropicBird.dialog('#dialog','title','content',false).then((action) =>{
-					tropicBird.pushSnackBar('info',action,3000)
+				tropicBird.dialog('#dialog','title','content',true).then((action) =>{
+					tropicBird.pushSnackBar('info','You said ' + action,3000)
 				}).catch((e)=>{
 					console.log(e)
 				})
 			}
 
+			setTimeout(()=>{
+				tropicBird.progressBar(true)
+				tropicBird.pushSnackBar('info','Look! A Progress Bar!',3000)
+				setTimeout(()=>{
+					tropicBird.progressBar(false)
+					tropicBird.pushSnackBar('info','Press Ask Button to see dialog!',3000)
+				},5000)
+			},5000)
 		</script>
 
 		<aside class="nav-drawer drawer-top mdc-drawer mdc-drawer--dismissible">
@@ -54,115 +62,129 @@
 					</section>
 				</div>
 			</header>
-		</div>
 
-		<div class="mdc-layout-grid">
-			<div class="mdc-layout-grid__inner">
-				<div class="mdc-layout-grid__cell--span-12">
-					<div data-hijax id="content">
+			<div class="under-nav"></div>
 
-						<p>These MDC things are set up when we load this page and destroyed when we leave. <a href="page-1.html">Next page in HIJAX</a></p>
+			<div role="progressbar" class="mdc-linear-progress mdc-linear-progress--closed mdc-linear-progress--indeterminate" aria-label="Example Progress Bar" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0">
+			  <div class="mdc-linear-progress__buffering-dots"></div>
+			  <div class="mdc-linear-progress__buffer"></div>
+			  <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+			    <span class="mdc-linear-progress__bar-inner"></span>
+			  </div>
+			  <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+			    <span class="mdc-linear-progress__bar-inner"></span>
+			  </div>
+			</div>
 
-						<section>
-							<h3>Here is a button.</h3>
-							<button id="dialog-test" class="mdc-button mdc-button--raised">
-								<div class="mdc-button__ripple"></div>
-								<i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
-								<span class="mdc-button__label">Ask</span>
-							</button>
+			<div class="mdc-layout-grid">
+				<div class="mdc-layout-grid__inner">
+					<div class="mdc-layout-grid__cell--span-12">
+						<div data-hijax id="content">
 
-							<button class="mdc-button">
-								<div class="mdc-button__ripple"></div>
-								<span class="mdc-button__label">Button</span>
-								<i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
-							</button>
-						</section>
+							<p>These MDC things are set up when we load this page and destroyed when we leave. <a href="page-1.html">Next page in HIJAX</a></p>
 
-						<section>
-							<h3>Here is a switch. </h3>
-							<div class="mdc-switch">
-								<div class="mdc-switch__track"></div>
-								<div class="mdc-switch__thumb-underlay">
-									<div class="mdc-switch__thumb">
-										<input class="mdc-switch__native-control" type="checkbox" name="some name">
+							<section>
+								<h3>Here is a button.</h3>
+								<button id="dialog-test" class="mdc-button mdc-button--raised">
+									<div class="mdc-button__ripple"></div>
+									<i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
+									<span class="mdc-button__label">Ask</span>
+								</button>
+
+								<button class="mdc-button">
+									<div class="mdc-button__ripple"></div>
+									<span class="mdc-button__label">Button</span>
+									<i class="material-icons mdc-button__icon" aria-hidden="true">favorite</i>
+								</button>
+							</section>
+
+							<section>
+								<h3>Here is a switch. </h3>
+								<div class="mdc-switch">
+									<div class="mdc-switch__track"></div>
+									<div class="mdc-switch__thumb-underlay">
+										<div class="mdc-switch__thumb">
+											<input class="mdc-switch__native-control" type="checkbox" name="some name">
+										</div>
 									</div>
 								</div>
-							</div>
-						</section>
+							</section>
 
-						<section>
-							<h3>Here's an input</h3>
-							<div class="mdc-text-field mdc-text-field--outlined">
-								<input type="text" id="tf-outlined" class="mdc-text-field__input">
-								<div class="mdc-notched-outline">
-									<div class="mdc-notched-outline__leading"></div>
-									<div class="mdc-notched-outline__notch">
-										<label for="tf-outlined" class="mdc-floating-label">Your Name</label>
+							<section>
+								<h3>Here's an input</h3>
+								<div class="mdc-text-field mdc-text-field--outlined">
+									<input type="text" id="tf-outlined" class="mdc-text-field__input">
+									<div class="mdc-notched-outline">
+										<div class="mdc-notched-outline__leading"></div>
+										<div class="mdc-notched-outline__notch">
+											<label for="tf-outlined" class="mdc-floating-label">Your Name</label>
+										</div>
+										<div class="mdc-notched-outline__trailing"></div>
 									</div>
-									<div class="mdc-notched-outline__trailing"></div>
 								</div>
-							</div>
-						</section>
+							</section>
 
-						<section>
-							<h3>Here's a FAB</h3>
-							<button class="mdc-fab mdc-fab--extended">
-								<div class="mdc-fab__ripple"></div>
-								<span class="material-icons mdc-fab__icon">add</span>
-								<span class="mdc-fab__label">Create</span>
-							</button>
-						</section>
+							<section>
+								<h3>Here's a FAB</h3>
+								<button class="mdc-fab mdc-fab--extended">
+									<div class="mdc-fab__ripple"></div>
+									<span class="material-icons mdc-fab__icon">add</span>
+									<span class="mdc-fab__label">Create</span>
+								</button>
+							</section>
 
-						<section>
-							<h3>Chips</h3>
-							<div class="mdc-chip-set mdc-chip-set--filter" role="grid">
-								<div class="mdc-chip" role="row">
-									<div class="mdc-chip__ripple"></div>
-									<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i>
-									<span class="mdc-chip__checkmark" >
-										<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
-											<path class="mdc-chip__checkmark-path" fill="none" stroke="black"
-														d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-										</svg>
-									</span>
-									<span role="gridcell">
-										<span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__text">Filterable content</span>
-									</span>
+							<section>
+								<h3>Chips</h3>
+								<div class="mdc-chip-set mdc-chip-set--filter" role="grid">
+									<div class="mdc-chip" role="row">
+										<div class="mdc-chip__ripple"></div>
+										<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i>
+										<span class="mdc-chip__checkmark" >
+											<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+												<path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+															d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+											</svg>
+										</span>
+										<span role="gridcell">
+											<span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__text">Filterable content</span>
+										</span>
+									</div>
+
+									<div class="mdc-chip" role="row">
+										<div class="mdc-chip__ripple"></div>
+										<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i>
+										<span class="mdc-chip__checkmark" >
+											<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+												<path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+															d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+											</svg>
+										</span>
+										<span role="gridcell">
+											<span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__text">Filterable content</span>
+										</span>
+									</div>
+
+									<div class="mdc-chip" role="row">
+										<div class="mdc-chip__ripple"></div>
+										<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i>
+										<span class="mdc-chip__checkmark" >
+											<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+												<path class="mdc-chip__checkmark-path" fill="none" stroke="black"
+															d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
+											</svg>
+										</span>
+										<span role="gridcell">
+											<span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__text">Filterable content</span>
+										</span>
+									</div>
 								</div>
-
-								<div class="mdc-chip" role="row">
-									<div class="mdc-chip__ripple"></div>
-									<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i>
-									<span class="mdc-chip__checkmark" >
-										<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
-											<path class="mdc-chip__checkmark-path" fill="none" stroke="black"
-														d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-										</svg>
-									</span>
-									<span role="gridcell">
-										<span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__text">Filterable content</span>
-									</span>
-								</div>
-
-								<div class="mdc-chip" role="row">
-									<div class="mdc-chip__ripple"></div>
-									<i class="material-icons mdc-chip__icon mdc-chip__icon--leading">face</i>
-									<span class="mdc-chip__checkmark" >
-										<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
-											<path class="mdc-chip__checkmark-path" fill="none" stroke="black"
-														d="M1.73,12.91 8.1,19.28 22.79,4.59"/>
-										</svg>
-									</span>
-									<span role="gridcell">
-										<span role="checkbox" tabindex="0" aria-checked="false" class="mdc-chip__text">Filterable content</span>
-									</span>
-								</div>
-							</div>
-						</section>
+							</section>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+
 		<div class="mdc-snackbar">
 			<div class="mdc-snackbar__surface">
 				<div class="mdc-snackbar__label">
@@ -191,6 +213,5 @@
 			</div>
 			<div class="mdc-dialog__scrim"></div>
 		</div>
-		<div id="ephemeral"></div>
 	</body>
 </html>
