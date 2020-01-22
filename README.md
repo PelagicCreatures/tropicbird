@@ -83,7 +83,7 @@ $mdc-theme-accent: #b2e800;
 $mdc-theme-hint: #1a237e;
 $mdc-theme-surface: white;
 $darker-accent: #95c200;
-@import "@pelagiccreatures/tropicbird/mdc-bundle.css";
+@import "@pelagiccreatures/tropicbird/mdc-bundle.scss";
 ```
 
 ### Example HTML w/MDC nav, drawer and a switch just for fun
@@ -92,7 +92,7 @@ $darker-accent: #95c200;
 <html>
   <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href='https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css" rel="stylesheet">
     <style>
       body { margin:0; padding:0; }
       #content { padding-top:65px; }

@@ -257,15 +257,6 @@ class TropicBird extends Sargasso {
 							this.drawer.open = !this.drawer.open
 						}
 					}
-
-					// toggle the drawer when hamburger clicked
-					const hamburger = document.querySelector('.hamburger')
-					if (hamburger) {
-						hamburger.onclick = (e) => {
-							e.preventDefault()
-							this.drawer.open = !this.drawer.open
-						}
-					}
 				}
 
 				if (elementTools.hasClass(element, 'mdc-snackbar')) {
@@ -318,6 +309,15 @@ class TropicBird extends Sargasso {
 						})
 					}
 				}
+			}
+		}
+
+		// toggle the drawer when hamburger clicked
+		const hamburger = document.querySelector('.hamburger')
+		if (hamburger) {
+			hamburger.onclick = (e) => {
+				e.preventDefault()
+				this.drawer.open = !this.drawer.open
 			}
 		}
 	}
