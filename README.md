@@ -2,9 +2,20 @@
 
 ### Sargasso supervised Google Material Design Objects (MDC)
 
-This uses @PelagicCreatures/Sargasso to watch the DOM and Instantiate and destroy MDC Javascript classes on elements when they are added and removed from the DOM making MDC more HIJAX friendly.
+A tool for simplify & demystify the deployment of Google's Material Design framework. This uses @PelagicCreatures/Sargasso to watch the DOM and Instantiate and destroy MDC Javascript classes on elements when they are added and removed from the DOM making MDC more HIJAX friendly.
 
-Package also provides a quick rollup of the MDC css classes in @PelagicCreatures/TropicBird/dist/bundle.css
+Package provide a quick rollup of the un-themed MDC css classes in @PelagicCreatures/TropicBird/dist/bundle.css but you can also roll your own as follows:
+
+```css
+$mdc-theme-primary: #333;
+$mdc-theme-accent: #b2e800;
+$mdc-theme-hint: #1a237e;
+$mdc-theme-surface: white;
+$darker-accent: #95c200;
+@import "@pelagiccreatures/tropicbird/mdc-bundle.css";
+```
+
+### Example HTML w/MDC nav, drawer and a switch
 
 ```html
 <html>
@@ -12,18 +23,13 @@ Package also provides a quick rollup of the MDC css classes in @PelagicCreatures
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href='https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css' rel='stylesheet'>
     <style>
-      body {
-        margin:0;
-        padding:0;
-      }
-
-      #content {
-        padding-top:65px;
-      }
+      body { margin:0; padding:0; }
+      #content { padding-top:65px; }
+			hamburger { text-decoration:none; }
     </style>
   </head>
   <body data-sargasso-class="TropicBird">
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso@0.6.1/dist/sargasso.es.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.es.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.es.js"></script>
     <script type="module">
       bootSargasso({hijax:{}})
@@ -59,12 +65,26 @@ Package also provides a quick rollup of the MDC css classes in @PelagicCreatures
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell--span-12">
           <div data-hijax id="content">
-            <a href="page-1.html">next page in HIJAX</a>
+
+            <p>The top bar and drawer and the switch below are ready to use. When the next page is loaded the wrapper elements (nav, drawer) continue to run while the switch will be unloaded and destroyed.<p>
+
+            <a href="page-1.html">Next page in HIJAX</a>
+
+            <section>
+              <h3>Here is a switch. </h3>
+              <div class="mdc-switch">
+                <div class="mdc-switch__track"></div>
+                <div class="mdc-switch__thumb-underlay">
+                  <div class="mdc-switch__thumb">
+                    <input class="mdc-switch__native-control" type="checkbox" name="some name">
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>
     </div>
-
   </body>
 </html>
 ```

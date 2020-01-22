@@ -100,6 +100,7 @@ class TropicBird extends Sargasso {
 		this.linearProgress = null
 		this.snackBarTimer = null
 		this.snackBarQueue = []
+		this.linearProgressTimer = null
 		this.manageMDCInstances()
 	}
 
@@ -133,6 +134,26 @@ class TropicBird extends Sargasso {
 			elementTools.addClass(document.body, 'modal-open')
 			this.mdcDialog.open()
 		})
+	}
+
+	progressBar (show, delay = 500) {
+		if (show === true) {
+			if (this.linearProgressTimer) {
+				clearTimeout(this.linearProgressTimer)
+				this.linearProgressTimer = null
+			}
+			this.linearProgressTimer = setTimeout(() => {
+				this.linearProgressTimer = null
+				this.linearProgress.open()
+			}, delay)
+		} else {
+			if (this.linearProgressTimer) {
+				clearTimeout(this.linearProgressTimer)
+				this.linearProgressTimer = null
+			} else {
+				this.linearProgress.close()
+			}
+		}
 	}
 
 	pushSnackBar (level, message, timer = 6000) {
