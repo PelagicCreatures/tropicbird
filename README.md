@@ -2,6 +2,8 @@
 
 ### Sargasso supervised Google Material Design Objects (MDC)
 
+[Demo Page](https://blog.myanti.social/demos/tropicbird)
+
 A tool to simplify & demystify the deployment of Google's Material Design framework. This uses @PelagicCreatures/Sargasso to watch the DOM and Instantiate and destroy MDC Javascript classes on elements when they are added and removed from the DOM making MDC HIJAX friendly.
 
 TropicBird also provides some built in management of the nav bar 'hamburger' icon to open the drawer and a couple utility methods for opening modal dialogs, queuing snackbar messages and triggering the progress bar but otherwise the implementation is pure MDC as described [here](https://github.com/material-components/material-components-web/tree/master/packages).
