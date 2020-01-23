@@ -245,7 +245,6 @@ class TropicBird extends Sargasso {
 
 					// close the drawer on any click
 					element.onclick = (e) => {
-						e.preventDefault()
 						this.drawer.open = !this.drawer.open
 					}
 
