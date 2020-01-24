@@ -8,7 +8,12 @@ A tool to simplify & demystify the deployment of Google's Material Design framew
 
 TropicBird also provides some built in management of the nav bar 'hamburger' icon to open the drawer and a couple utility methods for opening modal dialogs, queuing snackbar messages and triggering the progress bar but otherwise the implementation is pure MDC as described [here](https://github.com/material-components/material-components-web/tree/master/packages).
 
-#### boot Sargasso and TropicBird
+```
+npm install @PelagicCreatures/Sargasso
+npm install @PelagicCreatures/TropicBird
+```
+
+#### boot Sargasso and TropicBird (example uses CDN modules)
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.es.js"></script>
 <script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.es.js"></script>
