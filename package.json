@@ -18,7 +18,7 @@
 	},
 	"homepage": "https://github.com/PelagicCreatures/tropicbird#readme",
 	"dependencies": {
-		"@pelagiccreatures/sargasso": "^0.6.1",
+		"@pelagiccreatures/sargasso": "^0.7.0",
 		"@material/card": "^4.0.0",
 		"@material/checkbox": "^4.0.0",
 		"@material/chips": "^4.0.0",
