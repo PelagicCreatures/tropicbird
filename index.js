@@ -80,7 +80,13 @@ from '@material/textfield/helper-text';
 */
 
 class Reaper extends Sargasso {
+	constructor (element, options) {
+		super(element, options)
+		this.setMetaData(this.options.MDCThing.constructor.name, this.options.MDCThing)
+	}
+
 	destroy () {
+		this.setMetaData(this.options.MDCThing.constructor.name, null)
 		if (this.options.MDCThing && this.options.MDCThing.destroy) {
 			this.options.MDCThing.destroy()
 		}
