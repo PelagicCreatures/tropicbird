@@ -4,9 +4,16 @@ import json from '@rollup/plugin-json'
 
 export default {
 	input: './index.js',
+	external: ['@PelagicCreatures/Sargasso'],
+
 	output: [{
-		format: 'es',
-		file: './dist/tropicbird.es.js'
+		format: 'iife',
+		name: 'PelagicCreatures.TropicBird',
+		file: './dist/tropicbird.iife.js',
+		globals: {
+			'@PelagicCreatures/Sargasso': 'PelagicCreatures.Sargasso'
+		},
+		sourcemap: true
 	}],
 
 	plugins: [

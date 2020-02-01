@@ -9,13 +9,12 @@
 		</style>
 	</head>
 	<body >
-		<script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso@0.7.1/dist/sargasso.es.js"></script>
-		<script type="module" src="./dist/tropicbird.es.js"></script>
-		<script type="module">
-			bootSargasso({hijax:{}})
+		<script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso@0.7.1/dist/sargasso.iife.js"></script>
+		<script src="./dist/tropicbird.iife.js" defer></script>
+		<script type="module" defer>
+			PelagicCreatures.Sargasso.utils.bootSargasso({hijax:{}})
 
-			import {TropicBird} from "./dist/tropicbird.es.js"
-			let tropicBird = new TropicBird(document.body, {})
+			let tropicBird = new PelagicCreatures.TropicBird.TropicBird(document.body, {})
 			tropicBird.start()
 
 			tropicBird.pushSnackBar('info','hi!',3000)
