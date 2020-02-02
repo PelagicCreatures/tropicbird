@@ -1,7 +1,7 @@
 import {
 	Sargasso, utils
 }
-	from '@PelagicCreatures/Sargasso'
+	from '@pelagiccreatures/sargasso'
 
 import {
 	MDCRipple

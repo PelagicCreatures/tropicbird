@@ -1,5 +1,5 @@
 this.PelagicCreatures = this.PelagicCreatures || {};
-this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
+this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     'use strict';
 
     /**
@@ -10856,7 +10856,7 @@ this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
     from '@material/textfield/helper-text';
     */
 
-    class Reaper extends Sargasso.Sargasso {
+    class Reaper extends sargasso.Sargasso {
     	constructor (element, options) {
     		super(element, options);
     		this.setMetaData(this.options.MDCThing.constructor.name, this.options.MDCThing);
@@ -10871,9 +10871,9 @@ this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
     	}
     }
 
-    Sargasso.utils.registerSargassoClass('Reaper', Reaper);
+    sargasso.utils.registerSargassoClass('Reaper', Reaper);
 
-    class TropicBird extends Sargasso.Sargasso {
+    class TropicBird extends sargasso.Sargasso {
     	constructor (element, options = {}) {
     		options.watchDOM = true;
     		super(element, options);
@@ -10919,11 +10919,11 @@ this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
     		return new Promise((resolve, reject) => {
     			this.mdcDialog = new MDCDialog(dialogContainer);
     			this.mdcDialog.listen('MDCDialog:closed', (e) => {
-    				Sargasso.utils.elementTools.removeClass(document.body, 'modal-open');
+    				sargasso.utils.elementTools.removeClass(document.body, 'modal-open');
     				document.getElementById('ephemeral').getElementsByClassName('mdc-dialog')[0].remove();
     				resolve(e.detail.action);
     			});
-    			Sargasso.utils.elementTools.addClass(document.body, 'modal-open');
+    			sargasso.utils.elementTools.addClass(document.body, 'modal-open');
     			this.mdcDialog.open();
     		})
     	}
@@ -11010,17 +11010,17 @@ this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
     		const elements = document.querySelectorAll(managedClasses.join(','));
     		for (let i = 0; i < elements.length; i++) {
     			const element = elements[i];
-    			if (!Sargasso.utils.elementTools.hasClass(element, 'mdc-instantiated')) {
-    				Sargasso.utils.elementTools.addClass(element, 'mdc-instantiated');
+    			if (!sargasso.utils.elementTools.hasClass(element, 'mdc-instantiated')) {
+    				sargasso.utils.elementTools.addClass(element, 'mdc-instantiated');
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-top-app-bar')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-top-app-bar')) {
     					this.topAppBar = new MDCTopAppBar(element);
     					new Reaper(element, {
     						MDCThing: this.topAppBar
     					});
     				}
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-drawer')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-drawer')) {
     					this.drawer = new MDCDrawer(element);
     					new Reaper(element, {
     						MDCThing: this.drawer
@@ -11041,42 +11041,42 @@ this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
     					}
     				}
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-snackbar')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-snackbar')) {
     					this.snackBar = new MDCSnackbar(element);
     					new Reaper(element, {
     						MDCThing: this.snackBar
     					});
     				}
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-linear-progress')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-linear-progress')) {
     					this.linearProgress = new MDCLinearProgress(element);
     					new Reaper(element, {
     						MDCThing: this.linearProgress
     					});
     				}
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-text-field')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-text-field')) {
     					const thing = new MDCTextField(element);
     					new Reaper(element, {
     						MDCThing: thing
     					});
     				}
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-select')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-select')) {
     					const thing = new MDCSelect(element);
     					new Reaper(element, {
     						MDCThing: thing
     					});
     				}
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-switch')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-switch')) {
     					const thing = new MDCSwitch(element);
     					new Reaper(element, {
     						MDCThing: thing
     					});
     				}
 
-    				if (Sargasso.utils.elementTools.hasClass(element, 'mdc-chip-set')) {
+    				if (sargasso.utils.elementTools.hasClass(element, 'mdc-chip-set')) {
     					const thing = new MDCChipSet(element);
     					new Reaper(element, {
     						MDCThing: thing
@@ -11084,7 +11084,7 @@ this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
     				}
 
     				for (let j = 0; j < wantRipple.length; j++) {
-    					if (Sargasso.utils.elementTools.hasClass(element, wantRipple[j])) {
+    					if (sargasso.utils.elementTools.hasClass(element, wantRipple[j])) {
     						const thing = new MDCRipple(element);
     						new Reaper(element, {
     							MDCThing: thing
@@ -11105,7 +11105,7 @@ this.PelagicCreatures.TropicBird = (function (exports, Sargasso) {
     	}
     }
 
-    Sargasso.utils.registerSargassoClass('TropicBird', TropicBird);
+    sargasso.utils.registerSargassoClass('TropicBird', TropicBird);
 
     const MDC = {
     	MDCRipple: MDCRipple,
