@@ -15,11 +15,11 @@ npm install @PelagicCreatures/TropicBird
 
 #### boot Sargasso and TropicBird (example uses CDN modules)
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.es.js"></script>
-<script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.es.js"></script>
-<script type="module">
-	bootSargasso({hijax:{}})
-	let tropicBird = new TropicBird(document.body, {})
+<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
+<script defer>
+	PelagicCreatures.Sargasso.utils.bootSargasso({hijax:{}})
+	let tropicBird = new PelagicCreatures.TropicBird.TropicBird(document.body, {})
 	tropicBird.start()
 </script>
 ```
@@ -107,10 +107,12 @@ $darker-accent: #95c200;
     </style>
   </head>
   <body data-sargasso-class="TropicBird">
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.es.js"></script>
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.es.js"></script>
-    <script type="module">
-      bootSargasso({hijax:{}})
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
+    <script defer>
+      PelagicCreatures.Sargasso.utils.bootSargasso({hijax:{}})
+			let tropicBird = new PelagicCreatures.TropicBird.TropicBird(document.body, {})
+			tropicBird.start()
     </script>
 
     <aside class="nav-drawer drawer-top mdc-drawer mdc-drawer--dismissible">
