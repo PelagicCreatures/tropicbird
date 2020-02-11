@@ -2,7 +2,7 @@
 
 ### Sargasso supervised Google Material Design Objects (MDC)
 
-[Demo Page](https://blog.myanti.social/demos/tropicbird)
+[Demo Page](https://blog.PelagicCreatures.com/demos/tropicbird)
 
 A tool to simplify & demystify the deployment of Google's Material Design framework. This uses @PelagicCreatures/Sargasso to watch the DOM and Instantiate and destroy MDC Javascript classes on elements when they are added and removed from the DOM making MDC HIJAX friendly.
 
