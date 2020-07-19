@@ -20,16 +20,18 @@ module.exports = {
 			}, {
 				loader: 'css-loader'
 			}, {
-				loader: 'postcss-loader',
-				options: {
-					plugins: () => [autoprefixer()]
-				}
-			}, {
 				loader: 'sass-loader',
 				options: {
+					implementation: require('sass'),
+					webpackImporter: false,
 					sassOptions: {
 						includePaths: ['./node_modules']
 					}
+				}
+			}, {
+				loader: 'postcss-loader',
+				options: {
+					plugins: () => [autoprefixer()]
 				}
 			}]
 		}]
