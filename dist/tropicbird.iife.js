@@ -12774,10 +12774,11 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     		this.topAppBar = null;
     		this.drawer = null;
     		this.snackBar = null;
-    		this.linearProgress = null;
     		this.snackBarTimer = null;
     		this.snackBarQueue = [];
+    		this.linearProgress = null;
     		this.linearProgressTimer = null;
+    		this.linearProgressOpen = false;
     		this.manageMDCInstances();
     	}
 
@@ -12831,13 +12832,16 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     			this.linearProgressTimer = setTimeout(() => {
     				this.linearProgressTimer = null;
     				this.linearProgress.open();
+    				this.linearProgressOpen = true;
     			}, delay);
     		} else {
     			if (this.linearProgressTimer) {
     				clearTimeout(this.linearProgressTimer);
     				this.linearProgressTimer = null;
-    			} else {
+    			}
+    			if (this.linearProgressOpen) {
     				this.linearProgress.close();
+    				this.linearProgressOpen = false;
     			}
     		}
     	}
