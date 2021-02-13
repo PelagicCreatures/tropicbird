@@ -8,7 +8,7 @@ export default {
 
 	output: [{
 		format: 'iife',
-		name: 'PelagicCreatures.TropicBird',
+		name: 'PelagicCreatures',
 		file: './dist/tropicbird.iife.js',
 		globals: {
 			'@pelagiccreatures/sargasso': 'PelagicCreatures'
