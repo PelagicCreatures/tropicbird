@@ -18,8 +18,8 @@ npm install @PelagicCreatures/TropicBird
 <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
 <script defer>
-	PelagicCreatures.Sargasso.utils.bootSargasso({hijax:{}})
-	let tropicBird = new PelagicCreatures.TropicBird.TropicBird(document.body, {})
+	SargassoModule.Sargasso.utils.bootSargasso({hijax:{}})
+	let tropicBird = new TropicBirdModule.TropicBird(document.body, {})
 	tropicBird.start()
 </script>
 ```
@@ -110,8 +110,8 @@ $darker-accent: #95c200;
     <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
     <script defer>
-      PelagicCreatures.Sargasso.utils.bootSargasso({hijax:{}})
-			let tropicBird = new PelagicCreatures.TropicBird.TropicBird(document.body, {})
+      SargassoModule.utils.bootSargasso({hijax:{}})
+			let tropicBird = new TropicBirdModule.TropicBird(document.body, {})
 			tropicBird.start()
     </script>
 

@@ -1,5 +1,4 @@
-this.PelagicCreatures = this.PelagicCreatures || {};
-this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
+var TropicBirdModule = (function (exports, sargasso) {
     'use strict';
 
     /**
@@ -13675,5 +13674,4 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
 
     return exports;
 
-}({}, PelagicCreatures));
-//# sourceMappingURL=tropicbird.iife.js.map
+}({}, SargassoModule));

@@ -1,18 +1,33 @@
 import commonjs from '@rollup/plugin-commonjs'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import json from '@rollup/plugin-json'
+import {
+	terser
+}
+	from 'rollup-plugin-terser'
 
 export default {
 	input: './index.js',
 	external: ['@pelagiccreatures/sargasso'],
-
 	output: [{
 		format: 'iife',
-		name: 'PelagicCreatures',
+		name: 'TropicBirdModule',
 		file: './dist/tropicbird.iife.js',
 		globals: {
-			'@pelagiccreatures/sargasso': 'PelagicCreatures'
+			'@pelagiccreatures/sargasso': 'SargassoModule'
+		}
+	}, {
+		format: 'iife',
+		name: 'TropicBirdModule',
+		file: './dist/tropicbird.iife.min.js',
+		globals: {
+			'@pelagiccreatures/sargasso': 'SargassoModule'
 		},
+		plugins: [terser({
+			output: {
+				comments: false
+			}
+		})],
 		sourcemap: true
 	}],
 
