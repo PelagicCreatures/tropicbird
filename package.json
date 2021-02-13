@@ -1,6 +1,6 @@
 {
 	"name": "@pelagiccreatures/tropicbird",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "@pelagiccreatures/tropicbird - Sargasso Managed Material Design Components",
 	"main": "index.js",
 	"scripts": {
@@ -18,7 +18,7 @@
 	},
 	"homepage": "https://github.com/PelagicCreatures/tropicbird#readme",
 	"peerDependencies": {
-		"@pelagiccreatures/sargasso": "^0.10.0"
+		"@pelagiccreatures/sargasso": "^1.0.0"
 	},
 	"dependencies": {
 		"@material/card": "^10.0.0",

@@ -11,7 +11,7 @@ export default {
 		name: 'PelagicCreatures.TropicBird',
 		file: './dist/tropicbird.iife.js',
 		globals: {
-			'@pelagiccreatures/sargasso': 'PelagicCreatures.Sargasso'
+			'@pelagiccreatures/sargasso': 'PelagicCreatures'
 		},
 		sourcemap: true
 	}],

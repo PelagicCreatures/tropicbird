@@ -13675,5 +13675,5 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
 
     return exports;
 
-}({}, PelagicCreatures.Sargasso));
+}({}, PelagicCreatures));
 //# sourceMappingURL=tropicbird.iife.js.map
