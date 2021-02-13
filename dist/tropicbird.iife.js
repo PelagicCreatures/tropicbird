@@ -54,18 +54,18 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     }
 
     /*! *****************************************************************************
-    Copyright (c) Microsoft Corporation. All rights reserved.
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not use
-    this file except in compliance with the License. You may obtain a copy of the
-    License at http://www.apache.org/licenses/LICENSE-2.0
+    Copyright (c) Microsoft Corporation.
 
-    THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-    KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
-    WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
-    MERCHANTABLITY OR NON-INFRINGEMENT.
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
 
-    See the Apache Version 2.0 License for specific language governing permissions
-    and limitations under the License.
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
     ***************************************************************************** */
     /* global Reflect, Promise */
 
@@ -121,10 +121,11 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     }
 
     function __awaiter(thisArg, _arguments, P, generator) {
+        function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
         return new (P || (P = Promise))(function (resolve, reject) {
             function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
             function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-            function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+            function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
             step((generator = generator.apply(thisArg, _arguments || [])).next());
         });
     }
@@ -157,19 +158,25 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         }
     }
 
+    function __createBinding(o, m, k, k2) {
+        if (k2 === undefined) k2 = k;
+        o[k2] = m[k];
+    }
+
     function __exportStar(m, exports) {
-        for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+        for (var p in m) if (p !== "default" && !exports.hasOwnProperty(p)) exports[p] = m[p];
     }
 
     function __values(o) {
-        var m = typeof Symbol === "function" && o[Symbol.iterator], i = 0;
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
         if (m) return m.call(o);
-        return {
+        if (o && typeof o.length === "number") return {
             next: function () {
                 if (o && i >= o.length) o = void 0;
                 return { value: o && o[i++], done: !o };
             }
         };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
     }
 
     function __read(o, n) {
@@ -248,6 +255,21 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
 
     function __importDefault(mod) {
         return (mod && mod.__esModule) ? mod : { default: mod };
+    }
+
+    function __classPrivateFieldGet(receiver, privateMap) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to get private field on non-instance");
+        }
+        return privateMap.get(receiver);
+    }
+
+    function __classPrivateFieldSet(receiver, privateMap, value) {
+        if (!privateMap.has(receiver)) {
+            throw new TypeError("attempted to set private field on non-instance");
+        }
+        privateMap.set(receiver, value);
+        return value;
     }
 
     /**
@@ -2165,6 +2187,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
+    var _a;
     var cssClasses$3 = {
         LIST_ITEM_ACTIVATED_CLASS: 'mdc-list-item--activated',
         LIST_ITEM_CLASS: 'mdc-list-item',
@@ -2185,16 +2208,28 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         ARIA_ORIENTATION_HORIZONTAL: 'horizontal',
         ARIA_ROLE_CHECKBOX_SELECTOR: '[role="checkbox"]',
         ARIA_SELECTED: 'aria-selected',
+        ARIA_INTERACTIVE_ROLES_SELECTOR: '[role="listbox"], [role="menu"]',
+        ARIA_MULTI_SELECTABLE_SELECTOR: '[aria-multiselectable="true"]',
         CHECKBOX_RADIO_SELECTOR: 'input[type="checkbox"], input[type="radio"]',
         CHECKBOX_SELECTOR: 'input[type="checkbox"]',
-        CHILD_ELEMENTS_TO_TOGGLE_TABINDEX: "\n    ." + cssClasses$3.LIST_ITEM_CLASS + " button:not(:disabled),\n    ." + cssClasses$3.LIST_ITEM_CLASS + " a\n  ",
-        FOCUSABLE_CHILD_ELEMENTS: "\n    ." + cssClasses$3.LIST_ITEM_CLASS + " button:not(:disabled),\n    ." + cssClasses$3.LIST_ITEM_CLASS + " a,\n    ." + cssClasses$3.LIST_ITEM_CLASS + " input[type=\"radio\"]:not(:disabled),\n    ." + cssClasses$3.LIST_ITEM_CLASS + " input[type=\"checkbox\"]:not(:disabled)\n  ",
+        CHILD_ELEMENTS_TO_TOGGLE_TABINDEX: 'button:not(:disabled), a',
+        FOCUSABLE_CHILD_ELEMENTS: 'button:not(:disabled), a, input[type="radio"]:not(:disabled), input[type="checkbox"]:not(:disabled)',
         RADIO_SELECTOR: 'input[type="radio"]',
+        SELECTED_ITEM_SELECTOR: '[aria-selected="true"], [aria-current="true"]',
     };
     var numbers$2 = {
         UNSET_INDEX: -1,
         TYPEAHEAD_BUFFER_CLEAR_TIMEOUT_MS: 300
     };
+    var evolutionClassNameMap = (_a = {},
+        _a["" + cssClasses$3.LIST_ITEM_ACTIVATED_CLASS] = 'mdc-evolution-list-item--activated',
+        _a["" + cssClasses$3.LIST_ITEM_CLASS] = 'mdc-evolution-list-item',
+        _a["" + cssClasses$3.LIST_ITEM_DISABLED_CLASS] = 'mdc-evolution-list-item--disabled',
+        _a["" + cssClasses$3.LIST_ITEM_SELECTED_CLASS] = 'mdc-evolution-list-item--selected',
+        _a["" + cssClasses$3.LIST_ITEM_PRIMARY_TEXT_CLASS] = 'mdc-evolution-list-item__primary-text',
+        _a["" + cssClasses$3.ROOT] = 'mdc-evolution-list',
+        _a);
+    var evolutionAttribute = 'evolution';
 
     /**
      * @license
@@ -2674,6 +2709,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             _this.selectedIndex_ = numbers$2.UNSET_INDEX;
             _this.focusedItemIndex = numbers$2.UNSET_INDEX;
             _this.useActivatedClass_ = false;
+            _this.useSelectedAttr_ = false;
             _this.ariaCurrentAttrValue_ = null;
             _this.isCheckboxList_ = false;
             _this.isRadioList_ = false;
@@ -2733,11 +2769,15 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (this.adapter.getListItemCount() === 0) {
                 return;
             }
+            // TODO(b/172274142): consider all items when determining the list's type.
             if (this.adapter.hasCheckboxAtIndex(0)) {
                 this.isCheckboxList_ = true;
             }
             else if (this.adapter.hasRadioAtIndex(0)) {
                 this.isRadioList_ = true;
+            }
+            else {
+                this.maybeInitializeSingleSelection();
             }
             if (this.hasTypeahead) {
                 this.sortedIndexByFirstChar = this.typeaheadInitSortedIndex();
@@ -2760,6 +2800,29 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
          */
         MDCListFoundation.prototype.setSingleSelection = function (value) {
             this.isSingleSelectionList_ = value;
+            if (value) {
+                this.maybeInitializeSingleSelection();
+            }
+        };
+        /**
+         * Automatically determines whether the list is single selection list. If so,
+         * initializes the internal state to match the selected item.
+         */
+        MDCListFoundation.prototype.maybeInitializeSingleSelection = function () {
+            var listItemsCount = this.adapter.getListItemCount();
+            for (var i = 0; i < listItemsCount; i++) {
+                var hasSelectedClass = this.adapter.listItemAtIndexHasClass(i, cssClasses$3.LIST_ITEM_SELECTED_CLASS);
+                var hasActivatedClass = this.adapter.listItemAtIndexHasClass(i, cssClasses$3.LIST_ITEM_ACTIVATED_CLASS);
+                if (!(hasSelectedClass || hasActivatedClass)) {
+                    continue;
+                }
+                if (hasActivatedClass) {
+                    this.setUseActivatedClass(true);
+                }
+                this.isSingleSelectionList_ = true;
+                this.selectedIndex_ = i;
+                return;
+            }
         };
         /**
          * Sets whether typeahead is enabled on the list.
@@ -2784,6 +2847,12 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         MDCListFoundation.prototype.setUseActivatedClass = function (useActivated) {
             this.useActivatedClass_ = useActivated;
         };
+        /**
+         * Sets the useSelectedAttr_ private variable.
+         */
+        MDCListFoundation.prototype.setUseSelectedAttribute = function (useSelected) {
+            this.useSelectedAttr_ = useSelected;
+        };
         MDCListFoundation.prototype.getSelectedIndex = function () {
             return this.selectedIndex_;
         };
@@ -2807,6 +2876,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         MDCListFoundation.prototype.handleFocusIn = function (_, listItemIndex) {
             if (listItemIndex >= 0) {
                 this.focusedItemIndex = listItemIndex;
+                this.adapter.setAttributeForElementIndex(listItemIndex, 'tabindex', '0');
                 this.adapter.setTabIndexForListItemChildren(listItemIndex, '0');
             }
         };
@@ -2816,15 +2886,16 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         MDCListFoundation.prototype.handleFocusOut = function (_, listItemIndex) {
             var _this = this;
             if (listItemIndex >= 0) {
+                this.adapter.setAttributeForElementIndex(listItemIndex, 'tabindex', '-1');
                 this.adapter.setTabIndexForListItemChildren(listItemIndex, '-1');
             }
             /**
-             * Between Focusout & Focusin some browsers do not have focus on any element. Setting a delay to wait till the focus
-             * is moved to next element.
+             * Between Focusout & Focusin some browsers do not have focus on any
+             * element. Setting a delay to wait till the focus is moved to next element.
              */
             setTimeout(function () {
                 if (!_this.adapter.isFocusInsideList()) {
-                    _this.setTabindexToFirstSelectedItem_();
+                    _this.setTabindexToFirstSelectedOrFocusedItem();
                 }
             }, 0);
         };
@@ -2841,6 +2912,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             var isEnd = normalizeKey(event) === 'End';
             var isEnter = normalizeKey(event) === 'Enter';
             var isSpace = normalizeKey(event) === 'Spacebar';
+            // Have to check both upper and lower case, because having caps lock on affects the value.
+            var isLetterA = event.key === 'A' || event.key === 'a';
             if (this.adapter.isRootFocused()) {
                 if (isArrowUp || isEnd) {
                     event.preventDefault();
@@ -2876,7 +2949,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     return;
                 }
             }
-            if ((this.isVertical_ && isArrowDown) || (!this.isVertical_ && isArrowRight)) {
+            if ((this.isVertical_ && isArrowDown) ||
+                (!this.isVertical_ && isArrowRight)) {
                 preventDefaultEvent(event);
                 this.focusNextElement(currentIndex);
             }
@@ -2892,9 +2966,14 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 preventDefaultEvent(event);
                 this.focusLastElement();
             }
+            else if (isLetterA && event.ctrlKey && this.isCheckboxList_) {
+                event.preventDefault();
+                this.toggleAll(this.selectedIndex_ === numbers$2.UNSET_INDEX ? [] : this.selectedIndex_);
+            }
             else if (isEnter || isSpace) {
                 if (isRootListItem) {
-                    // Return early if enter key is pressed on anchor element which triggers synthetic MouseEvent event.
+                    // Return early if enter key is pressed on anchor element which triggers
+                    // synthetic MouseEvent event.
                     var target = event.target;
                     if (target && target.tagName === 'A' && isEnter) {
                         return;
@@ -2932,8 +3011,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (index === numbers$2.UNSET_INDEX) {
                 return;
             }
-            this.setTabindexAtIndex_(index);
-            this.focusedItemIndex = index;
             if (this.adapter.listItemAtIndexHasClass(index, cssClasses$3.LIST_ITEM_DISABLED_CLASS)) {
                 return;
             }
@@ -2986,6 +3063,11 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             this.focusItemAtIndex(lastIndex);
             return lastIndex;
         };
+        MDCListFoundation.prototype.focusInitialElement = function () {
+            var initialIndex = this.getFirstSelectedOrFocusedItemIndex();
+            this.focusItemAtIndex(initialIndex);
+            return initialIndex;
+        };
         /**
          * @param itemIndex Index of the list item
          * @param isEnabled Sets the list item to enabled or disabled.
@@ -3014,15 +3096,19 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
                 this.adapter.removeClassForElementIndex(this.selectedIndex_, selectedClassName);
             }
-            this.adapter.addClassForElementIndex(index, selectedClassName);
             this.setAriaForSingleSelectionAtIndex_(index);
+            this.setTabindexAtIndex(index);
+            if (index !== numbers$2.UNSET_INDEX) {
+                this.adapter.addClassForElementIndex(index, selectedClassName);
+            }
             this.selectedIndex_ = index;
         };
         /**
          * Sets aria attribute for single selection at given index.
          */
         MDCListFoundation.prototype.setAriaForSingleSelectionAtIndex_ = function (index) {
-            // Detect the presence of aria-current and get the value only during list initialization when it is in unset state.
+            // Detect the presence of aria-current and get the value only during list
+            // initialization when it is in unset state.
             if (this.selectedIndex_ === numbers$2.UNSET_INDEX) {
                 this.ariaCurrentAttrValue_ =
                     this.adapter.getAttributeForElementIndex(index, strings$2.ARIA_CURRENT);
@@ -3032,59 +3118,88 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
                 this.adapter.setAttributeForElementIndex(this.selectedIndex_, ariaAttribute, 'false');
             }
-            var ariaAttributeValue = isAriaCurrent ? this.ariaCurrentAttrValue_ : 'true';
-            this.adapter.setAttributeForElementIndex(index, ariaAttribute, ariaAttributeValue);
+            if (index !== numbers$2.UNSET_INDEX) {
+                var ariaAttributeValue = isAriaCurrent ? this.ariaCurrentAttrValue_ : 'true';
+                this.adapter.setAttributeForElementIndex(index, ariaAttribute, ariaAttributeValue);
+            }
         };
         /**
-         * Toggles radio at give index. Radio doesn't change the checked state if it is already checked.
+         * Returns the attribute to use for indicating selection status.
+         */
+        MDCListFoundation.prototype.getSelectionAttribute = function () {
+            return this.useSelectedAttr_ ? strings$2.ARIA_SELECTED : strings$2.ARIA_CHECKED;
+        };
+        /**
+         * Toggles radio at give index. Radio doesn't change the checked state if it
+         * is already checked.
          */
         MDCListFoundation.prototype.setRadioAtIndex_ = function (index) {
+            var selectionAttribute = this.getSelectionAttribute();
             this.adapter.setCheckedCheckboxOrRadioAtIndex(index, true);
             if (this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
-                this.adapter.setAttributeForElementIndex(this.selectedIndex_, strings$2.ARIA_CHECKED, 'false');
+                this.adapter.setAttributeForElementIndex(this.selectedIndex_, selectionAttribute, 'false');
             }
-            this.adapter.setAttributeForElementIndex(index, strings$2.ARIA_CHECKED, 'true');
+            this.adapter.setAttributeForElementIndex(index, selectionAttribute, 'true');
             this.selectedIndex_ = index;
         };
         MDCListFoundation.prototype.setCheckboxAtIndex_ = function (index) {
+            var selectionAttribute = this.getSelectionAttribute();
             for (var i = 0; i < this.adapter.getListItemCount(); i++) {
                 var isChecked = false;
                 if (index.indexOf(i) >= 0) {
                     isChecked = true;
                 }
                 this.adapter.setCheckedCheckboxOrRadioAtIndex(i, isChecked);
-                this.adapter.setAttributeForElementIndex(i, strings$2.ARIA_CHECKED, isChecked ? 'true' : 'false');
+                this.adapter.setAttributeForElementIndex(i, selectionAttribute, isChecked ? 'true' : 'false');
             }
             this.selectedIndex_ = index;
         };
-        MDCListFoundation.prototype.setTabindexAtIndex_ = function (index) {
+        MDCListFoundation.prototype.setTabindexAtIndex = function (index) {
             if (this.focusedItemIndex === numbers$2.UNSET_INDEX && index !== 0) {
-                // If no list item was selected set first list item's tabindex to -1.
-                // Generally, tabindex is set to 0 on first list item of list that has no preselected items.
+                // If some list item was selected set first list item's tabindex to -1.
+                // Generally, tabindex is set to 0 on first list item of list that has no
+                // preselected items.
                 this.adapter.setAttributeForElementIndex(0, 'tabindex', '-1');
             }
             else if (this.focusedItemIndex >= 0 && this.focusedItemIndex !== index) {
                 this.adapter.setAttributeForElementIndex(this.focusedItemIndex, 'tabindex', '-1');
             }
-            this.adapter.setAttributeForElementIndex(index, 'tabindex', '0');
+            // Set the previous selection's tabindex to -1. We need this because
+            // in selection menus that are not visible, programmatically setting an
+            // option will not change focus but will change where tabindex should be 0.
+            if (!(this.selectedIndex_ instanceof Array) &&
+                this.selectedIndex_ !== index) {
+                this.adapter.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', '-1');
+            }
+            if (index !== numbers$2.UNSET_INDEX) {
+                this.adapter.setAttributeForElementIndex(index, 'tabindex', '0');
+            }
         };
         /**
-         * @return Return true if it is single selectin list, checkbox list or radio list.
+         * @return Return true if it is single selectin list, checkbox list or radio
+         *     list.
          */
         MDCListFoundation.prototype.isSelectableList_ = function () {
-            return this.isSingleSelectionList_ || this.isCheckboxList_ || this.isRadioList_;
+            return this.isSingleSelectionList_ || this.isCheckboxList_ ||
+                this.isRadioList_;
         };
-        MDCListFoundation.prototype.setTabindexToFirstSelectedItem_ = function () {
-            var targetIndex = 0;
+        MDCListFoundation.prototype.setTabindexToFirstSelectedOrFocusedItem = function () {
+            var targetIndex = this.getFirstSelectedOrFocusedItemIndex();
+            this.setTabindexAtIndex(targetIndex);
+        };
+        MDCListFoundation.prototype.getFirstSelectedOrFocusedItemIndex = function () {
+            var targetIndex = this.focusedItemIndex >= 0 ? this.focusedItemIndex : 0;
             if (this.isSelectableList_()) {
-                if (typeof this.selectedIndex_ === 'number' && this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
+                if (typeof this.selectedIndex_ === 'number' &&
+                    this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
                     targetIndex = this.selectedIndex_;
                 }
-                else if (isNumberArray(this.selectedIndex_) && this.selectedIndex_.length > 0) {
+                else if (isNumberArray(this.selectedIndex_) &&
+                    this.selectedIndex_.length > 0) {
                     targetIndex = this.selectedIndex_.reduce(function (currentIndex, minIndex) { return Math.min(currentIndex, minIndex); });
                 }
             }
-            this.setTabindexAtIndex_(targetIndex);
+            return targetIndex;
         };
         MDCListFoundation.prototype.isIndexValid_ = function (index) {
             var _this = this;
@@ -3101,9 +3216,10 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
             else if (typeof index === 'number') {
                 if (this.isCheckboxList_) {
-                    throw new Error('MDCListFoundation: Expected array of index for checkbox based list but got number: ' + index);
+                    throw new Error("MDCListFoundation: Expected array of index for checkbox based list but got number: " + index);
                 }
-                return this.isIndexInRange_(index);
+                return this.isIndexInRange_(index) ||
+                    this.isSingleSelectionList_ && index === numbers$2.UNSET_INDEX;
             }
             else {
                 return false;
@@ -3114,8 +3230,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             return index >= 0 && index < listSize;
         };
         /**
-         * Sets selected index on user action, toggles checkbox / radio based on toggleCheckbox value.
-         * User interaction should not toggle list item(s) when disabled.
+         * Sets selected index on user action, toggles checkbox / radio based on
+         * toggleCheckbox value. User interaction should not toggle list item(s) when
+         * disabled.
          */
         MDCListFoundation.prototype.setSelectedIndexOnAction_ = function (index, toggleCheckbox) {
             if (toggleCheckbox === void 0) { toggleCheckbox = true; }
@@ -3127,14 +3244,18 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
         };
         MDCListFoundation.prototype.toggleCheckboxAtIndex_ = function (index, toggleCheckbox) {
+            var selectionAttribute = this.getSelectionAttribute();
             var isChecked = this.adapter.isCheckboxCheckedAtIndex(index);
             if (toggleCheckbox) {
                 isChecked = !isChecked;
                 this.adapter.setCheckedCheckboxOrRadioAtIndex(index, isChecked);
             }
-            this.adapter.setAttributeForElementIndex(index, strings$2.ARIA_CHECKED, isChecked ? 'true' : 'false');
-            // If none of the checkbox items are selected and selectedIndex is not initialized then provide a default value.
-            var selectedIndexes = this.selectedIndex_ === numbers$2.UNSET_INDEX ? [] : this.selectedIndex_.slice();
+            this.adapter.setAttributeForElementIndex(index, selectionAttribute, isChecked ? 'true' : 'false');
+            // If none of the checkbox items are selected and selectedIndex is not
+            // initialized then provide a default value.
+            var selectedIndexes = this.selectedIndex_ === numbers$2.UNSET_INDEX ?
+                [] :
+                this.selectedIndex_.slice();
             if (isChecked) {
                 selectedIndexes.push(index);
             }
@@ -3144,9 +3265,26 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             this.selectedIndex_ = selectedIndexes;
         };
         MDCListFoundation.prototype.focusItemAtIndex = function (index) {
-            this.setTabindexAtIndex_(index);
             this.adapter.focusItemAtIndex(index);
             this.focusedItemIndex = index;
+        };
+        MDCListFoundation.prototype.toggleAll = function (currentlySelectedIndexes) {
+            var count = this.adapter.getListItemCount();
+            // If all items are selected, deselect everything.
+            if (currentlySelectedIndexes.length === count) {
+                this.setCheckboxAtIndex_([]);
+            }
+            else {
+                // Otherwise select all enabled options.
+                var allIndexes = [];
+                for (var i = 0; i < count; i++) {
+                    if (!this.adapter.listItemAtIndexHasClass(i, cssClasses$3.LIST_ITEM_DISABLED_CLASS) ||
+                        currentlySelectedIndexes.indexOf(i) > -1) {
+                        allIndexes.push(i);
+                    }
+                }
+                this.setCheckboxAtIndex_(allIndexes);
+            }
         };
         /**
          * Given the next desired character from the user, adds it to the typeahead
@@ -3230,7 +3368,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         });
         Object.defineProperty(MDCList.prototype, "listElements", {
             get: function () {
-                return [].slice.call(this.root.querySelectorAll("." + cssClasses$3.LIST_ITEM_CLASS));
+                return Array.from(this.root.querySelectorAll("." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS]));
             },
             enumerable: true,
             configurable: true
@@ -3284,34 +3422,49 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             return new MDCList(root);
         };
         MDCList.prototype.initialSyncWithDOM = function () {
-            this.handleClick_ = this.handleClickEvent_.bind(this);
-            this.handleKeydown_ = this.handleKeydownEvent_.bind(this);
-            this.focusInEventListener_ = this.handleFocusInEvent_.bind(this);
-            this.focusOutEventListener_ = this.handleFocusOutEvent_.bind(this);
-            this.listen('keydown', this.handleKeydown_);
-            this.listen('click', this.handleClick_);
-            this.listen('focusin', this.focusInEventListener_);
-            this.listen('focusout', this.focusOutEventListener_);
+            this.isEvolutionEnabled =
+                evolutionAttribute in this.root.dataset;
+            this.classNameMap = this.isEvolutionEnabled ?
+                evolutionClassNameMap :
+                Object.values(cssClasses$3)
+                    .reduce(function (obj, className) {
+                    obj[className] = className;
+                    return obj;
+                }, {});
+            this.handleClick = this.handleClickEvent.bind(this);
+            this.handleKeydown = this.handleKeydownEvent.bind(this);
+            this.focusInEventListener = this.handleFocusInEvent.bind(this);
+            this.focusOutEventListener = this.handleFocusOutEvent.bind(this);
+            this.listen('keydown', this.handleKeydown);
+            this.listen('click', this.handleClick);
+            this.listen('focusin', this.focusInEventListener);
+            this.listen('focusout', this.focusOutEventListener);
             this.layout();
             this.initializeListType();
+            this.ensureFocusable();
         };
         MDCList.prototype.destroy = function () {
-            this.unlisten('keydown', this.handleKeydown_);
-            this.unlisten('click', this.handleClick_);
-            this.unlisten('focusin', this.focusInEventListener_);
-            this.unlisten('focusout', this.focusOutEventListener_);
+            this.unlisten('keydown', this.handleKeydown);
+            this.unlisten('click', this.handleClick);
+            this.unlisten('focusin', this.focusInEventListener);
+            this.unlisten('focusout', this.focusOutEventListener);
         };
         MDCList.prototype.layout = function () {
             var direction = this.root.getAttribute(strings$2.ARIA_ORIENTATION);
             this.vertical = direction !== strings$2.ARIA_ORIENTATION_HORIZONTAL;
+            var itemSelector = "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + ":not([tabindex])";
+            var childSelector = "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + " " + strings$2.FOCUSABLE_CHILD_ELEMENTS;
             // List items need to have at least tabindex=-1 to be focusable.
-            [].slice.call(this.root.querySelectorAll('.mdc-list-item:not([tabindex])'))
-                .forEach(function (el) {
+            Array.prototype.forEach.call(this.root.querySelectorAll(itemSelector), function (el) {
                 el.setAttribute('tabindex', '-1');
             });
             // Child button/a elements are not tabbable until the list item is focused.
-            [].slice.call(this.root.querySelectorAll(strings$2.FOCUSABLE_CHILD_ELEMENTS))
-                .forEach(function (el) { return el.setAttribute('tabindex', '-1'); });
+            Array.prototype.forEach.call(this.root.querySelectorAll(childSelector), function (el) {
+                el.setAttribute('tabindex', '-1');
+            });
+            if (this.isEvolutionEnabled) {
+                this.foundation.setUseSelectedAttribute(true);
+            }
             this.foundation.layout();
         };
         /**
@@ -3320,32 +3473,36 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
          * @return The primary text in the element.
          */
         MDCList.prototype.getPrimaryText = function (item) {
-            var primaryText = item.querySelector("." + cssClasses$3.LIST_ITEM_PRIMARY_TEXT_CLASS);
-            if (primaryText) {
-                return primaryText.textContent || '';
+            var _a;
+            var primaryText = item.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_PRIMARY_TEXT_CLASS]);
+            if (this.isEvolutionEnabled || primaryText) {
+                return (_a = primaryText === null || primaryText === void 0 ? void 0 : primaryText.textContent) !== null && _a !== void 0 ? _a : '';
             }
-            var singleLineText = item.querySelector("." + cssClasses$3.LIST_ITEM_TEXT_CLASS);
+            var singleLineText = item.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_TEXT_CLASS]);
             return (singleLineText && singleLineText.textContent) || '';
         };
         /**
-         * Initialize selectedIndex value based on pre-selected checkbox list items, single selection or radio.
+         * Initialize selectedIndex value based on pre-selected list items.
          */
         MDCList.prototype.initializeListType = function () {
             var _this = this;
+            this.isInteractive =
+                matches(this.root, strings$2.ARIA_INTERACTIVE_ROLES_SELECTOR);
+            if (this.isEvolutionEnabled && this.isInteractive) {
+                var selection = Array.from(this.root.querySelectorAll(strings$2.SELECTED_ITEM_SELECTOR), function (listItem) { return _this.listElements.indexOf(listItem); });
+                if (matches(this.root, strings$2.ARIA_MULTI_SELECTABLE_SELECTOR)) {
+                    this.selectedIndex = selection;
+                }
+                else if (selection.length > 0) {
+                    this.selectedIndex = selection[0];
+                }
+                return;
+            }
             var checkboxListItems = this.root.querySelectorAll(strings$2.ARIA_ROLE_CHECKBOX_SELECTOR);
-            var singleSelectedListItem = this.root.querySelector("\n      ." + cssClasses$3.LIST_ITEM_ACTIVATED_CLASS + ",\n      ." + cssClasses$3.LIST_ITEM_SELECTED_CLASS + "\n    ");
             var radioSelectedListItem = this.root.querySelector(strings$2.ARIA_CHECKED_RADIO_SELECTOR);
             if (checkboxListItems.length) {
                 var preselectedItems = this.root.querySelectorAll(strings$2.ARIA_CHECKED_CHECKBOX_SELECTOR);
-                this.selectedIndex =
-                    [].map.call(preselectedItems, function (listItem) { return _this.listElements.indexOf(listItem); });
-            }
-            else if (singleSelectedListItem) {
-                if (singleSelectedListItem.classList.contains(cssClasses$3.LIST_ITEM_ACTIVATED_CLASS)) {
-                    this.foundation.setUseActivatedClass(true);
-                }
-                this.singleSelection = true;
-                this.selectedIndex = this.listElements.indexOf(singleSelectedListItem);
+                this.selectedIndex = Array.from(preselectedItems, function (listItem) { return _this.listElements.indexOf(listItem); });
             }
             else if (radioSelectedListItem) {
                 this.selectedIndex = this.listElements.indexOf(radioSelectedListItem);
@@ -3374,13 +3531,14 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         };
         MDCList.prototype.getDefaultFoundation = function () {
             var _this = this;
-            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
-            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            // DO NOT INLINE this variable. For backward compatibility, foundations take
+            // a Partial<MDCFooAdapter>. To ensure we don't accidentally omit any
+            // methods, we need a separate, strongly typed adapter variable.
             var adapter = {
                 addClassForElementIndex: function (index, className) {
                     var element = _this.listElements[index];
                     if (element) {
-                        element.classList.add(className);
+                        element.classList.add(_this.classNameMap[className]);
                     }
                 },
                 focusItemAtIndex: function (index) {
@@ -3413,11 +3571,12 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     return toggleEl.checked;
                 },
                 isFocusInsideList: function () {
-                    return _this.root.contains(document.activeElement);
+                    return _this.root !== document.activeElement &&
+                        _this.root.contains(document.activeElement);
                 },
                 isRootFocused: function () { return document.activeElement === _this.root; },
                 listItemAtIndexHasClass: function (index, className) {
-                    return _this.listElements[index].classList.contains(className);
+                    return _this.listElements[index].classList.contains(_this.classNameMap[className]);
                 },
                 notifyAction: function (index) {
                     _this.emit(strings$2.ACTION_EVENT, { index: index }, /** shouldBubble */ true);
@@ -3425,7 +3584,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 removeClassForElementIndex: function (index, className) {
                     var element = _this.listElements[index];
                     if (element) {
-                        element.classList.remove(className);
+                        element.classList.remove(_this.classNameMap[className]);
                     }
                 },
                 setAttributeForElementIndex: function (index, attr, value) {
@@ -3444,55 +3603,89 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 },
                 setTabIndexForListItemChildren: function (listItemIndex, tabIndexValue) {
                     var element = _this.listElements[listItemIndex];
-                    var listItemChildren = [].slice.call(element.querySelectorAll(strings$2.CHILD_ELEMENTS_TO_TOGGLE_TABINDEX));
-                    listItemChildren.forEach(function (el) { return el.setAttribute('tabindex', tabIndexValue); });
+                    var selector = "." + _this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + " " + strings$2.CHILD_ELEMENTS_TO_TOGGLE_TABINDEX;
+                    Array.prototype.forEach.call(element.querySelectorAll(selector), function (el) {
+                        el.setAttribute('tabindex', tabIndexValue);
+                    });
                 },
             };
             return new MDCListFoundation(adapter);
         };
         /**
-         * Used to figure out which list item this event is targetting. Or returns -1 if
-         * there is no list item
+         * Ensures that at least one item is focusable if the list is interactive and
+         * doesn't specify a suitable tabindex.
          */
-        MDCList.prototype.getListItemIndex_ = function (evt) {
-            var eventTarget = evt.target;
-            var nearestParent = closest(eventTarget, "." + cssClasses$3.LIST_ITEM_CLASS + ", ." + cssClasses$3.ROOT);
+        MDCList.prototype.ensureFocusable = function () {
+            if (this.isEvolutionEnabled && this.isInteractive) {
+                if (!this.root.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + "[tabindex=\"0\"]")) {
+                    var index = this.initialFocusIndex();
+                    if (index !== -1) {
+                        this.listElements[index].tabIndex = 0;
+                    }
+                }
+            }
+        };
+        MDCList.prototype.initialFocusIndex = function () {
+            if (this.selectedIndex instanceof Array && this.selectedIndex.length > 0) {
+                return this.selectedIndex[0];
+            }
+            if (typeof this.selectedIndex === 'number' &&
+                this.selectedIndex !== numbers$2.UNSET_INDEX) {
+                return this.selectedIndex;
+            }
+            var el = this.root.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + ":not(." + this.classNameMap[cssClasses$3.LIST_ITEM_DISABLED_CLASS] + ")");
+            if (el === null) {
+                return -1;
+            }
+            return this.getListItemIndex(el);
+        };
+        /**
+         * Used to figure out which list item this event is targetting. Or returns -1
+         * if there is no list item
+         */
+        MDCList.prototype.getListItemIndex = function (el) {
+            var nearestParent = closest(el, "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + ", ." + this.classNameMap[cssClasses$3.ROOT]);
             // Get the index of the element if it is a list item.
-            if (nearestParent && matches(nearestParent, "." + cssClasses$3.LIST_ITEM_CLASS)) {
+            if (nearestParent &&
+                matches(nearestParent, "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS])) {
                 return this.listElements.indexOf(nearestParent);
             }
             return -1;
         };
         /**
-         * Used to figure out which element was clicked before sending the event to the foundation.
+         * Used to figure out which element was clicked before sending the event to
+         * the foundation.
          */
-        MDCList.prototype.handleFocusInEvent_ = function (evt) {
-            var index = this.getListItemIndex_(evt);
+        MDCList.prototype.handleFocusInEvent = function (evt) {
+            var index = this.getListItemIndex(evt.target);
             this.foundation.handleFocusIn(evt, index);
         };
         /**
-         * Used to figure out which element was clicked before sending the event to the foundation.
+         * Used to figure out which element was clicked before sending the event to
+         * the foundation.
          */
-        MDCList.prototype.handleFocusOutEvent_ = function (evt) {
-            var index = this.getListItemIndex_(evt);
+        MDCList.prototype.handleFocusOutEvent = function (evt) {
+            var index = this.getListItemIndex(evt.target);
             this.foundation.handleFocusOut(evt, index);
         };
         /**
-         * Used to figure out which element was focused when keydown event occurred before sending the event to the
-         * foundation.
+         * Used to figure out which element was focused when keydown event occurred
+         * before sending the event to the foundation.
          */
-        MDCList.prototype.handleKeydownEvent_ = function (evt) {
-            var index = this.getListItemIndex_(evt);
+        MDCList.prototype.handleKeydownEvent = function (evt) {
+            var index = this.getListItemIndex(evt.target);
             var target = evt.target;
-            this.foundation.handleKeydown(evt, target.classList.contains(cssClasses$3.LIST_ITEM_CLASS), index);
+            this.foundation.handleKeydown(evt, target.classList.contains(this.classNameMap[cssClasses$3.LIST_ITEM_CLASS]), index);
         };
         /**
-         * Used to figure out which element was clicked before sending the event to the foundation.
+         * Used to figure out which element was clicked before sending the event to
+         * the foundation.
          */
-        MDCList.prototype.handleClickEvent_ = function (evt) {
-            var index = this.getListItemIndex_(evt);
+        MDCList.prototype.handleClickEvent = function (evt) {
+            var index = this.getListItemIndex(evt.target);
             var target = evt.target;
-            // Toggle the checkbox only if it's not the target of the event, or the checkbox will have 2 change events.
+            // Toggle the checkbox only if it's not the target of the event, or the
+            // checkbox will have 2 change events.
             var toggleCheckbox = !matches(target, strings$2.CHECKBOX_RADIO_SELECTOR);
             this.foundation.handleClick(index, toggleCheckbox);
         };
@@ -3978,11 +4171,115 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     function isScrollable(el) {
         return el ? el.scrollHeight > el.offsetHeight : false;
     }
+    /**
+     * For scrollable content, returns true if the content has not been scrolled
+     * (that is, the scroll content is as the "top"). This is used in full-screen
+     * dialogs, where the scroll divider is expected only to appear once the
+     * content has been scrolled "underneath" the header bar.
+     */
+    function isScrollAtTop(el) {
+        return el ? el.scrollTop === 0 : false;
+    }
+    /**
+     * For scrollable content, returns true if the content has been scrolled all the
+     * way to the bottom. This is used in full-screen dialogs, where the footer
+     * scroll divider is expected only to appear when the content is "cut-off" by
+     * the footer bar.
+     */
+    function isScrollAtBottom(el) {
+        return el ? Math.ceil(el.scrollHeight - el.scrollTop) === el.clientHeight :
+            false;
+    }
     function areTopsMisaligned(els) {
         var tops = new Set();
         [].forEach.call(els, function (el) { return tops.add(el.offsetTop); });
         return tops.size > 1;
     }
+
+    /**
+     * @license
+     * Copyright 2020 Google Inc.
+     *
+     * Permission is hereby granted, free of charge, to any person obtaining a copy
+     * of this software and associated documentation files (the "Software"), to deal
+     * in the Software without restriction, including without limitation the rights
+     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+     * copies of the Software, and to permit persons to whom the Software is
+     * furnished to do so, subject to the following conditions:
+     *
+     * The above copyright notice and this permission notice shall be included in
+     * all copies or substantial portions of the Software.
+     *
+     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+     * THE SOFTWARE.
+     */
+    /**
+     * AnimationFrame provides a user-friendly abstraction around requesting
+     * and canceling animation frames.
+     */
+    var AnimationFrame = /** @class */ (function () {
+        function AnimationFrame() {
+            this.rafIDs = new Map();
+        }
+        /**
+         * Requests an animation frame. Cancels any existing frame with the same key.
+         * @param {string} key The key for this callback.
+         * @param {FrameRequestCallback} callback The callback to be executed.
+         */
+        AnimationFrame.prototype.request = function (key, callback) {
+            var _this = this;
+            this.cancel(key);
+            var frameID = requestAnimationFrame(function (frame) {
+                _this.rafIDs.delete(key);
+                // Callback must come *after* the key is deleted so that nested calls to
+                // request with the same key are not deleted.
+                callback(frame);
+            });
+            this.rafIDs.set(key, frameID);
+        };
+        /**
+         * Cancels a queued callback with the given key.
+         * @param {string} key The key for this callback.
+         */
+        AnimationFrame.prototype.cancel = function (key) {
+            var rafID = this.rafIDs.get(key);
+            if (rafID) {
+                cancelAnimationFrame(rafID);
+                this.rafIDs.delete(key);
+            }
+        };
+        /**
+         * Cancels all queued callback.
+         */
+        AnimationFrame.prototype.cancelAll = function () {
+            var _this = this;
+            // Need to use forEach because it's the only iteration method supported
+            // by IE11. Suppress the underscore because we don't need it.
+            // tslint:disable-next-line:enforce-name-casing
+            this.rafIDs.forEach(function (_, key) {
+                _this.cancel(key);
+            });
+        };
+        /**
+         * Returns the queue of unexecuted callback keys.
+         */
+        AnimationFrame.prototype.getQueue = function () {
+            var queue = [];
+            // Need to use forEach because it's the only iteration method supported
+            // by IE11. Suppress the underscore because we don't need it.
+            // tslint:disable-next-line:enforce-name-casing
+            this.rafIDs.forEach(function (_, key) {
+                queue.push(key);
+            });
+            return queue;
+        };
+        return AnimationFrame;
+    }());
 
     /**
      * @license
@@ -4013,6 +4310,15 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         SCROLLABLE: 'mdc-dialog--scrollable',
         SCROLL_LOCK: 'mdc-dialog-scroll-lock',
         STACKED: 'mdc-dialog--stacked',
+        FULLSCREEN: 'mdc-dialog--fullscreen',
+        // Class for showing a scroll divider on full-screen dialog header element.
+        // Should only be displayed on scrollable content, when the dialog content is
+        // scrolled "underneath" the header.
+        SCROLL_DIVIDER_HEADER: 'mdc-dialog-scroll-divider-header',
+        // Class for showing a scroll divider on a full-screen dialog footer element.
+        // Should only be displayed on scrolalble content, when the dialog content is
+        // obscured "underneath" the footer.
+        SCROLL_DIVIDER_FOOTER: 'mdc-dialog-scroll-divider-footer',
     };
     var strings$5 = {
         ACTION_ATTRIBUTE: 'data-mdc-dialog-action',
@@ -4061,18 +4367,28 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
+    var AnimationKeys;
+    (function (AnimationKeys) {
+        AnimationKeys["POLL_SCROLL_POS"] = "poll_scroll_position";
+    })(AnimationKeys || (AnimationKeys = {}));
     var MDCDialogFoundation = /** @class */ (function (_super) {
         __extends(MDCDialogFoundation, _super);
         function MDCDialogFoundation(adapter) {
             var _this = _super.call(this, __assign(__assign({}, MDCDialogFoundation.defaultAdapter), adapter)) || this;
-            _this.isOpen_ = false;
-            _this.animationFrame_ = 0;
-            _this.animationTimer_ = 0;
-            _this.layoutFrame_ = 0;
-            _this.escapeKeyAction_ = strings$5.CLOSE_ACTION;
-            _this.scrimClickAction_ = strings$5.CLOSE_ACTION;
-            _this.autoStackButtons_ = true;
-            _this.areButtonsStacked_ = false;
+            _this.dialogOpen = false;
+            _this.isFullscreen = false;
+            _this.animationFrame = 0;
+            _this.animationTimer = 0;
+            _this.layoutFrame = 0;
+            _this.escapeKeyAction = strings$5.CLOSE_ACTION;
+            _this.scrimClickAction = strings$5.CLOSE_ACTION;
+            _this.autoStackButtons = true;
+            _this.areButtonsStacked = false;
+            _this.suppressDefaultPressSelector = strings$5.SUPPRESS_DEFAULT_PRESS_SELECTOR;
+            _this.animFrame = new AnimationFrame();
+            _this.contentScrollHandler = function () {
+                _this.handleScrollEvent();
+            };
             return _this;
         }
         Object.defineProperty(MDCDialogFoundation, "cssClasses", {
@@ -4117,6 +4433,10 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     removeClass: function () { return undefined; },
                     reverseButtons: function () { return undefined; },
                     trapFocus: function () { return undefined; },
+                    registerContentEventHandler: function () { return undefined; },
+                    deregisterContentEventHandler: function () { return undefined; },
+                    isScrollableContentAtTop: function () { return false; },
+                    isScrollableContentAtBottom: function () { return false; },
                 };
             },
             enumerable: true,
@@ -4126,32 +4446,40 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (this.adapter.hasClass(cssClasses$6.STACKED)) {
                 this.setAutoStackButtons(false);
             }
+            this.isFullscreen = this.adapter.hasClass(cssClasses$6.FULLSCREEN);
         };
         MDCDialogFoundation.prototype.destroy = function () {
-            if (this.isOpen_) {
+            if (this.dialogOpen) {
                 this.close(strings$5.DESTROY_ACTION);
             }
-            if (this.animationTimer_) {
-                clearTimeout(this.animationTimer_);
-                this.handleAnimationTimerEnd_();
+            if (this.animationTimer) {
+                clearTimeout(this.animationTimer);
+                this.handleAnimationTimerEnd();
             }
-            if (this.layoutFrame_) {
-                cancelAnimationFrame(this.layoutFrame_);
-                this.layoutFrame_ = 0;
+            if (this.layoutFrame) {
+                cancelAnimationFrame(this.layoutFrame);
+                this.layoutFrame = 0;
+            }
+            if (this.isFullscreen && this.adapter.isContentScrollable()) {
+                this.adapter.deregisterContentEventHandler('scroll', this.contentScrollHandler);
             }
         };
         MDCDialogFoundation.prototype.open = function () {
             var _this = this;
-            this.isOpen_ = true;
+            this.dialogOpen = true;
             this.adapter.notifyOpening();
             this.adapter.addClass(cssClasses$6.OPENING);
-            // Wait a frame once display is no longer "none", to establish basis for animation
-            this.runNextAnimationFrame_(function () {
+            if (this.isFullscreen && this.adapter.isContentScrollable()) {
+                this.adapter.registerContentEventHandler('scroll', this.contentScrollHandler);
+            }
+            // Wait a frame once display is no longer "none", to establish basis for
+            // animation
+            this.runNextAnimationFrame(function () {
                 _this.adapter.addClass(cssClasses$6.OPEN);
                 _this.adapter.addBodyClass(cssClasses$6.SCROLL_LOCK);
                 _this.layout();
-                _this.animationTimer_ = setTimeout(function () {
-                    _this.handleAnimationTimerEnd_();
+                _this.animationTimer = setTimeout(function () {
+                    _this.handleAnimationTimerEnd();
                     _this.adapter.trapFocus(_this.adapter.getInitialFocusEl());
                     _this.adapter.notifyOpened();
                 }, numbers$3.DIALOG_ANIMATION_OPEN_TIME_MS);
@@ -4160,61 +4488,71 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         MDCDialogFoundation.prototype.close = function (action) {
             var _this = this;
             if (action === void 0) { action = ''; }
-            if (!this.isOpen_) {
-                // Avoid redundant close calls (and events), e.g. from keydown on elements that inherently emit click
+            if (!this.dialogOpen) {
+                // Avoid redundant close calls (and events), e.g. from keydown on elements
+                // that inherently emit click
                 return;
             }
-            this.isOpen_ = false;
+            this.dialogOpen = false;
             this.adapter.notifyClosing(action);
             this.adapter.addClass(cssClasses$6.CLOSING);
             this.adapter.removeClass(cssClasses$6.OPEN);
             this.adapter.removeBodyClass(cssClasses$6.SCROLL_LOCK);
-            cancelAnimationFrame(this.animationFrame_);
-            this.animationFrame_ = 0;
-            clearTimeout(this.animationTimer_);
-            this.animationTimer_ = setTimeout(function () {
+            if (this.isFullscreen && this.adapter.isContentScrollable()) {
+                this.adapter.deregisterContentEventHandler('scroll', this.contentScrollHandler);
+            }
+            cancelAnimationFrame(this.animationFrame);
+            this.animationFrame = 0;
+            clearTimeout(this.animationTimer);
+            this.animationTimer = setTimeout(function () {
                 _this.adapter.releaseFocus();
-                _this.handleAnimationTimerEnd_();
+                _this.handleAnimationTimerEnd();
                 _this.adapter.notifyClosed(action);
             }, numbers$3.DIALOG_ANIMATION_CLOSE_TIME_MS);
         };
         MDCDialogFoundation.prototype.isOpen = function () {
-            return this.isOpen_;
+            return this.dialogOpen;
         };
         MDCDialogFoundation.prototype.getEscapeKeyAction = function () {
-            return this.escapeKeyAction_;
+            return this.escapeKeyAction;
         };
         MDCDialogFoundation.prototype.setEscapeKeyAction = function (action) {
-            this.escapeKeyAction_ = action;
+            this.escapeKeyAction = action;
         };
         MDCDialogFoundation.prototype.getScrimClickAction = function () {
-            return this.scrimClickAction_;
+            return this.scrimClickAction;
         };
         MDCDialogFoundation.prototype.setScrimClickAction = function (action) {
-            this.scrimClickAction_ = action;
+            this.scrimClickAction = action;
         };
         MDCDialogFoundation.prototype.getAutoStackButtons = function () {
-            return this.autoStackButtons_;
+            return this.autoStackButtons;
         };
         MDCDialogFoundation.prototype.setAutoStackButtons = function (autoStack) {
-            this.autoStackButtons_ = autoStack;
+            this.autoStackButtons = autoStack;
+        };
+        MDCDialogFoundation.prototype.getSuppressDefaultPressSelector = function () {
+            return this.suppressDefaultPressSelector;
+        };
+        MDCDialogFoundation.prototype.setSuppressDefaultPressSelector = function (selector) {
+            this.suppressDefaultPressSelector = selector;
         };
         MDCDialogFoundation.prototype.layout = function () {
             var _this = this;
-            if (this.layoutFrame_) {
-                cancelAnimationFrame(this.layoutFrame_);
+            if (this.layoutFrame) {
+                cancelAnimationFrame(this.layoutFrame);
             }
-            this.layoutFrame_ = requestAnimationFrame(function () {
-                _this.layoutInternal_();
-                _this.layoutFrame_ = 0;
+            this.layoutFrame = requestAnimationFrame(function () {
+                _this.layoutInternal();
+                _this.layoutFrame = 0;
             });
         };
         /** Handles click on the dialog root element. */
         MDCDialogFoundation.prototype.handleClick = function (evt) {
             var isScrim = this.adapter.eventTargetMatches(evt.target, strings$5.SCRIM_SELECTOR);
             // Check for scrim click first since it doesn't require querying ancestors.
-            if (isScrim && this.scrimClickAction_ !== '') {
-                this.close(this.scrimClickAction_);
+            if (isScrim && this.scrimClickAction !== '') {
+                this.close(this.scrimClickAction);
             }
             else {
                 var action = this.adapter.getActionFromEvent(evt);
@@ -4235,7 +4573,23 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 // since space/enter keydowns on buttons trigger click events.
                 return;
             }
-            var isDefault = !this.adapter.eventTargetMatches(evt.target, strings$5.SUPPRESS_DEFAULT_PRESS_SELECTOR);
+            // `composedPath` is used here, when available, to account for use cases
+            // where a target meant to suppress the default press behaviour
+            // may exist in a shadow root.
+            // For example, a textarea inside a web component:
+            // <mwc-dialog>
+            //   <horizontal-layout>
+            //     #shadow-root (open)
+            //       <mwc-textarea>
+            //         #shadow-root (open)
+            //           <textarea></textarea>
+            //       </mwc-textarea>
+            //   </horizontal-layout>
+            // </mwc-dialog>
+            var target = evt.composedPath ? evt.composedPath()[0] : evt.target;
+            var isDefault = this.suppressDefaultPressSelector ?
+                !this.adapter.eventTargetMatches(target, this.suppressDefaultPressSelector) :
+                true;
             if (isEnter && isDefault) {
                 this.adapter.clickDefaultButton();
             }
@@ -4243,50 +4597,88 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         /** Handles keydown on the document. */
         MDCDialogFoundation.prototype.handleDocumentKeydown = function (evt) {
             var isEscape = evt.key === 'Escape' || evt.keyCode === 27;
-            if (isEscape && this.escapeKeyAction_ !== '') {
-                this.close(this.escapeKeyAction_);
+            if (isEscape && this.escapeKeyAction !== '') {
+                this.close(this.escapeKeyAction);
             }
         };
-        MDCDialogFoundation.prototype.layoutInternal_ = function () {
-            if (this.autoStackButtons_) {
-                this.detectStackedButtons_();
-            }
-            this.detectScrollableContent_();
+        /**
+         * Handles scroll event on the dialog's content element -- showing a scroll
+         * divider on the header or footer based on the scroll position. This handler
+         * should only be registered on full-screen dialogs with scrollable content.
+         */
+        MDCDialogFoundation.prototype.handleScrollEvent = function () {
+            var _this = this;
+            // Since scroll events can fire at a high rate, we throttle these events by
+            // using requestAnimationFrame.
+            this.animFrame.request(AnimationKeys.POLL_SCROLL_POS, function () {
+                _this.toggleScrollDividerHeader();
+                _this.toggleScrollDividerFooter();
+            });
         };
-        MDCDialogFoundation.prototype.handleAnimationTimerEnd_ = function () {
-            this.animationTimer_ = 0;
+        MDCDialogFoundation.prototype.layoutInternal = function () {
+            if (this.autoStackButtons) {
+                this.detectStackedButtons();
+            }
+            this.toggleScrollableClasses();
+        };
+        MDCDialogFoundation.prototype.handleAnimationTimerEnd = function () {
+            this.animationTimer = 0;
             this.adapter.removeClass(cssClasses$6.OPENING);
             this.adapter.removeClass(cssClasses$6.CLOSING);
         };
         /**
-         * Runs the given logic on the next animation frame, using setTimeout to factor in Firefox reflow behavior.
+         * Runs the given logic on the next animation frame, using setTimeout to
+         * factor in Firefox reflow behavior.
          */
-        MDCDialogFoundation.prototype.runNextAnimationFrame_ = function (callback) {
+        MDCDialogFoundation.prototype.runNextAnimationFrame = function (callback) {
             var _this = this;
-            cancelAnimationFrame(this.animationFrame_);
-            this.animationFrame_ = requestAnimationFrame(function () {
-                _this.animationFrame_ = 0;
-                clearTimeout(_this.animationTimer_);
-                _this.animationTimer_ = setTimeout(callback, 0);
+            cancelAnimationFrame(this.animationFrame);
+            this.animationFrame = requestAnimationFrame(function () {
+                _this.animationFrame = 0;
+                clearTimeout(_this.animationTimer);
+                _this.animationTimer = setTimeout(callback, 0);
             });
         };
-        MDCDialogFoundation.prototype.detectStackedButtons_ = function () {
+        MDCDialogFoundation.prototype.detectStackedButtons = function () {
             // Remove the class first to let us measure the buttons' natural positions.
             this.adapter.removeClass(cssClasses$6.STACKED);
             var areButtonsStacked = this.adapter.areButtonsStacked();
             if (areButtonsStacked) {
                 this.adapter.addClass(cssClasses$6.STACKED);
             }
-            if (areButtonsStacked !== this.areButtonsStacked_) {
+            if (areButtonsStacked !== this.areButtonsStacked) {
                 this.adapter.reverseButtons();
-                this.areButtonsStacked_ = areButtonsStacked;
+                this.areButtonsStacked = areButtonsStacked;
             }
         };
-        MDCDialogFoundation.prototype.detectScrollableContent_ = function () {
-            // Remove the class first to let us measure the natural height of the content.
+        MDCDialogFoundation.prototype.toggleScrollableClasses = function () {
+            // Remove the class first to let us measure the natural height of the
+            // content.
             this.adapter.removeClass(cssClasses$6.SCROLLABLE);
             if (this.adapter.isContentScrollable()) {
                 this.adapter.addClass(cssClasses$6.SCROLLABLE);
+                if (this.isFullscreen) {
+                    // If dialog is full-screen and scrollable, check if a scroll divider
+                    // should be shown.
+                    this.toggleScrollDividerHeader();
+                    this.toggleScrollDividerFooter();
+                }
+            }
+        };
+        MDCDialogFoundation.prototype.toggleScrollDividerHeader = function () {
+            if (!this.adapter.isScrollableContentAtTop()) {
+                this.adapter.addClass(cssClasses$6.SCROLL_DIVIDER_HEADER);
+            }
+            else if (this.adapter.hasClass(cssClasses$6.SCROLL_DIVIDER_HEADER)) {
+                this.adapter.removeClass(cssClasses$6.SCROLL_DIVIDER_HEADER);
+            }
+        };
+        MDCDialogFoundation.prototype.toggleScrollDividerFooter = function () {
+            if (!this.adapter.isScrollableContentAtBottom()) {
+                this.adapter.addClass(cssClasses$6.SCROLL_DIVIDER_FOOTER);
+            }
+            else if (this.adapter.hasClass(cssClasses$6.SCROLL_DIVIDER_FOOTER)) {
+                this.adapter.removeClass(cssClasses$6.SCROLL_DIVIDER_FOOTER);
             }
         };
         return MDCDialogFoundation;
@@ -4367,17 +4759,17 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (!container) {
                 throw new Error("Dialog component requires a " + strings$6.CONTAINER_SELECTOR + " container element");
             }
-            this.container_ = container;
-            this.content_ =
+            this.container = container;
+            this.content =
                 this.root.querySelector(strings$6.CONTENT_SELECTOR);
-            this.buttons_ = [].slice.call(this.root.querySelectorAll(strings$6.BUTTON_SELECTOR));
-            this.defaultButton_ = this.root.querySelector("[" + strings$6.BUTTON_DEFAULT_ATTRIBUTE + "]");
-            this.focusTrapFactory_ = focusTrapFactory;
-            this.buttonRipples_ = [];
+            this.buttons = [].slice.call(this.root.querySelectorAll(strings$6.BUTTON_SELECTOR));
+            this.defaultButton = this.root.querySelector("[" + strings$6.BUTTON_DEFAULT_ATTRIBUTE + "]");
+            this.focusTrapFactory = focusTrapFactory;
+            this.buttonRipples = [];
             try {
-                for (var _b = __values(this.buttons_), _c = _b.next(); !_c.done; _c = _b.next()) {
+                for (var _b = __values(this.buttons), _c = _b.next(); !_c.done; _c = _b.next()) {
                     var buttonEl = _c.value;
-                    this.buttonRipples_.push(new MDCRipple(buttonEl));
+                    this.buttonRipples.push(new MDCRipple(buttonEl));
                 }
             }
             catch (e_1_1) { e_1 = { error: e_1_1 }; }
@@ -4390,33 +4782,39 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         };
         MDCDialog.prototype.initialSyncWithDOM = function () {
             var _this = this;
-            this.focusTrap_ = createFocusTrapInstance$1(this.container_, this.focusTrapFactory_, this.getInitialFocusEl_() || undefined);
-            this.handleClick_ = this.foundation.handleClick.bind(this.foundation);
-            this.handleKeydown_ = this.foundation.handleKeydown.bind(this.foundation);
-            this.handleDocumentKeydown_ =
+            this.focusTrap = createFocusTrapInstance$1(this.container, this.focusTrapFactory, this.getInitialFocusEl() || undefined);
+            this.handleClick = this.foundation.handleClick.bind(this.foundation);
+            this.handleKeydown = this.foundation.handleKeydown.bind(this.foundation);
+            this.handleDocumentKeydown =
                 this.foundation.handleDocumentKeydown.bind(this.foundation);
-            this.handleLayout_ = this.layout.bind(this);
+            this.handleLayout = this.layout.bind(this);
             var LAYOUT_EVENTS = ['resize', 'orientationchange'];
-            this.handleOpening_ = function () {
-                LAYOUT_EVENTS.forEach(function (evtType) { return window.addEventListener(evtType, _this.handleLayout_); });
-                document.addEventListener('keydown', _this.handleDocumentKeydown_);
+            this.handleOpening = function () {
+                LAYOUT_EVENTS.forEach(function (evtType) {
+                    window.addEventListener(evtType, _this.handleLayout);
+                });
+                document.addEventListener('keydown', _this.handleDocumentKeydown);
             };
-            this.handleClosing_ = function () {
-                LAYOUT_EVENTS.forEach(function (evtType) { return window.removeEventListener(evtType, _this.handleLayout_); });
-                document.removeEventListener('keydown', _this.handleDocumentKeydown_);
+            this.handleClosing = function () {
+                LAYOUT_EVENTS.forEach(function (evtType) {
+                    window.removeEventListener(evtType, _this.handleLayout);
+                });
+                document.removeEventListener('keydown', _this.handleDocumentKeydown);
             };
-            this.listen('click', this.handleClick_);
-            this.listen('keydown', this.handleKeydown_);
-            this.listen(strings$6.OPENING_EVENT, this.handleOpening_);
-            this.listen(strings$6.CLOSING_EVENT, this.handleClosing_);
+            this.listen('click', this.handleClick);
+            this.listen('keydown', this.handleKeydown);
+            this.listen(strings$6.OPENING_EVENT, this.handleOpening);
+            this.listen(strings$6.CLOSING_EVENT, this.handleClosing);
         };
         MDCDialog.prototype.destroy = function () {
-            this.unlisten('click', this.handleClick_);
-            this.unlisten('keydown', this.handleKeydown_);
-            this.unlisten(strings$6.OPENING_EVENT, this.handleOpening_);
-            this.unlisten(strings$6.CLOSING_EVENT, this.handleClosing_);
-            this.handleClosing_();
-            this.buttonRipples_.forEach(function (ripple) { return ripple.destroy(); });
+            this.unlisten('click', this.handleClick);
+            this.unlisten('keydown', this.handleKeydown);
+            this.unlisten(strings$6.OPENING_EVENT, this.handleOpening);
+            this.unlisten(strings$6.CLOSING_EVENT, this.handleClosing);
+            this.handleClosing();
+            this.buttonRipples.forEach(function (ripple) {
+                ripple.destroy();
+            });
             _super.prototype.destroy.call(this);
         };
         MDCDialog.prototype.layout = function () {
@@ -4436,9 +4834,11 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             var adapter = {
                 addBodyClass: function (className) { return document.body.classList.add(className); },
                 addClass: function (className) { return _this.root.classList.add(className); },
-                areButtonsStacked: function () { return areTopsMisaligned(_this.buttons_); },
+                areButtonsStacked: function () { return areTopsMisaligned(_this.buttons); },
                 clickDefaultButton: function () {
-                    return _this.defaultButton_ && _this.defaultButton_.click();
+                    if (_this.defaultButton) {
+                        _this.defaultButton.click();
+                    }
                 },
                 eventTargetMatches: function (target, selector) {
                     return target ? matches(target, selector) : false;
@@ -4450,28 +4850,48 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     var element = closest(evt.target, "[" + strings$6.ACTION_ATTRIBUTE + "]");
                     return element && element.getAttribute(strings$6.ACTION_ATTRIBUTE);
                 },
-                getInitialFocusEl: function () { return _this.getInitialFocusEl_(); },
+                getInitialFocusEl: function () { return _this.getInitialFocusEl(); },
                 hasClass: function (className) { return _this.root.classList.contains(className); },
-                isContentScrollable: function () { return isScrollable(_this.content_); },
+                isContentScrollable: function () { return isScrollable(_this.content); },
                 notifyClosed: function (action) { return _this.emit(strings$6.CLOSED_EVENT, action ? { action: action } : {}); },
                 notifyClosing: function (action) { return _this.emit(strings$6.CLOSING_EVENT, action ? { action: action } : {}); },
                 notifyOpened: function () { return _this.emit(strings$6.OPENED_EVENT, {}); },
                 notifyOpening: function () { return _this.emit(strings$6.OPENING_EVENT, {}); },
-                releaseFocus: function () { return _this.focusTrap_.releaseFocus(); },
+                releaseFocus: function () {
+                    _this.focusTrap.releaseFocus();
+                },
                 removeBodyClass: function (className) { return document.body.classList.remove(className); },
                 removeClass: function (className) { return _this.root.classList.remove(className); },
                 reverseButtons: function () {
-                    _this.buttons_.reverse();
-                    _this.buttons_.forEach(function (button) {
+                    _this.buttons.reverse();
+                    _this.buttons.forEach(function (button) {
                         button.parentElement.appendChild(button);
                     });
                 },
-                trapFocus: function () { return _this.focusTrap_.trapFocus(); },
+                trapFocus: function () {
+                    _this.focusTrap.trapFocus();
+                },
+                registerContentEventHandler: function (evt, handler) {
+                    if (_this.content instanceof HTMLElement) {
+                        _this.content.addEventListener(evt, handler);
+                    }
+                },
+                deregisterContentEventHandler: function (evt, handler) {
+                    if (_this.content instanceof HTMLElement) {
+                        _this.content.removeEventListener(evt, handler);
+                    }
+                },
+                isScrollableContentAtTop: function () {
+                    return isScrollAtTop(_this.content);
+                },
+                isScrollableContentAtBottom: function () {
+                    return isScrollAtBottom(_this.content);
+                },
             };
             return new MDCDialogFoundation(adapter);
         };
-        MDCDialog.prototype.getInitialFocusEl_ = function () {
-            return document.querySelector("[" + strings$6.INITIAL_FOCUS_ATTRIBUTE + "]");
+        MDCDialog.prototype.getInitialFocusEl = function () {
+            return this.root.querySelector("[" + strings$6.INITIAL_FOCUS_ATTRIBUTE + "]");
         };
         return MDCDialog;
     }(MDCComponent));
@@ -5083,6 +5503,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
      */
     var strings$9 = {
         ARIA_CONTROLS: 'aria-controls',
+        ARIA_DESCRIBEDBY: 'aria-describedby',
         INPUT_SELECTOR: '.mdc-text-field__input',
         LABEL_SELECTOR: '.mdc-floating-label',
         LEADING_ICON_SELECTOR: '.mdc-text-field__icon--leading',
@@ -5095,7 +5516,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     var cssClasses$a = {
         DISABLED: 'mdc-text-field--disabled',
         FOCUSED: 'mdc-text-field--focused',
-        FULLWIDTH: 'mdc-text-field--fullwidth',
         HELPER_LINE: 'mdc-text-field-helper-line',
         INVALID: 'mdc-text-field--invalid',
         LABEL_FLOATING: 'mdc-text-field--label-floating',
@@ -5160,6 +5580,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             _this.receivedUserInput_ = false;
             _this.isValid_ = true;
             _this.useNativeValidation_ = true;
+            _this.validateOnValueChange_ = true;
             _this.helperText_ = foundationMap.helperText;
             _this.characterCounter_ = foundationMap.characterCounter;
             _this.leadingIcon_ = foundationMap.leadingIcon;
@@ -5169,7 +5590,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             _this.inputInputHandler_ = function () { return _this.handleInput(); };
             _this.setPointerXOffset_ = function (evt) { return _this.setTransformOrigin(evt); };
             _this.textFieldInteractionHandler_ = function () { return _this.handleTextFieldInteraction(); };
-            _this.validationAttributeChangeHandler_ = function (attributesList) { return _this.handleValidationAttributeChange(attributesList); };
+            _this.validationAttributeChangeHandler_ = function (attributesList) {
+                return _this.handleValidationAttributeChange(attributesList);
+            };
             return _this;
         }
         Object.defineProperty(MDCTextFieldFoundation, "cssClasses", {
@@ -5203,7 +5626,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         });
         Object.defineProperty(MDCTextFieldFoundation.prototype, "shouldFloat", {
             get: function () {
-                return this.shouldAlwaysFloat_ || this.isFocused_ || !!this.getValue() || this.isBadInput_();
+                return this.shouldAlwaysFloat_ || this.isFocused_ || !!this.getValue() ||
+                    this.isBadInput_();
             },
             enumerable: true,
             configurable: true
@@ -5217,7 +5641,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         });
         Object.defineProperty(MDCTextFieldFoundation, "defaultAdapter", {
             /**
-             * See {@link MDCTextFieldAdapter} for typing information on parameters and return types.
+             * See {@link MDCTextFieldAdapter} for typing information on parameters and
+             * return types.
              */
             get: function () {
                 // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
@@ -5225,11 +5650,15 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     addClass: function () { return undefined; },
                     removeClass: function () { return undefined; },
                     hasClass: function () { return true; },
+                    setInputAttr: function () { return undefined; },
+                    removeInputAttr: function () { return undefined; },
                     registerTextFieldInteractionHandler: function () { return undefined; },
                     deregisterTextFieldInteractionHandler: function () { return undefined; },
                     registerInputInteractionHandler: function () { return undefined; },
                     deregisterInputInteractionHandler: function () { return undefined; },
-                    registerValidationAttributeChangeHandler: function () { return new MutationObserver(function () { return undefined; }); },
+                    registerValidationAttributeChangeHandler: function () {
+                        return new MutationObserver(function () { return undefined; });
+                    },
                     deregisterValidationAttributeChangeHandler: function () { return undefined; },
                     getNativeInput: function () { return null; },
                     isFocused: function () { return false; },
@@ -5320,7 +5749,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
          * Opens/closes the notched outline.
          */
         MDCTextFieldFoundation.prototype.notchOutline = function (openNotch) {
-            if (!this.adapter.hasOutline()) {
+            if (!this.adapter.hasOutline() || !this.adapter.hasLabel()) {
                 return;
             }
             if (openNotch) {
@@ -5344,7 +5773,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 this.styleFloating_(this.shouldFloat);
                 this.adapter.shakeLabel(this.shouldShake);
             }
-            if (this.helperText_) {
+            if (this.helperText_ &&
+                (this.helperText_.isPersistent() || !this.helperText_.isValidation() ||
+                    !this.isValid_)) {
                 this.helperText_.showToScreenReader();
             }
         };
@@ -5404,26 +5835,32 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
          * @param value The value to set on the input Element.
          */
         MDCTextFieldFoundation.prototype.setValue = function (value) {
-            // Prevent Safari from moving the caret to the end of the input when the value has not changed.
+            // Prevent Safari from moving the caret to the end of the input when the
+            // value has not changed.
             if (this.getValue() !== value) {
                 this.getNativeInput_().value = value;
             }
             this.setCharacterCounter_(value.length);
-            var isValid = this.isValid();
-            this.styleValidity_(isValid);
+            if (this.validateOnValueChange_) {
+                var isValid = this.isValid();
+                this.styleValidity_(isValid);
+            }
             if (this.adapter.hasLabel()) {
                 this.notchOutline(this.shouldFloat);
                 this.adapter.floatLabel(this.shouldFloat);
                 this.styleFloating_(this.shouldFloat);
-                this.adapter.shakeLabel(this.shouldShake);
+                if (this.validateOnValueChange_) {
+                    this.adapter.shakeLabel(this.shouldShake);
+                }
             }
         };
         /**
-         * @return The custom validity state, if set; otherwise, the result of a native validity check.
+         * @return The custom validity state, if set; otherwise, the result of a
+         *     native validity check.
          */
         MDCTextFieldFoundation.prototype.isValid = function () {
-            return this.useNativeValidation_
-                ? this.isNativeInputValid_() : this.isValid_;
+            return this.useNativeValidation_ ? this.isNativeInputValid_() :
+                this.isValid_;
         };
         /**
          * @param isValid Sets the custom validity state of the Text Field.
@@ -5437,8 +5874,24 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
         };
         /**
-         * Enables or disables the use of native validation. Use this for custom validation.
-         * @param useNativeValidation Set this to false to ignore native input validation.
+         * @param shouldValidate Whether or not validity should be updated on
+         *     value change.
+         */
+        MDCTextFieldFoundation.prototype.setValidateOnValueChange = function (shouldValidate) {
+            this.validateOnValueChange_ = shouldValidate;
+        };
+        /**
+         * @return Whether or not validity should be updated on value change. `true`
+         *     by default.
+         */
+        MDCTextFieldFoundation.prototype.getValidateOnValueChange = function () {
+            return this.validateOnValueChange_;
+        };
+        /**
+         * Enables or disables the use of native validation. Use this for custom
+         * validation.
+         * @param useNativeValidation Set this to false to ignore native input
+         *     validation.
          */
         MDCTextFieldFoundation.prototype.setUseNativeValidation = function (useNativeValidation) {
             this.useNativeValidation_ = useNativeValidation;
@@ -5494,7 +5947,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
         };
         /**
-         * Sets character counter values that shows characters used and the total character limit.
+         * Sets character counter values that shows characters used and the total
+         * character limit.
          */
         MDCTextFieldFoundation.prototype.setCharacterCounter_ = function (currentLength) {
             if (!this.characterCounter_) {
@@ -5507,7 +5961,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             this.characterCounter_.setCounterValue(currentLength, maxLength);
         };
         /**
-         * @return True if the Text Field input fails in converting the user-supplied value.
+         * @return True if the Text Field input fails in converting the user-supplied
+         *     value.
          */
         MDCTextFieldFoundation.prototype.isBadInput_ = function () {
             // The badInput property is not supported in IE 11 💩.
@@ -5532,6 +5987,20 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
             if (this.helperText_) {
                 this.helperText_.setValidity(isValid);
+                // We dynamically set or unset aria-describedby for validation helper text
+                // only, based on whether the field is valid
+                var helperTextValidation = this.helperText_.isValidation();
+                if (!helperTextValidation) {
+                    return;
+                }
+                var helperTextVisible = this.helperText_.isVisible();
+                var helperTextId = this.helperText_.getId();
+                if (helperTextVisible && helperTextId) {
+                    this.adapter.setInputAttr(strings$9.ARIA_DESCRIBEDBY, helperTextId);
+                }
+                else {
+                    this.adapter.removeInputAttr(strings$9.ARIA_DESCRIBEDBY);
+                }
             }
         };
         /**
@@ -5578,12 +6047,15 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
         };
         /**
-         * @return The native text input element from the host environment, or an object with the same shape for unit tests.
+         * @return The native text input element from the host environment, or an
+         *     object with the same shape for unit tests.
          */
         MDCTextFieldFoundation.prototype.getNativeInput_ = function () {
-            // this.adapter may be undefined in foundation unit tests. This happens when testdouble is creating a mock object
-            // and invokes the shouldShake/shouldFloat getters (which in turn call getValue(), which calls this method) before
-            // init() has been called from the MDCTextField constructor. To work around that issue, we return a dummy object.
+            // this.adapter may be undefined in foundation unit tests. This happens when
+            // testdouble is creating a mock object and invokes the
+            // shouldShake/shouldFloat getters (which in turn call getValue(), which
+            // calls this method) before init() has been called from the MDCTextField
+            // constructor. To work around that issue, we return a dummy object.
             var nativeInput = this.adapter ? this.adapter.getNativeInput() : null;
             return nativeInput || {
                 disabled: false,
@@ -5684,6 +6156,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     addClass: function () { return undefined; },
                     removeClass: function () { return undefined; },
                     hasClass: function () { return false; },
+                    getAttr: function () { return null; },
                     setAttr: function () { return undefined; },
                     removeAttr: function () { return undefined; },
                     setContent: function () { return undefined; },
@@ -5693,11 +6166,20 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             enumerable: true,
             configurable: true
         });
+        MDCTextFieldHelperTextFoundation.prototype.getId = function () {
+            return this.adapter.getAttr('id');
+        };
+        MDCTextFieldHelperTextFoundation.prototype.isVisible = function () {
+            return this.adapter.getAttr(strings$a.ARIA_HIDDEN) !== 'true';
+        };
         /**
          * Sets the content of the helper text field.
          */
         MDCTextFieldHelperTextFoundation.prototype.setContent = function (content) {
             this.adapter.setContent(content);
+        };
+        MDCTextFieldHelperTextFoundation.prototype.isPersistent = function () {
+            return this.adapter.hasClass(cssClasses$b.HELPER_TEXT_PERSISTENT);
         };
         /**
          * @param isPersistent Sets the persistency of the helper text.
@@ -5709,6 +6191,12 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             else {
                 this.adapter.removeClass(cssClasses$b.HELPER_TEXT_PERSISTENT);
             }
+        };
+        /**
+         * @return whether the helper text acts as an error validation message.
+         */
+        MDCTextFieldHelperTextFoundation.prototype.isValidation = function () {
+            return this.adapter.hasClass(cssClasses$b.HELPER_TEXT_VALIDATION_MSG);
         };
         /**
          * @param isValidation True to make the helper text act as an error validation message.
@@ -5735,6 +6223,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             var helperTextIsValidationMsg = this.adapter.hasClass(cssClasses$b.HELPER_TEXT_VALIDATION_MSG);
             var validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
             if (validationMsgNeedsDisplay) {
+                this.showToScreenReader();
                 this.adapter.setAttr(strings$a.ROLE, 'alert');
             }
             else {
@@ -5800,6 +6289,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 addClass: function (className) { return _this.root.classList.add(className); },
                 removeClass: function (className) { return _this.root.classList.remove(className); },
                 hasClass: function (className) { return _this.root.classList.contains(className); },
+                getAttr: function (attr) { return _this.root.getAttribute(attr); },
                 setAttr: function (attr, value) { return _this.root.setAttribute(attr, value); },
                 removeAttr: function (attr) { return _this.root.removeAttribute(attr); },
                 setContent: function (content) {
@@ -6375,8 +6865,12 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 addClass: function (className) { return _this.root.classList.add(className); },
                 removeClass: function (className) { return _this.root.classList.remove(className); },
                 hasClass: function (className) { return _this.root.classList.contains(className); },
-                registerTextFieldInteractionHandler: function (evtType, handler) { return _this.listen(evtType, handler); },
-                deregisterTextFieldInteractionHandler: function (evtType, handler) { return _this.unlisten(evtType, handler); },
+                registerTextFieldInteractionHandler: function (evtType, handler) {
+                    _this.listen(evtType, handler);
+                },
+                deregisterTextFieldInteractionHandler: function (evtType, handler) {
+                    _this.unlisten(evtType, handler);
+                },
                 registerValidationAttributeChangeHandler: function (handler) {
                     var getAttributesList = function (mutationsList) {
                         return mutationsList
@@ -6388,7 +6882,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     observer.observe(_this.input_, config);
                     return observer;
                 },
-                deregisterValidationAttributeChangeHandler: function (observer) { return observer.disconnect(); },
+                deregisterValidationAttributeChangeHandler: function (observer) {
+                    observer.disconnect();
+                },
             };
             // tslint:enable:object-literal-sort-keys
         };
@@ -6397,12 +6893,18 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
             return {
                 getNativeInput: function () { return _this.input_; },
+                setInputAttr: function (attr, value) {
+                    _this.input_.setAttribute(attr, value);
+                },
+                removeInputAttr: function (attr) {
+                    _this.input_.removeAttribute(attr);
+                },
                 isFocused: function () { return document.activeElement === _this.input_; },
                 registerInputInteractionHandler: function (evtType, handler) {
-                    return _this.input_.addEventListener(evtType, handler, applyPassive());
+                    _this.input_.addEventListener(evtType, handler, applyPassive());
                 },
                 deregisterInputInteractionHandler: function (evtType, handler) {
-                    return _this.input_.removeEventListener(evtType, handler, applyPassive());
+                    _this.input_.removeEventListener(evtType, handler, applyPassive());
                 },
             };
             // tslint:enable:object-literal-sort-keys
@@ -6608,10 +7110,15 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     // tslint:disable:object-literal-sort-keys
     var strings$c = {
         CLOSED_EVENT: 'MDCMenuSurface:closed',
+        CLOSING_EVENT: 'MDCMenuSurface:closing',
         OPENED_EVENT: 'MDCMenuSurface:opened',
         FOCUSABLE_ELEMENTS: [
-            'button:not(:disabled)', '[href]:not([aria-disabled="true"])', 'input:not(:disabled)',
-            'select:not(:disabled)', 'textarea:not(:disabled)', '[tabindex]:not([tabindex="-1"]):not([aria-disabled="true"])',
+            'button:not(:disabled)',
+            '[href]:not([aria-disabled="true"])',
+            'input:not(:disabled)',
+            'select:not(:disabled)',
+            'textarea:not(:disabled)',
+            '[tabindex]:not([tabindex="-1"]):not([aria-disabled="true"])',
         ].join(', '),
     };
     // tslint:enable:object-literal-sort-keys
@@ -6761,6 +7268,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     restoreFocus: function () { return undefined; },
                     notifyClose: function () { return undefined; },
                     notifyOpen: function () { return undefined; },
+                    notifyClosing: function () { return undefined; },
                 };
                 // tslint:enable:object-literal-sort-keys
             },
@@ -6862,6 +7370,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (!this.isSurfaceOpen) {
                 return;
             }
+            this.adapter.notifyClosing();
             if (this.isQuickOpen) {
                 this.isSurfaceOpen = false;
                 if (!skipRestoreFocus) {
@@ -6870,22 +7379,21 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.OPEN);
                 this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.IS_OPEN_BELOW);
                 this.adapter.notifyClose();
+                return;
             }
-            else {
-                this.adapter.addClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
-                requestAnimationFrame(function () {
-                    _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.OPEN);
-                    _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.IS_OPEN_BELOW);
-                    _this.closeAnimationEndTimerId = setTimeout(function () {
-                        _this.closeAnimationEndTimerId = 0;
-                        _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
-                        _this.adapter.notifyClose();
-                    }, numbers$6.TRANSITION_CLOSE_DURATION);
-                });
-                this.isSurfaceOpen = false;
-                if (!skipRestoreFocus) {
-                    this.maybeRestoreFocus();
-                }
+            this.adapter.addClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
+            requestAnimationFrame(function () {
+                _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.OPEN);
+                _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.IS_OPEN_BELOW);
+                _this.closeAnimationEndTimerId = setTimeout(function () {
+                    _this.closeAnimationEndTimerId = 0;
+                    _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
+                    _this.adapter.notifyClose();
+                }, numbers$6.TRANSITION_CLOSE_DURATION);
+            });
+            this.isSurfaceOpen = false;
+            if (!skipRestoreFocus) {
+                this.maybeRestoreFocus();
             }
         };
         /** Handle clicks and close if not within menu-surface element. */
@@ -6985,8 +7493,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             var availableTop;
             var availableBottom;
             if (isAnchoredToBottom) {
-                availableTop = viewportDistance.top - MARGIN_TO_EDGE + anchorSize.height +
-                    this.anchorMargin.bottom;
+                availableTop =
+                    viewportDistance.top - MARGIN_TO_EDGE + this.anchorMargin.bottom;
                 availableBottom =
                     viewportDistance.bottom - MARGIN_TO_EDGE - this.anchorMargin.bottom;
             }
@@ -6997,13 +7505,14 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     anchorSize.height - this.anchorMargin.top;
             }
             var isAvailableBottom = availableBottom - surfaceSize.height > 0;
-            if (!isAvailableBottom && availableTop >= availableBottom) {
+            if (!isAvailableBottom && availableTop > availableBottom) {
                 // Attach bottom side of surface to the anchor.
                 corner = this.setBit(corner, CornerBit.BOTTOM);
             }
             var isRtl = this.adapter.isRtl();
             var isFlipRtl = this.hasBit(this.anchorCorner, CornerBit.FLIP_RTL);
-            var hasRightBit = this.hasBit(this.anchorCorner, CornerBit.RIGHT);
+            var hasRightBit = this.hasBit(this.anchorCorner, CornerBit.RIGHT) ||
+                this.hasBit(corner, CornerBit.RIGHT);
             // Whether surface attached to right side of anchor element.
             var isAnchoredToRight = false;
             // Anchored to start
@@ -7188,7 +7697,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
 
     /**
      * @license
-     * Copyright 2018 Google Inc.
+     * Copyright 2016 Google Inc.
      *
      * Permission is hereby granted, free of charge, to any person obtaining a copy
      * of this software and associated documentation files (the "Software"), to deal
@@ -7208,17 +7717,62 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cachedCssTransformPropertyName_;
-    /**
-     * Returns the name of the correct transform property to use on the current browser.
-     */
-    function getTransformPropertyName(globalObj, forceRefresh) {
-        if (forceRefresh === void 0) { forceRefresh = false; }
-        if (cachedCssTransformPropertyName_ === undefined || forceRefresh) {
-            var el = globalObj.document.createElement('div');
-            cachedCssTransformPropertyName_ = 'transform' in el.style ? 'transform' : 'webkitTransform';
+    var cssPropertyNameMap = {
+        animation: {
+            prefixed: '-webkit-animation',
+            standard: 'animation',
+        },
+        transform: {
+            prefixed: '-webkit-transform',
+            standard: 'transform',
+        },
+        transition: {
+            prefixed: '-webkit-transition',
+            standard: 'transition',
+        },
+    };
+    var jsEventTypeMap = {
+        animationend: {
+            cssProperty: 'animation',
+            prefixed: 'webkitAnimationEnd',
+            standard: 'animationend',
+        },
+        animationiteration: {
+            cssProperty: 'animation',
+            prefixed: 'webkitAnimationIteration',
+            standard: 'animationiteration',
+        },
+        animationstart: {
+            cssProperty: 'animation',
+            prefixed: 'webkitAnimationStart',
+            standard: 'animationstart',
+        },
+        transitionend: {
+            cssProperty: 'transition',
+            prefixed: 'webkitTransitionEnd',
+            standard: 'transitionend',
+        },
+    };
+    function isWindow(windowObj) {
+        return Boolean(windowObj.document) && typeof windowObj.document.createElement === 'function';
+    }
+    function getCorrectPropertyName(windowObj, cssProperty) {
+        if (isWindow(windowObj) && cssProperty in cssPropertyNameMap) {
+            var el = windowObj.document.createElement('div');
+            var _a = cssPropertyNameMap[cssProperty], standard = _a.standard, prefixed = _a.prefixed;
+            var isStandard = standard in el.style;
+            return isStandard ? standard : prefixed;
         }
-        return cachedCssTransformPropertyName_;
+        return cssProperty;
+    }
+    function getCorrectEventName(windowObj, eventType) {
+        if (isWindow(windowObj) && eventType in jsEventTypeMap) {
+            var el = windowObj.document.createElement('div');
+            var _a = jsEventTypeMap[eventType], standard = _a.standard, prefixed = _a.prefixed, cssProperty = _a.cssProperty;
+            var isStandard = cssProperty in el.style;
+            return isStandard ? standard : prefixed;
+        }
+        return eventType;
     }
 
     /**
@@ -7270,7 +7824,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 document.body.addEventListener('click', _this.handleBodyClick, { capture: true });
             };
             this.deregisterBodyClickListener = function () {
-                document.body.removeEventListener('click', _this.handleBodyClick);
+                document.body.removeEventListener('click', _this.handleBodyClick, { capture: true });
             };
             this.listen('keydown', this.handleKeydown);
             this.listen(strings$c.OPENED_EVENT, this.registerBodyClickListener);
@@ -7344,6 +7898,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 notifyClose: function () {
                     return _this.emit(MDCMenuSurfaceFoundation.strings.CLOSED_EVENT, {});
                 },
+                notifyClosing: function () {
+                    _this.emit(MDCMenuSurfaceFoundation.strings.CLOSING_EVENT, {});
+                },
                 notifyOpen: function () {
                     return _this.emit(MDCMenuSurfaceFoundation.strings.OPENED_EVENT, {});
                 },
@@ -7352,7 +7909,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     return getComputedStyle(_this.root).getPropertyValue('direction') === 'rtl';
                 },
                 setTransformOrigin: function (origin) {
-                    var propertyName = getTransformPropertyName(window) + "-origin";
+                    var propertyName = getCorrectPropertyName(window, 'transform') + "-origin";
                     _this.root.style.setProperty(propertyName, origin);
                 },
                 isFocused: function () { return document.activeElement === _this.root; },
@@ -7781,6 +8338,43 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             enumerable: true,
             configurable: true
         });
+        Object.defineProperty(MDCMenu.prototype, "singleSelection", {
+            /**
+             * Turns on/off the underlying list's single selection mode. Used mainly
+             * by select menu.
+             *
+             * @param singleSelection Whether to enable single selection mode.
+             */
+            set: function (singleSelection) {
+                if (this.list_) {
+                    this.list_.singleSelection = singleSelection;
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
+        Object.defineProperty(MDCMenu.prototype, "selectedIndex", {
+            /**
+             * Retrieves the selected index. Only applicable to select menus.
+             * @return The selected index, which is a number for single selection and
+             *     radio lists, and an array of numbers for checkbox lists.
+             */
+            get: function () {
+                return this.list_ ? this.list_.selectedIndex : numbers$2.UNSET_INDEX;
+            },
+            /**
+             * Sets the selected index of the list. Only applicable to select menus.
+             * @param index The selected index, which is a number for single selection and
+             *     radio lists, and an array of numbers for checkbox lists.
+             */
+            set: function (index) {
+                if (this.list_) {
+                    this.list_.selectedIndex = index;
+                }
+            },
+            enumerable: true,
+            configurable: true
+        });
         Object.defineProperty(MDCMenu.prototype, "quickOpen", {
             set: function (quickOpen) {
                 this.menuSurface_.quickOpen = quickOpen;
@@ -7946,19 +8540,19 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         OUTLINED: 'mdc-select--outlined',
         REQUIRED: 'mdc-select--required',
         ROOT: 'mdc-select',
-        SELECTED_ITEM_CLASS: 'mdc-list-item--selected',
         WITH_LEADING_ICON: 'mdc-select--with-leading-icon',
     };
     var strings$e = {
         ARIA_CONTROLS: 'aria-controls',
+        ARIA_DESCRIBEDBY: 'aria-describedby',
         ARIA_SELECTED_ATTR: 'aria-selected',
         CHANGE_EVENT: 'MDCSelect:change',
+        HIDDEN_INPUT_SELECTOR: 'input[type="hidden"]',
         LABEL_SELECTOR: '.mdc-floating-label',
         LEADING_ICON_SELECTOR: '.mdc-select__icon',
         LINE_RIPPLE_SELECTOR: '.mdc-line-ripple',
         MENU_SELECTOR: '.mdc-select__menu',
         OUTLINE_SELECTOR: '.mdc-notched-outline',
-        SELECTED_ITEM_SELECTOR: "." + cssClasses$f.SELECTED_ITEM_CLASS,
         SELECTED_TEXT_SELECTOR: '.mdc-select__selected-text',
         SELECT_ANCHOR_SELECTOR: '.mdc-select__anchor',
         VALUE_ATTR: 'data-value',
@@ -7966,6 +8560,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     var numbers$8 = {
         LABEL_SCALE: 0.75,
         UNSET_INDEX: -1,
+        CLICK_DEBOUNCE_TIMEOUT_MS: 330,
     };
 
     /**
@@ -8000,10 +8595,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         function MDCSelectFoundation(adapter, foundationMap) {
             if (foundationMap === void 0) { foundationMap = {}; }
             var _this = _super.call(this, __assign(__assign({}, MDCSelectFoundation.defaultAdapter), adapter)) || this;
-            // Index of the currently selected menu item.
-            _this.selectedIndex = numbers$8.UNSET_INDEX;
-            // VALUE_ATTR values of the menu items.
-            _this.menuItemValues = [];
             // Disabled state
             _this.disabled = false;
             // isMenuOpen is used to track the state of the menu by listening to the
@@ -8014,6 +8605,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             // By default, select is invalid if it is required but no value is selected.
             _this.useDefaultValidation = true;
             _this.customValidity = true;
+            _this.lastSelectedIndex = numbers$8.UNSET_INDEX;
+            _this.clickDebounceTimeout = 0;
+            _this.recentlyClicked = false;
             _this.leadingIcon = foundationMap.leadingIcon;
             _this.helperText = foundationMap.helperText;
             return _this;
@@ -8051,7 +8645,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     hasClass: function () { return false; },
                     activateBottomLine: function () { return undefined; },
                     deactivateBottomLine: function () { return undefined; },
-                    getSelectedMenuItem: function () { return null; },
+                    getSelectedIndex: function () { return -1; },
+                    setSelectedIndex: function () { return undefined; },
                     hasLabel: function () { return false; },
                     floatLabel: function () { return undefined; },
                     getLabelWidth: function () { return 0; },
@@ -8074,14 +8669,10 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     setMenuAnchorElement: function () { return undefined; },
                     setMenuAnchorCorner: function () { return undefined; },
                     setMenuWrapFocus: function () { return undefined; },
-                    setAttributeAtIndex: function () { return undefined; },
                     focusMenuItemAtIndex: function () { return undefined; },
                     getMenuItemCount: function () { return 0; },
                     getMenuItemValues: function () { return []; },
                     getMenuItemTextAtIndex: function () { return ''; },
-                    getMenuItemAttr: function () { return ''; },
-                    addClassAtIndex: function () { return undefined; },
-                    removeClassAtIndex: function () { return undefined; },
                     isTypeaheadInProgress: function () { return false; },
                     typeaheadMatchItem: function () { return -1; },
                 };
@@ -8092,30 +8683,38 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         });
         /** Returns the index of the currently selected menu item, or -1 if none. */
         MDCSelectFoundation.prototype.getSelectedIndex = function () {
-            return this.selectedIndex;
+            return this.adapter.getSelectedIndex();
         };
-        MDCSelectFoundation.prototype.setSelectedIndex = function (index, closeMenu) {
+        MDCSelectFoundation.prototype.setSelectedIndex = function (index, closeMenu, skipNotify) {
             if (closeMenu === void 0) { closeMenu = false; }
+            if (skipNotify === void 0) { skipNotify = false; }
             if (index >= this.adapter.getMenuItemCount()) {
                 return;
             }
-            this.removeSelectionAtIndex(this.selectedIndex);
-            this.setSelectionAtIndex(index);
+            if (index === numbers$8.UNSET_INDEX) {
+                this.adapter.setSelectedText('');
+            }
+            else {
+                this.adapter.setSelectedText(this.adapter.getMenuItemTextAtIndex(index).trim());
+            }
+            this.adapter.setSelectedIndex(index);
             if (closeMenu) {
                 this.adapter.closeMenu();
             }
-            this.handleChange();
+            if (!skipNotify && this.lastSelectedIndex !== index) {
+                this.handleChange();
+            }
+            this.lastSelectedIndex = index;
         };
-        MDCSelectFoundation.prototype.setValue = function (value) {
-            var index = this.menuItemValues.indexOf(value);
-            this.setSelectedIndex(index);
+        MDCSelectFoundation.prototype.setValue = function (value, skipNotify) {
+            if (skipNotify === void 0) { skipNotify = false; }
+            var index = this.adapter.getMenuItemValues().indexOf(value);
+            this.setSelectedIndex(index, /** closeMenu */ false, skipNotify);
         };
         MDCSelectFoundation.prototype.getValue = function () {
-            var listItem = this.adapter.getSelectedMenuItem();
-            if (listItem) {
-                return this.adapter.getMenuItemAttr(listItem, strings$e.VALUE_ATTR) || '';
-            }
-            return '';
+            var index = this.adapter.getSelectedIndex();
+            var menuItemValues = this.adapter.getMenuItemValues();
+            return index !== numbers$8.UNSET_INDEX ? menuItemValues[index] : '';
         };
         MDCSelectFoundation.prototype.getDisabled = function () {
             return this.disabled;
@@ -8177,22 +8776,25 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
          * this whenever menu options are dynamically updated.
          */
         MDCSelectFoundation.prototype.layoutOptions = function () {
-            this.menuItemValues = this.adapter.getMenuItemValues();
-            var selectedIndex = this.menuItemValues.indexOf(this.getValue());
-            this.setSelectionAtIndex(selectedIndex);
+            var menuItemValues = this.adapter.getMenuItemValues();
+            var selectedIndex = menuItemValues.indexOf(this.getValue());
+            this.setSelectedIndex(selectedIndex, /** closeMenu */ false, /** skipNotify */ true);
         };
         MDCSelectFoundation.prototype.handleMenuOpened = function () {
-            if (this.menuItemValues.length === 0) {
+            if (this.adapter.getMenuItemValues().length === 0) {
                 return;
             }
             // Menu should open to the last selected element, should open to first menu item otherwise.
-            var focusItemIndex = this.selectedIndex >= 0 ? this.selectedIndex : 0;
+            var selectedIndex = this.getSelectedIndex();
+            var focusItemIndex = selectedIndex >= 0 ? selectedIndex : 0;
             this.adapter.focusMenuItemAtIndex(focusItemIndex);
+        };
+        MDCSelectFoundation.prototype.handleMenuClosing = function () {
+            this.adapter.setSelectAnchorAttr('aria-expanded', 'false');
         };
         MDCSelectFoundation.prototype.handleMenuClosed = function () {
             this.adapter.removeClass(cssClasses$f.ACTIVATED);
             this.isMenuOpen = false;
-            this.adapter.setSelectAnchorAttr('aria-expanded', 'false');
             // Unfocus the select if menu is closed without a selection
             if (!this.adapter.isSelectAnchorFocused()) {
                 this.blur();
@@ -8207,9 +8809,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             var isRequired = this.adapter.hasClass(cssClasses$f.REQUIRED);
             if (isRequired && this.useDefaultValidation) {
                 this.setValid(this.isValid());
-                if (this.helperText) {
-                    this.helperText.setValidity(this.isValid());
-                }
             }
         };
         MDCSelectFoundation.prototype.handleMenuItemAction = function (index) {
@@ -8233,9 +8832,10 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             this.blur();
         };
         MDCSelectFoundation.prototype.handleClick = function (normalizedX) {
-            if (this.disabled) {
+            if (this.disabled || this.recentlyClicked) {
                 return;
             }
+            this.setClickDebounceTimeout();
             if (this.isMenuOpen) {
                 this.adapter.closeMenu();
                 return;
@@ -8259,7 +8859,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             if (!isSpace && event.key && event.key.length === 1 ||
                 isSpace && this.adapter.isTypeaheadInProgress()) {
                 var key = isSpace ? ' ' : event.key;
-                var typeaheadNextIndex = this.adapter.typeaheadMatchItem(key, this.selectedIndex);
+                var typeaheadNextIndex = this.adapter.typeaheadMatchItem(key, this.getSelectedIndex());
                 if (typeaheadNextIndex >= 0) {
                     this.setSelectedIndex(typeaheadNextIndex);
                 }
@@ -8270,11 +8870,12 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 return;
             }
             // Increment/decrement index as necessary and open menu.
-            if (arrowUp && this.selectedIndex > 0) {
-                this.setSelectedIndex(this.selectedIndex - 1);
+            if (arrowUp && this.getSelectedIndex() > 0) {
+                this.setSelectedIndex(this.getSelectedIndex() - 1);
             }
-            else if (arrowDown && this.selectedIndex < this.adapter.getMenuItemCount() - 1) {
-                this.setSelectedIndex(this.selectedIndex + 1);
+            else if (arrowDown &&
+                this.getSelectedIndex() < this.adapter.getMenuItemCount() - 1) {
+                this.setSelectedIndex(this.getSelectedIndex() + 1);
             }
             this.openMenu();
             event.preventDefault();
@@ -8328,6 +8929,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 this.adapter.addClass(cssClasses$f.INVALID);
                 this.adapter.addMenuClass(cssClasses$f.MENU_INVALID);
             }
+            this.syncHelperTextValidity(isValid);
         };
         MDCSelectFoundation.prototype.isValid = function () {
             if (this.useDefaultValidation &&
@@ -8335,8 +8937,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 !this.adapter.hasClass(cssClasses$f.DISABLED)) {
                 // See notes for required attribute under https://www.w3.org/TR/html52/sec-forms.html#the-select-element
                 // TL;DR: Invalid if no index is selected, or if the first index is selected and has an empty value.
-                return this.selectedIndex !== numbers$8.UNSET_INDEX &&
-                    (this.selectedIndex !== 0 || Boolean(this.getValue()));
+                return this.getSelectedIndex() !== numbers$8.UNSET_INDEX &&
+                    (this.getSelectedIndex() !== 0 || Boolean(this.getValue()));
             }
             return this.customValidity;
         };
@@ -8361,8 +8963,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
             this.adapter.setMenuWrapFocus(false);
             this.setDisabled(this.adapter.hasClass(cssClasses$f.DISABLED));
-            this.layoutOptions();
+            this.syncHelperTextValidity(!this.adapter.hasClass(cssClasses$f.INVALID));
             this.layout();
+            this.layoutOptions();
         };
         /**
          * Unfocuses the select component.
@@ -8374,26 +8977,31 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             var isRequired = this.adapter.hasClass(cssClasses$f.REQUIRED);
             if (isRequired && this.useDefaultValidation) {
                 this.setValid(this.isValid());
-                if (this.helperText) {
-                    this.helperText.setValidity(this.isValid());
-                }
             }
         };
-        MDCSelectFoundation.prototype.setSelectionAtIndex = function (index) {
-            this.selectedIndex = index;
-            if (index === numbers$8.UNSET_INDEX) {
-                this.adapter.setSelectedText('');
+        MDCSelectFoundation.prototype.syncHelperTextValidity = function (isValid) {
+            if (!this.helperText) {
                 return;
             }
-            this.adapter.setSelectedText(this.adapter.getMenuItemTextAtIndex(index).trim());
-            this.adapter.addClassAtIndex(index, cssClasses$f.SELECTED_ITEM_CLASS);
-            this.adapter.setAttributeAtIndex(index, strings$e.ARIA_SELECTED_ATTR, 'true');
-        };
-        MDCSelectFoundation.prototype.removeSelectionAtIndex = function (index) {
-            if (index !== numbers$8.UNSET_INDEX) {
-                this.adapter.removeClassAtIndex(index, cssClasses$f.SELECTED_ITEM_CLASS);
-                this.adapter.setAttributeAtIndex(index, strings$e.ARIA_SELECTED_ATTR, 'false');
+            this.helperText.setValidity(isValid);
+            var helperTextVisible = this.helperText.isVisible();
+            var helperTextId = this.helperText.getId();
+            if (helperTextVisible && helperTextId) {
+                this.adapter.setSelectAnchorAttr(strings$e.ARIA_DESCRIBEDBY, helperTextId);
             }
+            else {
+                // Needed because screenreaders will read labels pointed to by
+                // `aria-describedby` even if they are `aria-hidden`.
+                this.adapter.removeSelectAnchorAttr(strings$e.ARIA_DESCRIBEDBY);
+            }
+        };
+        MDCSelectFoundation.prototype.setClickDebounceTimeout = function () {
+            var _this = this;
+            clearTimeout(this.clickDebounceTimeout);
+            this.clickDebounceTimeout = setTimeout(function () {
+                _this.recentlyClicked = false;
+            }, numbers$8.CLICK_DEBOUNCE_TIMEOUT_MS);
+            this.recentlyClicked = true;
         };
         return MDCSelectFoundation;
     }(MDCFoundation));
@@ -8481,6 +9089,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                     removeClass: function () { return undefined; },
                     hasClass: function () { return false; },
                     setAttr: function () { return undefined; },
+                    getAttr: function () { return null; },
                     removeAttr: function () { return undefined; },
                     setContent: function () { return undefined; },
                 };
@@ -8489,6 +9098,18 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             enumerable: true,
             configurable: true
         });
+        /**
+         * @return The ID of the helper text, or null if none is set.
+         */
+        MDCSelectHelperTextFoundation.prototype.getId = function () {
+            return this.adapter.getAttr('id');
+        };
+        /**
+         * @return Whether the helper text is currently visible.
+         */
+        MDCSelectHelperTextFoundation.prototype.isVisible = function () {
+            return this.adapter.getAttr(strings$f.ARIA_HIDDEN) !== 'true';
+        };
         /**
          * Sets the content of the helper text field.
          */
@@ -8525,12 +9146,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             }
         };
         /**
-         * Makes the helper text visible to screen readers.
-         */
-        MDCSelectHelperTextFoundation.prototype.showToScreenReader = function () {
-            this.adapter.removeAttr(strings$f.ARIA_HIDDEN);
-        };
-        /**
          * When acting as a validation message, shows/hides the helper text and
          * triggers alerts as necessary based on the select's validity.
          */
@@ -8560,6 +9175,12 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             // Hide everything.
             this.adapter.removeAttr(strings$f.ROLE);
             this.hide();
+        };
+        /**
+         * Makes the helper text visible to screen readers.
+         */
+        MDCSelectHelperTextFoundation.prototype.showToScreenReader = function () {
+            this.adapter.removeAttr(strings$f.ARIA_HIDDEN);
         };
         /**
          * Hides the help text from screen readers.
@@ -8617,6 +9238,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 addClass: function (className) { return _this.root.classList.add(className); },
                 removeClass: function (className) { return _this.root.classList.remove(className); },
                 hasClass: function (className) { return _this.root.classList.contains(className); },
+                getAttr: function (attr) { return _this.root.getAttribute(attr); },
                 setAttr: function (attr, value) { return _this.root.setAttribute(attr, value); },
                 removeAttr: function (attr) { return _this.root.removeAttribute(attr); },
                 setContent: function (content) {
@@ -8860,6 +9482,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 this.root.querySelector(strings$e.SELECT_ANCHOR_SELECTOR);
             this.selectedText =
                 this.root.querySelector(strings$e.SELECTED_TEXT_SELECTOR);
+            this.hiddenInput = this.root.querySelector(strings$e.HIDDEN_INPUT_SELECTOR);
             if (!this.selectedText) {
                 throw new Error('MDCSelect: Missing required element: The following selector must be present: ' +
                     ("'" + strings$e.SELECTED_TEXT_SELECTOR + "'"));
@@ -8892,9 +9515,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
          */
         MDCSelect.prototype.initialSyncWithDOM = function () {
             var _this = this;
-            this.handleChange = function () {
-                _this.foundation.handleChange();
-            };
             this.handleFocus = function () {
                 _this.foundation.handleFocus();
             };
@@ -8917,16 +9537,30 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             this.handleMenuClosed = function () {
                 _this.foundation.handleMenuClosed();
             };
+            this.handleMenuClosing = function () {
+                _this.foundation.handleMenuClosing();
+            };
             this.selectAnchor.addEventListener('focus', this.handleFocus);
             this.selectAnchor.addEventListener('blur', this.handleBlur);
             this.selectAnchor.addEventListener('click', this.handleClick);
             this.selectAnchor.addEventListener('keydown', this.handleKeydown);
             this.menu.listen(strings$c.CLOSED_EVENT, this.handleMenuClosed);
+            this.menu.listen(strings$c.CLOSING_EVENT, this.handleMenuClosing);
             this.menu.listen(strings$c.OPENED_EVENT, this.handleMenuOpened);
             this.menu.listen(strings$d.SELECTED_EVENT, this.handleMenuItemAction);
+            if (this.hiddenInput) {
+                if (this.hiddenInput.value) {
+                    // If the hidden input already has a value, use it to restore the
+                    // select's value. This can happen e.g. if the user goes back or (in
+                    // some browsers) refreshes the page.
+                    this.foundation.setValue(this.hiddenInput.value, /** skipNotify */ true);
+                    this.foundation.layout();
+                    return;
+                }
+                this.hiddenInput.value = this.value;
+            }
         };
         MDCSelect.prototype.destroy = function () {
-            this.selectAnchor.removeEventListener('change', this.handleChange);
             this.selectAnchor.removeEventListener('focus', this.handleFocus);
             this.selectAnchor.removeEventListener('blur', this.handleBlur);
             this.selectAnchor.removeEventListener('keydown', this.handleKeydown);
@@ -8975,6 +9609,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             },
             set: function (disabled) {
                 this.foundation.setDisabled(disabled);
+                if (this.hiddenInput) {
+                    this.hiddenInput.disabled = disabled;
+                }
             },
             enumerable: true,
             configurable: true
@@ -9065,6 +9702,12 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         MDCSelect.prototype.layoutOptions = function () {
             this.foundation.layoutOptions();
             this.menu.layout();
+            // Update cached menuItemValues for adapter.
+            this.menuItemValues =
+                this.menu.items.map(function (el) { return el.getAttribute(strings$e.VALUE_ATTR) || ''; });
+            if (this.hiddenInput) {
+                this.hiddenInput.value = this.value;
+            }
         };
         MDCSelect.prototype.getDefaultFoundation = function () {
             // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
@@ -9079,6 +9722,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             this.menuElement = this.root.querySelector(strings$e.MENU_SELECTOR);
             this.menu = menuFactory(this.menuElement);
             this.menu.hasTypeahead = true;
+            this.menu.singleSelection = true;
+            this.menuItemValues =
+                this.menu.items.map(function (el) { return el.getAttribute(strings$e.VALUE_ATTR) || ''; });
         };
         MDCSelect.prototype.createRipple = function () {
             var _this = this;
@@ -9097,9 +9743,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             var _this = this;
             // tslint:disable:object-literal-sort-keys Methods should be in the same order as the adapter interface.
             return {
-                getSelectedMenuItem: function () {
-                    return _this.menuElement.querySelector(strings$e.SELECTED_ITEM_SELECTOR);
-                },
                 getMenuItemAttr: function (menuItem, attr) {
                     return menuItem.getAttribute(attr);
                 },
@@ -9140,25 +9783,21 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 setMenuWrapFocus: function (wrapFocus) {
                     _this.menu.wrapFocus = wrapFocus;
                 },
-                setAttributeAtIndex: function (index, attributeName, attributeValue) {
-                    _this.menu.items[index].setAttribute(attributeName, attributeValue);
+                getSelectedIndex: function () {
+                    var index = _this.menu.selectedIndex;
+                    return index instanceof Array ? index[0] : index;
                 },
-                removeAttributeAtIndex: function (index, attributeName) {
-                    _this.menu.items[index].removeAttribute(attributeName);
+                setSelectedIndex: function (index) {
+                    _this.menu.selectedIndex = index;
                 },
                 focusMenuItemAtIndex: function (index) {
                     _this.menu.items[index].focus();
                 },
                 getMenuItemCount: function () { return _this.menu.items.length; },
-                getMenuItemValues: function () { return _this.menu.items.map(function (el) { return el.getAttribute(strings$e.VALUE_ATTR) || ''; }); },
+                // Cache menu item values. layoutOptions() updates this cache.
+                getMenuItemValues: function () { return _this.menuItemValues; },
                 getMenuItemTextAtIndex: function (index) {
                     return _this.menu.getPrimaryTextAtIndex(index);
-                },
-                addClassAtIndex: function (index, className) {
-                    _this.menu.items[index].classList.add(className);
-                },
-                removeClassAtIndex: function (index, className) {
-                    _this.menu.items[index].classList.remove(className);
                 },
                 isTypeaheadInProgress: function () { return _this.menu.typeaheadInProgress; },
                 typeaheadMatchItem: function (nextChar, startingIndex) {
@@ -9190,6 +9829,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 notifyChange: function (value) {
                     var index = _this.selectedIndex;
                     _this.emit(strings$e.CHANGE_EVENT, { value: value, index: index }, true /* shouldBubble  */);
+                    if (_this.hiddenInput) {
+                        _this.hiddenInput.value = value;
+                    }
                 },
             };
             // tslint:enable:object-literal-sort-keys
@@ -10316,86 +10958,6 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssPropertyNameMap = {
-        animation: {
-            prefixed: '-webkit-animation',
-            standard: 'animation',
-        },
-        transform: {
-            prefixed: '-webkit-transform',
-            standard: 'transform',
-        },
-        transition: {
-            prefixed: '-webkit-transition',
-            standard: 'transition',
-        },
-    };
-    var jsEventTypeMap = {
-        animationend: {
-            cssProperty: 'animation',
-            prefixed: 'webkitAnimationEnd',
-            standard: 'animationend',
-        },
-        animationiteration: {
-            cssProperty: 'animation',
-            prefixed: 'webkitAnimationIteration',
-            standard: 'animationiteration',
-        },
-        animationstart: {
-            cssProperty: 'animation',
-            prefixed: 'webkitAnimationStart',
-            standard: 'animationstart',
-        },
-        transitionend: {
-            cssProperty: 'transition',
-            prefixed: 'webkitTransitionEnd',
-            standard: 'transitionend',
-        },
-    };
-    function isWindow(windowObj) {
-        return Boolean(windowObj.document) && typeof windowObj.document.createElement === 'function';
-    }
-    function getCorrectPropertyName(windowObj, cssProperty) {
-        if (isWindow(windowObj) && cssProperty in cssPropertyNameMap) {
-            var el = windowObj.document.createElement('div');
-            var _a = cssPropertyNameMap[cssProperty], standard = _a.standard, prefixed = _a.prefixed;
-            var isStandard = standard in el.style;
-            return isStandard ? standard : prefixed;
-        }
-        return cssProperty;
-    }
-    function getCorrectEventName(windowObj, eventType) {
-        if (isWindow(windowObj) && eventType in jsEventTypeMap) {
-            var el = windowObj.document.createElement('div');
-            var _a = jsEventTypeMap[eventType], standard = _a.standard, prefixed = _a.prefixed, cssProperty = _a.cssProperty;
-            var isStandard = cssProperty in el.style;
-            return isStandard ? standard : prefixed;
-        }
-        return eventType;
-    }
-
-    /**
-     * @license
-     * Copyright 2016 Google Inc.
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in
-     * all copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-     * THE SOFTWARE.
-     */
     var cssClasses$k = {
         ANIM_CHECKED_INDETERMINATE: 'mdc-checkbox--anim-checked-indeterminate',
         ANIM_CHECKED_UNCHECKED: 'mdc-checkbox--anim-checked-unchecked',
@@ -10846,14 +11408,26 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
      */
     var cssClasses$l = {
         CLOSED_CLASS: 'mdc-linear-progress--closed',
+        CLOSED_ANIMATION_OFF_CLASS: 'mdc-linear-progress--closed-animation-off',
         INDETERMINATE_CLASS: 'mdc-linear-progress--indeterminate',
         REVERSED_CLASS: 'mdc-linear-progress--reversed',
+        ANIMATION_READY_CLASS: 'mdc-linear-progress--animation-ready',
     };
     var strings$l = {
+        ARIA_VALUEMAX: 'aria-valuemax',
+        ARIA_VALUEMIN: 'aria-valuemin',
         ARIA_VALUENOW: 'aria-valuenow',
         BUFFER_BAR_SELECTOR: '.mdc-linear-progress__buffer-bar',
         FLEX_BASIS: 'flex-basis',
         PRIMARY_BAR_SELECTOR: '.mdc-linear-progress__primary-bar',
+    };
+    // these are percentages pulled from keyframes.scss
+    var animationDimensionPercentages = {
+        PRIMARY_HALF: .8367142,
+        PRIMARY_FULL: 2.00611057,
+        SECONDARY_QUARTER: .37651913,
+        SECONDARY_HALF: .84386165,
+        SECONDARY_FULL: 1.60277782,
     };
 
     /**
@@ -10881,7 +11455,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
     var MDCLinearProgressFoundation = /** @class */ (function (_super) {
         __extends(MDCLinearProgressFoundation, _super);
         function MDCLinearProgressFoundation(adapter) {
-            return _super.call(this, __assign(__assign({}, MDCLinearProgressFoundation.defaultAdapter), adapter)) || this;
+            var _this = _super.call(this, __assign(__assign({}, MDCLinearProgressFoundation.defaultAdapter), adapter)) || this;
+            _this.observer = null;
+            return _this;
         }
         Object.defineProperty(MDCLinearProgressFoundation, "cssClasses", {
             get: function () {
@@ -10901,10 +11477,13 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             get: function () {
                 return {
                     addClass: function () { return undefined; },
+                    attachResizeObserver: function () { return null; },
                     forceLayout: function () { return undefined; },
+                    getWidth: function () { return 0; },
+                    hasClass: function () { return false; },
                     setBufferBarStyle: function () { return null; },
                     setPrimaryBarStyle: function () { return null; },
-                    hasClass: function () { return false; },
+                    setStyle: function () { return undefined; },
                     removeAttribute: function () { return undefined; },
                     removeClass: function () { return undefined; },
                     setAttribute: function () { return undefined; },
@@ -10914,32 +11493,54 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             configurable: true
         });
         MDCLinearProgressFoundation.prototype.init = function () {
+            var _this = this;
             this.isDeterminate = !this.adapter.hasClass(cssClasses$l.INDETERMINATE_CLASS);
-            this.isReversed = this.adapter.hasClass(cssClasses$l.REVERSED_CLASS);
+            this.adapter.addClass(cssClasses$l.ANIMATION_READY_CLASS);
             this.progress = 0;
             this.buffer = 1;
+            this.observer = this.adapter.attachResizeObserver(function (entries) {
+                var e_1, _a;
+                if (_this.isDeterminate) {
+                    return;
+                }
+                try {
+                    for (var entries_1 = __values(entries), entries_1_1 = entries_1.next(); !entries_1_1.done; entries_1_1 = entries_1.next()) {
+                        var entry = entries_1_1.value;
+                        if (entry.contentRect) {
+                            _this.calculateAndSetDimensions(entry.contentRect.width);
+                        }
+                    }
+                }
+                catch (e_1_1) { e_1 = { error: e_1_1 }; }
+                finally {
+                    try {
+                        if (entries_1_1 && !entries_1_1.done && (_a = entries_1.return)) _a.call(entries_1);
+                    }
+                    finally { if (e_1) throw e_1.error; }
+                }
+            });
+            if (!this.isDeterminate && this.observer) {
+                this.calculateAndSetDimensions(this.adapter.getWidth());
+            }
         };
         MDCLinearProgressFoundation.prototype.setDeterminate = function (isDeterminate) {
             this.isDeterminate = isDeterminate;
             if (this.isDeterminate) {
                 this.adapter.removeClass(cssClasses$l.INDETERMINATE_CLASS);
                 this.adapter.setAttribute(strings$l.ARIA_VALUENOW, this.progress.toString());
+                this.adapter.setAttribute(strings$l.ARIA_VALUEMAX, '1');
+                this.adapter.setAttribute(strings$l.ARIA_VALUEMIN, '0');
                 this.setPrimaryBarProgress(this.progress);
                 this.setBufferBarProgress(this.buffer);
                 return;
             }
-            if (this.isReversed) {
-                // Adding/removing REVERSED_CLASS starts a translate animation, while
-                // adding INDETERMINATE_CLASS starts a scale animation. Here, we reset
-                // the translate animation in order to keep it in sync with the new
-                // scale animation that will start from adding INDETERMINATE_CLASS
-                // below.
-                this.adapter.removeClass(cssClasses$l.REVERSED_CLASS);
-                this.adapter.forceLayout();
-                this.adapter.addClass(cssClasses$l.REVERSED_CLASS);
+            if (this.observer) {
+                this.calculateAndSetDimensions(this.adapter.getWidth());
             }
             this.adapter.addClass(cssClasses$l.INDETERMINATE_CLASS);
             this.adapter.removeAttribute(strings$l.ARIA_VALUENOW);
+            this.adapter.removeAttribute(strings$l.ARIA_VALUEMAX);
+            this.adapter.removeAttribute(strings$l.ARIA_VALUEMIN);
             this.setPrimaryBarProgress(1);
             this.setBufferBarProgress(1);
         };
@@ -10962,40 +11563,65 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 this.setBufferBarProgress(value);
             }
         };
-        MDCLinearProgressFoundation.prototype.setReverse = function (isReversed) {
-            this.isReversed = isReversed;
-            if (!this.isDeterminate) {
-                // Adding INDETERMINATE_CLASS starts a scale animation, while
-                // adding/removing REVERSED_CLASS starts a translate animation. Here, we
-                // reset the scale animation in order to keep it in sync with the new
-                // translate animation that will start from adding/removing REVERSED_CLASS
-                // below.
-                this.adapter.removeClass(cssClasses$l.INDETERMINATE_CLASS);
-                this.adapter.forceLayout();
-                this.adapter.addClass(cssClasses$l.INDETERMINATE_CLASS);
-            }
-            if (this.isReversed) {
-                this.adapter.addClass(cssClasses$l.REVERSED_CLASS);
-                return;
-            }
-            this.adapter.removeClass(cssClasses$l.REVERSED_CLASS);
-        };
         MDCLinearProgressFoundation.prototype.open = function () {
             this.adapter.removeClass(cssClasses$l.CLOSED_CLASS);
+            this.adapter.removeClass(cssClasses$l.CLOSED_ANIMATION_OFF_CLASS);
         };
         MDCLinearProgressFoundation.prototype.close = function () {
             this.adapter.addClass(cssClasses$l.CLOSED_CLASS);
         };
+        /**
+         * Handles the transitionend event emitted after `close()` is called and the
+         * opacity fades out. This is so that animations are removed only after the
+         * progress indicator is completely hidden.
+         */
+        MDCLinearProgressFoundation.prototype.handleTransitionEnd = function () {
+            if (this.adapter.hasClass(cssClasses$l.CLOSED_CLASS)) {
+                this.adapter.addClass(cssClasses$l.CLOSED_ANIMATION_OFF_CLASS);
+            }
+        };
+        MDCLinearProgressFoundation.prototype.destroy = function () {
+            _super.prototype.destroy.call(this);
+            if (this.observer) {
+                this.observer.disconnect();
+            }
+        };
+        MDCLinearProgressFoundation.prototype.restartAnimation = function () {
+            this.adapter.removeClass(cssClasses$l.ANIMATION_READY_CLASS);
+            this.adapter.forceLayout();
+            this.adapter.addClass(cssClasses$l.ANIMATION_READY_CLASS);
+        };
         MDCLinearProgressFoundation.prototype.setPrimaryBarProgress = function (progressValue) {
             var value = "scaleX(" + progressValue + ")";
-            // Accessing `window` without a `typeof` check will throw on Node environments.
+            // Accessing `window` without a `typeof` check will throw on Node
+            // environments.
             var transformProp = typeof window !== 'undefined' ?
-                getCorrectPropertyName(window, 'transform') : 'transform';
+                getCorrectPropertyName(window, 'transform') :
+                'transform';
             this.adapter.setPrimaryBarStyle(transformProp, value);
         };
         MDCLinearProgressFoundation.prototype.setBufferBarProgress = function (progressValue) {
             var value = progressValue * 100 + "%";
             this.adapter.setBufferBarStyle(strings$l.FLEX_BASIS, value);
+        };
+        MDCLinearProgressFoundation.prototype.calculateAndSetDimensions = function (width) {
+            var primaryHalf = width * animationDimensionPercentages.PRIMARY_HALF;
+            var primaryFull = width * animationDimensionPercentages.PRIMARY_FULL;
+            var secondaryQuarter = width * animationDimensionPercentages.SECONDARY_QUARTER;
+            var secondaryHalf = width * animationDimensionPercentages.SECONDARY_HALF;
+            var secondaryFull = width * animationDimensionPercentages.SECONDARY_FULL;
+            this.adapter.setStyle('--mdc-linear-progress-primary-half', primaryHalf + "px");
+            this.adapter.setStyle('--mdc-linear-progress-primary-half-neg', -primaryHalf + "px");
+            this.adapter.setStyle('--mdc-linear-progress-primary-full', primaryFull + "px");
+            this.adapter.setStyle('--mdc-linear-progress-primary-full-neg', -primaryFull + "px");
+            this.adapter.setStyle('--mdc-linear-progress-secondary-quarter', secondaryQuarter + "px");
+            this.adapter.setStyle('--mdc-linear-progress-secondary-quarter-neg', -secondaryQuarter + "px");
+            this.adapter.setStyle('--mdc-linear-progress-secondary-half', secondaryHalf + "px");
+            this.adapter.setStyle('--mdc-linear-progress-secondary-half-neg', -secondaryHalf + "px");
+            this.adapter.setStyle('--mdc-linear-progress-secondary-full', secondaryFull + "px");
+            this.adapter.setStyle('--mdc-linear-progress-secondary-full-neg', -secondaryFull + "px");
+            // need to restart animation for custom props to apply to keyframes
+            this.restartAnimation();
         };
         return MDCLinearProgressFoundation;
     }(MDCFoundation));
@@ -11051,23 +11677,23 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             enumerable: true,
             configurable: true
         });
-        Object.defineProperty(MDCLinearProgress.prototype, "reverse", {
-            set: function (value) {
-                this.foundation.setReverse(value);
-            },
-            enumerable: true,
-            configurable: true
-        });
         MDCLinearProgress.prototype.open = function () {
             this.foundation.open();
         };
         MDCLinearProgress.prototype.close = function () {
             this.foundation.close();
         };
+        MDCLinearProgress.prototype.initialSyncWithDOM = function () {
+            var _this = this;
+            this.root.addEventListener('transitionend', function () {
+                _this.foundation.handleTransitionEnd();
+            });
+        };
         MDCLinearProgress.prototype.getDefaultFoundation = function () {
             var _this = this;
-            // DO NOT INLINE this variable. For backward compatibility, foundations take a Partial<MDCFooAdapter>.
-            // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
+            // DO NOT INLINE this variable. For backward compatibility, foundations take
+            // a Partial<MDCFooAdapter>. To ensure we don't accidentally omit any
+            // methods, we need a separate, strongly typed adapter variable.
             var adapter = {
                 addClass: function (className) {
                     _this.root.classList.add(className);
@@ -11097,6 +11723,19 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
                 setAttribute: function (attributeName, value) {
                     _this.root.setAttribute(attributeName, value);
                 },
+                setStyle: function (name, value) {
+                    _this.root.style.setProperty(name, value);
+                },
+                attachResizeObserver: function (callback) {
+                    var RO = window.ResizeObserver;
+                    if (RO) {
+                        var ro = new RO(callback);
+                        ro.observe(_this.root);
+                        return ro;
+                    }
+                    return null;
+                },
+                getWidth: function () { return _this.root.offsetWidth; },
             };
             return new MDCLinearProgressFoundation(adapter);
         };
@@ -12192,6 +12831,10 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
         AnnouncerPriority["ASSERTIVE"] = "assertive";
     })(AnnouncerPriority || (AnnouncerPriority = {}));
     /**
+     * Data attribute added to live region element.
+     */
+    var DATA_MDC_DOM_ANNOUNCE = 'data-mdc-dom-announce';
+    /**
      * Announces the given message with optional priority, defaulting to "polite"
      */
     function announce$1(message, priority) {
@@ -12243,6 +12886,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             el.style.overflow = 'hidden';
             el.setAttribute('aria-atomic', 'true');
             el.setAttribute('aria-live', priority);
+            el.setAttribute(DATA_MDC_DOM_ANNOUNCE, 'true');
             document.body.appendChild(el);
             return el;
         };
@@ -12397,6 +13041,9 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
             this.deselectAndNotifyClients_(chipId);
             this.adapter.removeChipAtIndex(index);
             var maxIndex = this.adapter.getChipListCount() - 1;
+            if (maxIndex < 0) {
+                return;
+            }
             var nextIndex = Math.min(index, maxIndex);
             this.removeFocusFromChipsExcept_(nextIndex);
             // After removing a chip, we should focus the trailing action for the next chip.
@@ -12549,7 +13196,7 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var _a = MDCChipFoundation.strings, INTERACTION_EVENT = _a.INTERACTION_EVENT, SELECTION_EVENT = _a.SELECTION_EVENT, REMOVAL_EVENT = _a.REMOVAL_EVENT, NAVIGATION_EVENT = _a.NAVIGATION_EVENT;
+    var _a$1 = MDCChipFoundation.strings, INTERACTION_EVENT = _a$1.INTERACTION_EVENT, SELECTION_EVENT = _a$1.SELECTION_EVENT, REMOVAL_EVENT = _a$1.REMOVAL_EVENT, NAVIGATION_EVENT = _a$1.NAVIGATION_EVENT;
     var CHIP_SELECTOR = MDCChipSetFoundation.strings.CHIP_SELECTOR;
     var idCounter = 0;
     var MDCChipSet = /** @class */ (function (_super) {
@@ -13023,6 +13670,8 @@ this.PelagicCreatures.TropicBird = (function (exports, sargasso) {
 
     exports.MDC = MDC;
     exports.TropicBird = TropicBird;
+
+    Object.defineProperty(exports, '__esModule', { value: true });
 
     return exports;
 
