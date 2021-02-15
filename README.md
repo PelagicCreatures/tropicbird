@@ -99,17 +99,106 @@ tropicBird.dialog('#dialog','title','content',true).then((action) =>{
 	console.log(e)
 })
 ```
-
+#### Bundling
 The package provide a quick rollup of the un-themed MDC css classes in @PelagicCreatures/TropicBird/dist/bundle.css but you can also roll your own as follows:
 
+```
+npm install npx -g
+npm install @pelagiccreatures/tropicbird --save-dev
+npm install webpack  --save-dev
+npm install autoprefixer --save-dev
+npm install sass --save-dev
+npm install file-loader --save-dev
+npm install extract-loader --save-dev
+npm install css-loader --save-dev
+npm install sass-loader --save-dev
+npm install postcss-loader --save-dev
+npm install material-design-icons-iconfont --save-dev
+```
 
+my-bundle.scss
 ```scss
-$mdc-theme-primary: #333;
-$mdc-theme-accent: #b2e800;
-$mdc-theme-hint: #1a237e;
-$mdc-theme-surface: white;
-$darker-accent: #95c200;
+@import "@material/theme/mdc-theme";
+:root {
+	--mdc-theme-primary: #333;
+	--mdc-theme-secondary: #b2e800;
+	--mdc-theme-accent: #b2e800;
+	--mdc-theme-hint: #1a237e;
+	--mdc-theme-surface: white;
+}
 @import "@pelagiccreatures/tropicbird/mdc-bundle.scss";
+
+$material-design-icons-font-directory-path: '~material-design-icons-iconfont/dist/fonts/';
+@import 'material-design-icons-iconfont/src/material-design-icons';
+
+```
+
+webpack.config.js
+```
+const autoprefixer = require('autoprefixer')
+const path = require('path')
+
+const cssConfig = {
+	entry: ['./my-bundle.scss'],
+	output: {
+		path: path.resolve(__dirname, 'public')
+	},
+	mode: 'development',
+	watchOptions: {
+		poll: 1000 // Check for changes every second
+	},
+	target: 'web',
+	module: {
+		rules: [{
+			test: /\.scss$/,
+			use: [{
+				loader: 'file-loader',
+				options: {
+					name: 'bundle.css'
+				}
+			}, {
+				loader: 'extract-loader'
+			}, {
+				loader: 'css-loader'
+			}, {
+				loader: 'sass-loader',
+				options: {
+					implementation: require('sass'),
+					webpackImporter: false,
+					sassOptions: {
+						includePaths: ['./node_modules']
+					}
+				}
+			}, {
+				loader: 'postcss-loader',
+				options: {
+					postcssOptions: {
+						plugins: () => [autoprefixer()]
+					}
+				}
+			}]
+		}, {
+			test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+			use: [{
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+					outputPath: 'fonts/',
+					publicPath: '/public/fonts/'
+				}
+			}]
+		}]
+	}
+}
+
+module.exports = [
+	cssConfig
+]
+```
+
+Run webpack
+```
+npx webpack
 ```
 
 ### Example HTML w/MDC nav, drawer and a switch just for fun
