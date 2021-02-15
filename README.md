@@ -15,13 +15,32 @@ npm install @PelagicCreatures/TropicBird
 
 #### boot Sargasso and TropicBird (example uses CDN modules)
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
-<script defer>
-	SargassoModule.Sargasso.utils.bootSargasso({hijax:{}})
-	let tropicBird = new TropicBirdModule.TropicBird(document.body, {})
-	tropicBird.start()
-</script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css' rel='stylesheet'>
+  </head>
+  <body data-sargasso-class="TropicBird">
+    <section>
+      <h3>Here is a switch. </h3>
+      <div class="mdc-switch">
+        <div class="mdc-switch__track"></div>
+        <div class="mdc-switch__thumb-underlay">
+          <div class="mdc-switch__thumb">
+            <input class="mdc-switch__native-control" type="checkbox" name="some name">
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
+    <script defer>
+      window.onload= () => {
+        SargassoModule.utils.bootSargasso({hijax:{}})
+      }
+    </script>
+  </body>
+</html>
 ```
 
 Any MDC elements in your document will be now be automatically instantiated.
@@ -96,6 +115,7 @@ $darker-accent: #95c200;
 ### Example HTML w/MDC nav, drawer and a switch just for fun
 
 ```html
+<!DOCTYPE html>
 <html>
   <head>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -103,18 +123,10 @@ $darker-accent: #95c200;
     <style>
       body { margin:0; padding:0; }
       #content { padding-top:65px; }
-			hamburger { text-decoration:none; }
+      hamburger { text-decoration:none; }
     </style>
   </head>
-  <body data-sargasso-class="TropicBird">
-    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
-    <script defer>
-      SargassoModule.utils.bootSargasso({hijax:{}})
-			let tropicBird = new TropicBirdModule.TropicBird(document.body, {})
-			tropicBird.start()
-    </script>
-
+  <body>
     <aside class="nav-drawer drawer-top mdc-drawer mdc-drawer--dismissible">
       <div class="mdc-drawer__content">
         <nav class="mdc-list">
@@ -165,6 +177,22 @@ $darker-accent: #95c200;
         </div>
       </div>
     </div>
+    <div class="mdc-snackbar">
+      <div class="mdc-snackbar__surface">
+        <div class="mdc-snackbar__label"></div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
+    <script defer>
+      window.onload= () => {
+        SargassoModule.utils.bootSargasso({hijax:{}})
+        let tropicBird = new TropicBirdModule.TropicBird(document.body, {})
+        tropicBird.start()
+
+        tropicBird.pushSnackBar('info','hi!',3000)
+      }
+    </script>
   </body>
 </html>
 ```

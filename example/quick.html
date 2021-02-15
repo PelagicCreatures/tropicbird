@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href='https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css' rel='stylesheet'>
+  </head>
+  <body data-sargasso-class="TropicBird">
+    <section>
+      <h3>Here is a switch. </h3>
+      <div class="mdc-switch">
+        <div class="mdc-switch__track"></div>
+        <div class="mdc-switch__thumb-underlay">
+          <div class="mdc-switch__thumb">
+            <input class="mdc-switch__native-control" type="checkbox" name="some name">
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
+    <script defer>
+      window.onload= () => {
+        SargassoModule.utils.bootSargasso({hijax:{}})
+      }
+    </script>
+  </body>
+</html>

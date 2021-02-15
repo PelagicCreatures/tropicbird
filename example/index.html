@@ -8,7 +8,7 @@
 			.under-nav { height: 64px; }
 		</style>
 	</head>
-	<body >
+	<body>
 		<aside class="nav-drawer drawer-top mdc-drawer mdc-drawer--dismissible">
 			<div class="mdc-drawer__content">
 				<nav class="mdc-list">
@@ -189,14 +189,13 @@
 			<div class="mdc-dialog__scrim"></div>
 		</div>
 
-		<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso@v1.0.1/dist/sargasso.iife.js"></script>
-		<script src="./dist/tropicbird.iife.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
 
 		<script>
-			window.onload = () => {
+			window.onload= () => {
 
 				SargassoModule.utils.bootSargasso({hijax:{}})
-
 				let tropicBird = new TropicBirdModule.TropicBird(document.body, {})
 				tropicBird.start()
 
