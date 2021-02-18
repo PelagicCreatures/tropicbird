@@ -8,11 +8,6 @@ A tool to simplify & demystify the deployment of Google's Material Design framew
 
 TropicBird also provides some built in management of the nav bar 'hamburger' icon to open the drawer and a couple utility methods for opening modal dialogs, queuing snackbar messages and triggering the progress bar but otherwise the implementation is pure MDC as described [here](https://github.com/material-components/material-components-web/tree/master/packages).
 
-```
-npm install @PelagicCreatures/Sargasso
-npm install @PelagicCreatures/TropicBird
-```
-
 #### boot Sargasso and TropicBird (example uses CDN modules)
 ```html
 <!DOCTYPE html>
@@ -44,6 +39,8 @@ npm install @PelagicCreatures/TropicBird
 ```
 
 Any MDC elements in your document will be now be automatically instantiated.
+
+[Try It](https://jsfiddle.net/PelagicCreatures/jsqm6crf/)
 
 
 | method | description |
@@ -114,6 +111,8 @@ npm install css-loader --save-dev
 npm install sass-loader --save-dev
 npm install postcss-loader --save-dev
 npm install material-design-icons-iconfont --save-dev
+npm install @PelagicCreatures/Sargasso
+npm install @PelagicCreatures/TropicBird
 ```
 
 my-bundle.scss
@@ -285,3 +284,5 @@ npx webpack
   </body>
 </html>
 ```
+
+[Try It](https://jsfiddle.net/PelagicCreatures/8m2hus1q/4/)
