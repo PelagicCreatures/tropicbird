@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href='https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/bundle.css' rel='stylesheet'>
+		<link href='/dist/bundle.css' rel='stylesheet'>
 		<style type="text/css">
 			body { margin:0; padding:0; }
 			.hamburger { text-decoration:none; }
@@ -41,14 +41,14 @@
 			<div class="under-nav"></div>
 
 			<div role="progressbar" class="mdc-linear-progress mdc-linear-progress--closed mdc-linear-progress--indeterminate" aria-label="Example Progress Bar" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0">
-			  <div class="mdc-linear-progress__buffering-dots"></div>
-			  <div class="mdc-linear-progress__buffer"></div>
-			  <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
-			    <span class="mdc-linear-progress__bar-inner"></span>
-			  </div>
-			  <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
-			    <span class="mdc-linear-progress__bar-inner"></span>
-			  </div>
+				<div class="mdc-linear-progress__buffering-dots"></div>
+				<div class="mdc-linear-progress__buffer"></div>
+				<div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+					<span class="mdc-linear-progress__bar-inner"></span>
+				</div>
+				<div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+					<span class="mdc-linear-progress__bar-inner"></span>
+				</div>
 			</div>
 
 			<div class="mdc-layout-grid">
@@ -57,6 +57,99 @@
 						<div data-hijax id="content">
 
 							<p>These MDC things are set up when we load this page and destroyed when we leave. <a href="page-1.html">Next page in HIJAX</a></p>
+
+							<section>
+								<h3>Here is a tab bar</h3>
+								<div class="mdc-tab-bar" role="tablist">
+									<div class="mdc-tab-scroller">
+										<div class="mdc-tab-scroller__scroll-area">
+											<div class="mdc-tab-scroller__scroll-content">
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">One</span>
+													</span>
+													<span class="mdc-tab-indicator mdc-tab-indicator--active">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Two</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Three</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Four</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Five</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Six</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Seven</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Eight</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+												<button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+													<span class="mdc-tab__content">
+														<span class="mdc-tab__text-label">Nine</span>
+													</span>
+													<span class="mdc-tab-indicator">
+														<span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+													</span>
+													<span class="mdc-tab__ripple"></span>
+												</button>
+											</div>
+										</div>
+									</div>
+								</div>
+							</section>
 
 							<section>
 								<h3>Here is a button.</h3>
@@ -190,7 +283,7 @@
 		</div>
 
 		<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/tropicbird/dist/tropicbird.iife.js"></script>
+		<script src="/dist/tropicbird.iife.js"></script>
 
 		<script>
 			window.onload= () => {

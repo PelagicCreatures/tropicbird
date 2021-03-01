@@ -68,6 +68,16 @@ import {
 }
 	from '@material/chips'
 
+import {
+	MDCTabBar
+}
+	from '@material/tab-bar'
+
+import {
+	MDCTabScroller
+}
+	from '@material/tab-scroller'
+
 /* TODO ??
 
 MDCTextFieldIcon,
@@ -229,7 +239,8 @@ class TropicBird extends Sargasso {
 			'.mdc-fab',
 			'.mdc-button',
 			'.mdc-icon-button',
-			'.mdc-card__primary-action'
+			'.mdc-card__primary-action',
+			'.mdc-tab-bar'
 		]
 
 		const wantRipple = [
@@ -315,6 +326,20 @@ class TropicBird extends Sargasso {
 					})
 				}
 
+				if (utils.elementTools.hasClass(element, 'mdc-tab-bar')) {
+					const thing = new MDCTabBar(element)
+					new Reaper(element, {
+						MDCThing: thing
+					})
+				}
+
+				if (utils.elementTools.hasClass(element, 'mdc-tab-scroller')) {
+					const thing = new MDCTabScroller(element)
+					new Reaper(element, {
+						MDCThing: thing
+					})
+				}
+
 				for (let j = 0; j < wantRipple.length; j++) {
 					if (utils.elementTools.hasClass(element, wantRipple[j])) {
 						const thing = new MDCRipple(element)
@@ -352,7 +377,9 @@ const MDC = {
 	MDCSelect: MDCSelect,
 	MDCSwitch: MDCSwitch,
 	MDCLinearProgress: MDCLinearProgress,
-	MDCChipSet: MDCChipSet
+	MDCChipSet: MDCChipSet,
+	MDCTabBar: MDCTabBar,
+	MDCTabScroller: MDCTabScroller
 }
 export {
 	TropicBird,

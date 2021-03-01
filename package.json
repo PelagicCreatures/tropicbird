@@ -36,6 +36,8 @@
 		"@material/select": "^10.0.0",
 		"@material/snackbar": "^10.0.0",
 		"@material/switch": "^10.0.0",
+		"@material/tab-bar": "^10.0.0",
+		"@material/tab-scroller": "^10.0.0",
 		"@material/textfield": "^10.0.0",
 		"@material/top-app-bar": "^10.0.0",
 		"@material/typography": "^10.0.0"
@@ -63,10 +65,10 @@
 		"node-sass": "^5.0.0",
 		"postcss-loader": "^5.0.0",
 		"rollup": "^2.39.0",
+		"rollup-plugin-terser": "^7.0.2",
 		"sass": "^1.32.7",
 		"sass-loader": "^11.0.1",
 		"webpack": "^5.21.2",
-		"webpack-cli": "^4.5.0",
-		"rollup-plugin-terser": "^7.0.2"
+		"webpack-cli": "^4.5.0"
 	}
 }
