@@ -240,7 +240,8 @@ class TropicBird extends Sargasso {
 			'.mdc-button',
 			'.mdc-icon-button',
 			'.mdc-card__primary-action',
-			'.mdc-tab-bar'
+			'.mdc-tab-bar',
+			'.mdc-tab-scroller'
 		]
 
 		const wantRipple = [
