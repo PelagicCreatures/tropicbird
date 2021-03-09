@@ -2,10 +2,11 @@
 	"name": "@pelagiccreatures/tropicbird",
 	"version": "1.1.0",
 	"description": "@pelagiccreatures/tropicbird - Sargasso Managed Material Design Components",
-	"main": "index.js",
+	"type": "module",
+	"browser": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "npx rollup --no-treeshake -c rollup.config.js; npx webpack; rm dist/main.js"
+		"build": "npx rollup --no-treeshake -c rollup.config.js; node ./webpack-cli.mjs; rm dist/main.js"
 	},
 	"repository": {
 		"type": "git",
@@ -17,9 +18,6 @@
 		"url": "https://github.com/PelagicCreatures/tropicbird/issues"
 	},
 	"homepage": "https://github.com/PelagicCreatures/tropicbird#readme",
-	"peerDependencies": {
-		"@pelagiccreatures/sargasso": "^1.0.1"
-	},
 	"dependencies": {
 		"@material/card": "^10.0.0",
 		"@material/checkbox": "^10.0.0",
@@ -40,21 +38,22 @@
 		"@material/tab-scroller": "^10.0.0",
 		"@material/textfield": "^10.0.0",
 		"@material/top-app-bar": "^10.0.0",
-		"@material/typography": "^10.0.0"
+		"@material/typography": "^10.0.0",
+		"@pelagiccreatures/sargasso": "^1.4.8"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.12.16",
-		"@babel/preset-env": "^7.12.16",
+		"@babel/core": "^7.13.10",
+		"@babel/preset-env": "^7.13.10",
 		"@rollup/plugin-commonjs": "^17.1.0",
 		"@rollup/plugin-json": "^4.1.0",
-		"@rollup/plugin-node-resolve": "^11.1.1",
-		"autoprefixer": "^10.2.4",
+		"@rollup/plugin-node-resolve": "^11.2.0",
+		"autoprefixer": "^10.2.5",
 		"babel-loader": "^8.2.2",
 		"babel-plugin-lodash": "^3.3.4",
 		"babel-preset-env": "^1.7.0",
-		"core-js": "^3.8.3",
-		"css-loader": "^5.0.2",
-		"eslint": "^7.20.0",
+		"core-js": "^3.9.1",
+		"css-loader": "^5.1.1",
+		"eslint": "^7.21.0",
 		"eslint-config-standard": "^16.0.2",
 		"eslint-plugin-import": "^2.22.1",
 		"eslint-plugin-node": "^11.1.0",
@@ -63,10 +62,10 @@
 		"extract-loader": "^5.1.0",
 		"file-loader": "^6.2.0",
 		"node-sass": "^5.0.0",
-		"postcss-loader": "^5.0.0",
-		"rollup": "^2.39.0",
+		"postcss-loader": "^5.1.0",
+		"rollup": "^2.41.0",
 		"rollup-plugin-terser": "^7.0.2",
-		"sass": "^1.32.7",
+		"sass": "^1.32.8",
 		"sass-loader": "^11.0.1",
 		"webpack": "^5.21.2",
 		"webpack-cli": "^4.5.0"

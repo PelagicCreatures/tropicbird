@@ -1,7 +1,19 @@
-const autoprefixer = require('autoprefixer')
-const path = require('path')
+import autoprefixer from 'autoprefixer'
+import path from 'path'
+import sass from 'sass'
+import {
+	dirname
+}
+from 'path';
+import {
+	fileURLToPath
+}
+from 'url';
 
-module.exports = {
+const __dirname = dirname(fileURLToPath(
+	import.meta.url));
+
+const config = {
 	mode: 'development',
 	entry: ['./mdc-bundle.scss'],
 	output: {
@@ -22,7 +34,7 @@ module.exports = {
 			}, {
 				loader: 'sass-loader',
 				options: {
-					implementation: require('sass'),
+					implementation: sass,
 					webpackImporter: false,
 					sassOptions: {
 						includePaths: ['./node_modules']
@@ -38,4 +50,8 @@ module.exports = {
 			}]
 		}]
 	}
+}
+
+export {
+	config
 }

@@ -591,7 +591,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses = {
+    var cssClasses$q = {
         // Ripple is a special case where the "root" component is really a "mixin" of sorts,
         // given that it's an 'upgrade' to an existing component. That being said it is the root
         // CSS class that all other CSS classes derive from.
@@ -601,7 +601,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         ROOT: 'mdc-ripple-upgraded',
         UNBOUNDED: 'mdc-ripple-upgraded--unbounded',
     };
-    var strings = {
+    var strings$t = {
         VAR_FG_SCALE: '--mdc-ripple-fg-scale',
         VAR_FG_SIZE: '--mdc-ripple-fg-size',
         VAR_FG_TRANSLATE_END: '--mdc-ripple-fg-translate-end',
@@ -609,7 +609,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         VAR_LEFT: '--mdc-ripple-left',
         VAR_TOP: '--mdc-ripple-top',
     };
-    var numbers = {
+    var numbers$b = {
         DEACTIVATION_TIMEOUT_MS: 225,
         FG_DEACTIVATION_MS: 150,
         INITIAL_ORIGIN_SCALE: 0.6,
@@ -676,21 +676,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCRippleFoundation, "cssClasses", {
             get: function () {
-                return cssClasses;
+                return cssClasses$q;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCRippleFoundation, "strings", {
             get: function () {
-                return strings;
+                return strings$t;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCRippleFoundation, "numbers", {
             get: function () {
-                return numbers;
+                return numbers$b;
             },
             enumerable: true,
             configurable: true
@@ -991,7 +991,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 this.adapter.addClass(FG_DEACTIVATION);
                 this.fgDeactivationRemovalTimer_ = setTimeout(function () {
                     _this.adapter.removeClass(FG_DEACTIVATION);
-                }, numbers.FG_DEACTIVATION_MS);
+                }, numbers$b.FG_DEACTIVATION_MS);
             }
         };
         MDCRippleFoundation.prototype.rmBoundedActivationClasses_ = function () {
@@ -1238,7 +1238,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$1 = {
+    var cssClasses$p = {
         LINE_RIPPLE_ACTIVE: 'mdc-line-ripple--active',
         LINE_RIPPLE_DEACTIVATING: 'mdc-line-ripple--deactivating',
     };
@@ -1274,7 +1274,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCLineRippleFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$1;
+                return cssClasses$p;
             },
             enumerable: true,
             configurable: true
@@ -1305,23 +1305,23 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.adapter.deregisterEventHandler('transitionend', this.transitionEndHandler_);
         };
         MDCLineRippleFoundation.prototype.activate = function () {
-            this.adapter.removeClass(cssClasses$1.LINE_RIPPLE_DEACTIVATING);
-            this.adapter.addClass(cssClasses$1.LINE_RIPPLE_ACTIVE);
+            this.adapter.removeClass(cssClasses$p.LINE_RIPPLE_DEACTIVATING);
+            this.adapter.addClass(cssClasses$p.LINE_RIPPLE_ACTIVE);
         };
         MDCLineRippleFoundation.prototype.setRippleCenter = function (xCoordinate) {
             this.adapter.setStyle('transform-origin', xCoordinate + "px center");
         };
         MDCLineRippleFoundation.prototype.deactivate = function () {
-            this.adapter.addClass(cssClasses$1.LINE_RIPPLE_DEACTIVATING);
+            this.adapter.addClass(cssClasses$p.LINE_RIPPLE_DEACTIVATING);
         };
         MDCLineRippleFoundation.prototype.handleTransitionEnd = function (evt) {
             // Wait for the line ripple to be either transparent or opaque
             // before emitting the animation end event
-            var isDeactivating = this.adapter.hasClass(cssClasses$1.LINE_RIPPLE_DEACTIVATING);
+            var isDeactivating = this.adapter.hasClass(cssClasses$p.LINE_RIPPLE_DEACTIVATING);
             if (evt.propertyName === 'opacity') {
                 if (isDeactivating) {
-                    this.adapter.removeClass(cssClasses$1.LINE_RIPPLE_ACTIVE);
-                    this.adapter.removeClass(cssClasses$1.LINE_RIPPLE_DEACTIVATING);
+                    this.adapter.removeClass(cssClasses$p.LINE_RIPPLE_ACTIVE);
+                    this.adapter.removeClass(cssClasses$p.LINE_RIPPLE_DEACTIVATING);
                 }
             }
         };
@@ -1441,18 +1441,18 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$2 = {
+    var cssClasses$o = {
         FIXED_CLASS: 'mdc-top-app-bar--fixed',
         FIXED_SCROLLED_CLASS: 'mdc-top-app-bar--fixed-scrolled',
         SHORT_CLASS: 'mdc-top-app-bar--short',
         SHORT_COLLAPSED_CLASS: 'mdc-top-app-bar--short-collapsed',
         SHORT_HAS_ACTION_ITEM_CLASS: 'mdc-top-app-bar--short-has-action-item',
     };
-    var numbers$1 = {
+    var numbers$a = {
         DEBOUNCE_THROTTLE_RESIZE_TIME_MS: 100,
         MAX_TOP_APP_BAR_HEIGHT: 128,
     };
-    var strings$1 = {
+    var strings$s = {
         ACTION_ITEM_SELECTOR: '.mdc-top-app-bar__action-item',
         NAVIGATION_EVENT: 'MDCTopAppBar:nav',
         NAVIGATION_ICON_SELECTOR: '.mdc-top-app-bar__navigation-icon',
@@ -1490,21 +1490,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTopAppBarBaseFoundation, "strings", {
             get: function () {
-                return strings$1;
+                return strings$s;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTopAppBarBaseFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$2;
+                return cssClasses$o;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTopAppBarBaseFoundation, "numbers", {
             get: function () {
-                return numbers$1;
+                return numbers$a;
             },
             enumerable: true,
             configurable: true
@@ -1632,7 +1632,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 this.resizeThrottleId_ = setTimeout(function () {
                     _this.resizeThrottleId_ = INITIAL_VALUE;
                     _this.throttledResizeHandler_();
-                }, numbers$1.DEBOUNCE_THROTTLE_RESIZE_TIME_MS);
+                }, numbers$a.DEBOUNCE_THROTTLE_RESIZE_TIME_MS);
             }
             this.isCurrentlyBeingResized_ = true;
             if (this.resizeDebounceId_) {
@@ -1642,7 +1642,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 _this.handleTargetScroll();
                 _this.isCurrentlyBeingResized_ = false;
                 _this.resizeDebounceId_ = INITIAL_VALUE;
-            }, numbers$1.DEBOUNCE_THROTTLE_RESIZE_TIME_MS);
+            }, numbers$a.DEBOUNCE_THROTTLE_RESIZE_TIME_MS);
         };
         /**
          * Function to determine if the DOM needs to update.
@@ -1678,7 +1678,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 // so the top app bar doesn't show if the window resizes and the new height > the old height.
                 var offset = this.currentAppBarOffsetTop_;
                 if (Math.abs(offset) >= this.topAppBarHeight_) {
-                    offset = -numbers$1.MAX_TOP_APP_BAR_HEIGHT;
+                    offset = -numbers$a.MAX_TOP_APP_BAR_HEIGHT;
                 }
                 this.adapter.setStyle('top', offset + 'px');
             }
@@ -1742,13 +1742,13 @@ var TropicBirdModule = (function (exports, sargasso) {
             var currentScroll = this.adapter.getViewportScrollY();
             if (currentScroll <= 0) {
                 if (this.wasScrolled_) {
-                    this.adapter.removeClass(cssClasses$2.FIXED_SCROLLED_CLASS);
+                    this.adapter.removeClass(cssClasses$o.FIXED_SCROLLED_CLASS);
                     this.wasScrolled_ = false;
                 }
             }
             else {
                 if (!this.wasScrolled_) {
-                    this.adapter.addClass(cssClasses$2.FIXED_SCROLLED_CLASS);
+                    this.adapter.addClass(cssClasses$o.FIXED_SCROLLED_CLASS);
                     this.wasScrolled_ = true;
                 }
             }
@@ -1798,10 +1798,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCShortTopAppBarFoundation.prototype.init = function () {
             _super.prototype.init.call(this);
             if (this.adapter.getTotalActionItems() > 0) {
-                this.adapter.addClass(cssClasses$2.SHORT_HAS_ACTION_ITEM_CLASS);
+                this.adapter.addClass(cssClasses$o.SHORT_HAS_ACTION_ITEM_CLASS);
             }
             // If initialized with SHORT_COLLAPSED_CLASS, the bar should always be collapsed
-            this.setAlwaysCollapsed(this.adapter.hasClass(cssClasses$2.SHORT_COLLAPSED_CLASS));
+            this.setAlwaysCollapsed(this.adapter.hasClass(cssClasses$o.SHORT_COLLAPSED_CLASS));
         };
         /**
          * Set if the short top app bar should always be collapsed.
@@ -1845,11 +1845,11 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
         };
         MDCShortTopAppBarFoundation.prototype.uncollapse_ = function () {
-            this.adapter.removeClass(cssClasses$2.SHORT_COLLAPSED_CLASS);
+            this.adapter.removeClass(cssClasses$o.SHORT_COLLAPSED_CLASS);
             this.isCollapsed_ = false;
         };
         MDCShortTopAppBarFoundation.prototype.collapse_ = function () {
-            this.adapter.addClass(cssClasses$2.SHORT_COLLAPSED_CLASS);
+            this.adapter.addClass(cssClasses$o.SHORT_COLLAPSED_CLASS);
             this.isCollapsed_ = true;
         };
         return MDCShortTopAppBarFoundation;
@@ -1887,9 +1887,9 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCTopAppBar.prototype.initialize = function (rippleFactory) {
             if (rippleFactory === void 0) { rippleFactory = function (el) { return MDCRipple.attachTo(el); }; }
-            this.navIcon_ = this.root.querySelector(strings$1.NAVIGATION_ICON_SELECTOR);
+            this.navIcon_ = this.root.querySelector(strings$s.NAVIGATION_ICON_SELECTOR);
             // Get all icons in the toolbar and instantiate the ripples
-            var icons = [].slice.call(this.root.querySelectorAll(strings$1.ACTION_ITEM_SELECTOR));
+            var icons = [].slice.call(this.root.querySelectorAll(strings$s.ACTION_ITEM_SELECTOR));
             if (this.navIcon_) {
                 icons.push(this.navIcon_);
             }
@@ -1911,8 +1911,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (this.navIcon_) {
                 this.navIcon_.addEventListener('click', this.handleNavigationClick_);
             }
-            var isFixed = this.root.classList.contains(cssClasses$2.FIXED_CLASS);
-            var isShort = this.root.classList.contains(cssClasses$2.SHORT_CLASS);
+            var isFixed = this.root.classList.contains(cssClasses$o.FIXED_CLASS);
+            var isShort = this.root.classList.contains(cssClasses$o.SHORT_CLASS);
             if (!isShort && !isFixed) {
                 window.addEventListener('resize', this.handleWindowResize_);
             }
@@ -1923,8 +1923,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (this.navIcon_) {
                 this.navIcon_.removeEventListener('click', this.handleNavigationClick_);
             }
-            var isFixed = this.root.classList.contains(cssClasses$2.FIXED_CLASS);
-            var isShort = this.root.classList.contains(cssClasses$2.SHORT_CLASS);
+            var isFixed = this.root.classList.contains(cssClasses$o.FIXED_CLASS);
+            var isShort = this.root.classList.contains(cssClasses$o.SHORT_CLASS);
             if (!isShort && !isFixed) {
                 window.removeEventListener('resize', this.handleWindowResize_);
             }
@@ -1953,7 +1953,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 },
                 getTopAppBarHeight: function () { return _this.root.clientHeight; },
                 notifyNavigationIconClicked: function () {
-                    return _this.emit(strings$1.NAVIGATION_EVENT, {});
+                    return _this.emit(strings$s.NAVIGATION_EVENT, {});
                 },
                 getViewportScrollY: function () {
                     var win = _this.scrollTarget_;
@@ -1961,15 +1961,15 @@ var TropicBirdModule = (function (exports, sargasso) {
                     return win.pageYOffset !== undefined ? win.pageYOffset : el.scrollTop;
                 },
                 getTotalActionItems: function () {
-                    return _this.root.querySelectorAll(strings$1.ACTION_ITEM_SELECTOR).length;
+                    return _this.root.querySelectorAll(strings$s.ACTION_ITEM_SELECTOR).length;
                 },
             };
             // tslint:enable:object-literal-sort-keys
             var foundation;
-            if (this.root.classList.contains(cssClasses$2.SHORT_CLASS)) {
+            if (this.root.classList.contains(cssClasses$o.SHORT_CLASS)) {
                 foundation = new MDCShortTopAppBarFoundation(adapter);
             }
-            else if (this.root.classList.contains(cssClasses$2.FIXED_CLASS)) {
+            else if (this.root.classList.contains(cssClasses$o.FIXED_CLASS)) {
                 foundation = new MDCFixedTopAppBarFoundation(adapter);
             }
             else {
@@ -2025,7 +2025,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    function createFocusTrapInstance(surfaceEl, focusTrapFactory) {
+    function createFocusTrapInstance$1(surfaceEl, focusTrapFactory) {
         return focusTrapFactory(surfaceEl, {
             // Component handles focusing on active nav item.
             skipInitialFocus: true,
@@ -2186,8 +2186,8 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var _a;
-    var cssClasses$3 = {
+    var _a$1;
+    var cssClasses$n = {
         LIST_ITEM_ACTIVATED_CLASS: 'mdc-list-item--activated',
         LIST_ITEM_CLASS: 'mdc-list-item',
         LIST_ITEM_DISABLED_CLASS: 'mdc-list-item--disabled',
@@ -2196,7 +2196,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         LIST_ITEM_PRIMARY_TEXT_CLASS: 'mdc-list-item__primary-text',
         ROOT: 'mdc-list',
     };
-    var strings$2 = {
+    var strings$r = {
         ACTION_EVENT: 'MDCList:action',
         ARIA_CHECKED: 'aria-checked',
         ARIA_CHECKED_CHECKBOX_SELECTOR: '[role="checkbox"][aria-checked="true"]',
@@ -2216,18 +2216,18 @@ var TropicBirdModule = (function (exports, sargasso) {
         RADIO_SELECTOR: 'input[type="radio"]',
         SELECTED_ITEM_SELECTOR: '[aria-selected="true"], [aria-current="true"]',
     };
-    var numbers$2 = {
+    var numbers$9 = {
         UNSET_INDEX: -1,
         TYPEAHEAD_BUFFER_CLEAR_TIMEOUT_MS: 300
     };
-    var evolutionClassNameMap = (_a = {},
-        _a["" + cssClasses$3.LIST_ITEM_ACTIVATED_CLASS] = 'mdc-evolution-list-item--activated',
-        _a["" + cssClasses$3.LIST_ITEM_CLASS] = 'mdc-evolution-list-item',
-        _a["" + cssClasses$3.LIST_ITEM_DISABLED_CLASS] = 'mdc-evolution-list-item--disabled',
-        _a["" + cssClasses$3.LIST_ITEM_SELECTED_CLASS] = 'mdc-evolution-list-item--selected',
-        _a["" + cssClasses$3.LIST_ITEM_PRIMARY_TEXT_CLASS] = 'mdc-evolution-list-item__primary-text',
-        _a["" + cssClasses$3.ROOT] = 'mdc-evolution-list',
-        _a);
+    var evolutionClassNameMap = (_a$1 = {},
+        _a$1["" + cssClasses$n.LIST_ITEM_ACTIVATED_CLASS] = 'mdc-evolution-list-item--activated',
+        _a$1["" + cssClasses$n.LIST_ITEM_CLASS] = 'mdc-evolution-list-item',
+        _a$1["" + cssClasses$n.LIST_ITEM_DISABLED_CLASS] = 'mdc-evolution-list-item--disabled',
+        _a$1["" + cssClasses$n.LIST_ITEM_SELECTED_CLASS] = 'mdc-evolution-list-item--selected',
+        _a$1["" + cssClasses$n.LIST_ITEM_PRIMARY_TEXT_CLASS] = 'mdc-evolution-list-item__primary-text',
+        _a$1["" + cssClasses$n.ROOT] = 'mdc-evolution-list',
+        _a$1);
     var evolutionAttribute = 'evolution';
 
     /**
@@ -2318,17 +2318,17 @@ var TropicBirdModule = (function (exports, sargasso) {
     mappedKeyCodes.set(KEY_CODE.ARROW_DOWN, KEY.ARROW_DOWN);
     mappedKeyCodes.set(KEY_CODE.DELETE, KEY.DELETE);
     mappedKeyCodes.set(KEY_CODE.ESCAPE, KEY.ESCAPE);
-    var navigationKeys = new Set();
+    var navigationKeys$1 = new Set();
     // IE11 has no support for new Set with iterable so we need to initialize this
     // by hand.
-    navigationKeys.add(KEY.PAGE_UP);
-    navigationKeys.add(KEY.PAGE_DOWN);
-    navigationKeys.add(KEY.END);
-    navigationKeys.add(KEY.HOME);
-    navigationKeys.add(KEY.ARROW_LEFT);
-    navigationKeys.add(KEY.ARROW_UP);
-    navigationKeys.add(KEY.ARROW_RIGHT);
-    navigationKeys.add(KEY.ARROW_DOWN);
+    navigationKeys$1.add(KEY.PAGE_UP);
+    navigationKeys$1.add(KEY.PAGE_DOWN);
+    navigationKeys$1.add(KEY.END);
+    navigationKeys$1.add(KEY.HOME);
+    navigationKeys$1.add(KEY.ARROW_LEFT);
+    navigationKeys$1.add(KEY.ARROW_UP);
+    navigationKeys$1.add(KEY.ARROW_RIGHT);
+    navigationKeys$1.add(KEY.ARROW_DOWN);
     /**
      * normalizeKey returns the normalized string for a navigational action.
      */
@@ -2349,7 +2349,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * isNavigationEvent returns whether the event is a navigation event
      */
     function isNavigationEvent(evt) {
-        return navigationKeys.has(normalizeKey(evt));
+        return navigationKeys$1.has(normalizeKey(evt));
     }
 
     /**
@@ -2486,7 +2486,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         clearTimeout(state.bufferClearTimeout);
         state.bufferClearTimeout = setTimeout(function () {
             clearBuffer(state);
-        }, numbers$2.TYPEAHEAD_BUFFER_CLEAR_TIMEOUT_MS);
+        }, numbers$9.TYPEAHEAD_BUFFER_CLEAR_TIMEOUT_MS);
         state.typeaheadBuffer = state.typeaheadBuffer + nextChar;
         var index;
         if (state.typeaheadBuffer.length === 1) {
@@ -2705,8 +2705,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             _this.wrapFocus_ = false;
             _this.isVertical_ = true;
             _this.isSingleSelectionList_ = false;
-            _this.selectedIndex_ = numbers$2.UNSET_INDEX;
-            _this.focusedItemIndex = numbers$2.UNSET_INDEX;
+            _this.selectedIndex_ = numbers$9.UNSET_INDEX;
+            _this.focusedItemIndex = numbers$9.UNSET_INDEX;
             _this.useActivatedClass_ = false;
             _this.useSelectedAttr_ = false;
             _this.ariaCurrentAttrValue_ = null;
@@ -2720,21 +2720,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCListFoundation, "strings", {
             get: function () {
-                return strings$2;
+                return strings$r;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCListFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$3;
+                return cssClasses$n;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCListFoundation, "numbers", {
             get: function () {
-                return numbers$2;
+                return numbers$9;
             },
             enumerable: true,
             configurable: true
@@ -2810,8 +2810,8 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCListFoundation.prototype.maybeInitializeSingleSelection = function () {
             var listItemsCount = this.adapter.getListItemCount();
             for (var i = 0; i < listItemsCount; i++) {
-                var hasSelectedClass = this.adapter.listItemAtIndexHasClass(i, cssClasses$3.LIST_ITEM_SELECTED_CLASS);
-                var hasActivatedClass = this.adapter.listItemAtIndexHasClass(i, cssClasses$3.LIST_ITEM_ACTIVATED_CLASS);
+                var hasSelectedClass = this.adapter.listItemAtIndexHasClass(i, cssClasses$n.LIST_ITEM_SELECTED_CLASS);
+                var hasActivatedClass = this.adapter.listItemAtIndexHasClass(i, cssClasses$n.LIST_ITEM_ACTIVATED_CLASS);
                 if (!(hasSelectedClass || hasActivatedClass)) {
                     continue;
                 }
@@ -2932,7 +2932,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                         isTargetListItem: isRootListItem,
                         sortedIndexByFirstChar: this.sortedIndexByFirstChar,
                         isItemAtIndexDisabled: function (index) {
-                            return _this.adapter.listItemAtIndexHasClass(index, cssClasses$3.LIST_ITEM_DISABLED_CLASS);
+                            return _this.adapter.listItemAtIndexHasClass(index, cssClasses$n.LIST_ITEM_DISABLED_CLASS);
                         },
                     };
                     handleKeydown(handleKeydownOpts, this.typeaheadState);
@@ -2967,7 +2967,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             else if (isLetterA && event.ctrlKey && this.isCheckboxList_) {
                 event.preventDefault();
-                this.toggleAll(this.selectedIndex_ === numbers$2.UNSET_INDEX ? [] : this.selectedIndex_);
+                this.toggleAll(this.selectedIndex_ === numbers$9.UNSET_INDEX ? [] : this.selectedIndex_);
             }
             else if (isEnter || isSpace) {
                 if (isRootListItem) {
@@ -2978,7 +2978,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                         return;
                     }
                     preventDefaultEvent(event);
-                    if (this.adapter.listItemAtIndexHasClass(currentIndex, cssClasses$3.LIST_ITEM_DISABLED_CLASS)) {
+                    if (this.adapter.listItemAtIndexHasClass(currentIndex, cssClasses$n.LIST_ITEM_DISABLED_CLASS)) {
                         return;
                     }
                     if (!this.isTypeaheadInProgress()) {
@@ -2998,7 +2998,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                     focusedItemIndex: this.focusedItemIndex,
                     isTargetListItem: isRootListItem,
                     sortedIndexByFirstChar: this.sortedIndexByFirstChar,
-                    isItemAtIndexDisabled: function (index) { return _this.adapter.listItemAtIndexHasClass(index, cssClasses$3.LIST_ITEM_DISABLED_CLASS); },
+                    isItemAtIndexDisabled: function (index) { return _this.adapter.listItemAtIndexHasClass(index, cssClasses$n.LIST_ITEM_DISABLED_CLASS); },
                 };
                 handleKeydown(handleKeydownOpts, this.typeaheadState);
             }
@@ -3007,10 +3007,10 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Click handler for the list.
          */
         MDCListFoundation.prototype.handleClick = function (index, toggleCheckbox) {
-            if (index === numbers$2.UNSET_INDEX) {
+            if (index === numbers$9.UNSET_INDEX) {
                 return;
             }
-            if (this.adapter.listItemAtIndexHasClass(index, cssClasses$3.LIST_ITEM_DISABLED_CLASS)) {
+            if (this.adapter.listItemAtIndexHasClass(index, cssClasses$n.LIST_ITEM_DISABLED_CLASS)) {
                 return;
             }
             if (this.isSelectableList_()) {
@@ -3076,28 +3076,28 @@ var TropicBirdModule = (function (exports, sargasso) {
                 return;
             }
             if (isEnabled) {
-                this.adapter.removeClassForElementIndex(itemIndex, cssClasses$3.LIST_ITEM_DISABLED_CLASS);
-                this.adapter.setAttributeForElementIndex(itemIndex, strings$2.ARIA_DISABLED, 'false');
+                this.adapter.removeClassForElementIndex(itemIndex, cssClasses$n.LIST_ITEM_DISABLED_CLASS);
+                this.adapter.setAttributeForElementIndex(itemIndex, strings$r.ARIA_DISABLED, 'false');
             }
             else {
-                this.adapter.addClassForElementIndex(itemIndex, cssClasses$3.LIST_ITEM_DISABLED_CLASS);
-                this.adapter.setAttributeForElementIndex(itemIndex, strings$2.ARIA_DISABLED, 'true');
+                this.adapter.addClassForElementIndex(itemIndex, cssClasses$n.LIST_ITEM_DISABLED_CLASS);
+                this.adapter.setAttributeForElementIndex(itemIndex, strings$r.ARIA_DISABLED, 'true');
             }
         };
         MDCListFoundation.prototype.setSingleSelectionAtIndex_ = function (index) {
             if (this.selectedIndex_ === index) {
                 return;
             }
-            var selectedClassName = cssClasses$3.LIST_ITEM_SELECTED_CLASS;
+            var selectedClassName = cssClasses$n.LIST_ITEM_SELECTED_CLASS;
             if (this.useActivatedClass_) {
-                selectedClassName = cssClasses$3.LIST_ITEM_ACTIVATED_CLASS;
+                selectedClassName = cssClasses$n.LIST_ITEM_ACTIVATED_CLASS;
             }
-            if (this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
+            if (this.selectedIndex_ !== numbers$9.UNSET_INDEX) {
                 this.adapter.removeClassForElementIndex(this.selectedIndex_, selectedClassName);
             }
             this.setAriaForSingleSelectionAtIndex_(index);
             this.setTabindexAtIndex(index);
-            if (index !== numbers$2.UNSET_INDEX) {
+            if (index !== numbers$9.UNSET_INDEX) {
                 this.adapter.addClassForElementIndex(index, selectedClassName);
             }
             this.selectedIndex_ = index;
@@ -3108,16 +3108,16 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCListFoundation.prototype.setAriaForSingleSelectionAtIndex_ = function (index) {
             // Detect the presence of aria-current and get the value only during list
             // initialization when it is in unset state.
-            if (this.selectedIndex_ === numbers$2.UNSET_INDEX) {
+            if (this.selectedIndex_ === numbers$9.UNSET_INDEX) {
                 this.ariaCurrentAttrValue_ =
-                    this.adapter.getAttributeForElementIndex(index, strings$2.ARIA_CURRENT);
+                    this.adapter.getAttributeForElementIndex(index, strings$r.ARIA_CURRENT);
             }
             var isAriaCurrent = this.ariaCurrentAttrValue_ !== null;
-            var ariaAttribute = isAriaCurrent ? strings$2.ARIA_CURRENT : strings$2.ARIA_SELECTED;
-            if (this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
+            var ariaAttribute = isAriaCurrent ? strings$r.ARIA_CURRENT : strings$r.ARIA_SELECTED;
+            if (this.selectedIndex_ !== numbers$9.UNSET_INDEX) {
                 this.adapter.setAttributeForElementIndex(this.selectedIndex_, ariaAttribute, 'false');
             }
-            if (index !== numbers$2.UNSET_INDEX) {
+            if (index !== numbers$9.UNSET_INDEX) {
                 var ariaAttributeValue = isAriaCurrent ? this.ariaCurrentAttrValue_ : 'true';
                 this.adapter.setAttributeForElementIndex(index, ariaAttribute, ariaAttributeValue);
             }
@@ -3126,7 +3126,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Returns the attribute to use for indicating selection status.
          */
         MDCListFoundation.prototype.getSelectionAttribute = function () {
-            return this.useSelectedAttr_ ? strings$2.ARIA_SELECTED : strings$2.ARIA_CHECKED;
+            return this.useSelectedAttr_ ? strings$r.ARIA_SELECTED : strings$r.ARIA_CHECKED;
         };
         /**
          * Toggles radio at give index. Radio doesn't change the checked state if it
@@ -3135,7 +3135,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCListFoundation.prototype.setRadioAtIndex_ = function (index) {
             var selectionAttribute = this.getSelectionAttribute();
             this.adapter.setCheckedCheckboxOrRadioAtIndex(index, true);
-            if (this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
+            if (this.selectedIndex_ !== numbers$9.UNSET_INDEX) {
                 this.adapter.setAttributeForElementIndex(this.selectedIndex_, selectionAttribute, 'false');
             }
             this.adapter.setAttributeForElementIndex(index, selectionAttribute, 'true');
@@ -3154,7 +3154,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.selectedIndex_ = index;
         };
         MDCListFoundation.prototype.setTabindexAtIndex = function (index) {
-            if (this.focusedItemIndex === numbers$2.UNSET_INDEX && index !== 0) {
+            if (this.focusedItemIndex === numbers$9.UNSET_INDEX && index !== 0) {
                 // If some list item was selected set first list item's tabindex to -1.
                 // Generally, tabindex is set to 0 on first list item of list that has no
                 // preselected items.
@@ -3170,7 +3170,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 this.selectedIndex_ !== index) {
                 this.adapter.setAttributeForElementIndex(this.selectedIndex_, 'tabindex', '-1');
             }
-            if (index !== numbers$2.UNSET_INDEX) {
+            if (index !== numbers$9.UNSET_INDEX) {
                 this.adapter.setAttributeForElementIndex(index, 'tabindex', '0');
             }
         };
@@ -3190,7 +3190,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             var targetIndex = this.focusedItemIndex >= 0 ? this.focusedItemIndex : 0;
             if (this.isSelectableList_()) {
                 if (typeof this.selectedIndex_ === 'number' &&
-                    this.selectedIndex_ !== numbers$2.UNSET_INDEX) {
+                    this.selectedIndex_ !== numbers$9.UNSET_INDEX) {
                     targetIndex = this.selectedIndex_;
                 }
                 else if (isNumberArray(this.selectedIndex_) &&
@@ -3218,7 +3218,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                     throw new Error("MDCListFoundation: Expected array of index for checkbox based list but got number: " + index);
                 }
                 return this.isIndexInRange_(index) ||
-                    this.isSingleSelectionList_ && index === numbers$2.UNSET_INDEX;
+                    this.isSingleSelectionList_ && index === numbers$9.UNSET_INDEX;
             }
             else {
                 return false;
@@ -3252,7 +3252,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.adapter.setAttributeForElementIndex(index, selectionAttribute, isChecked ? 'true' : 'false');
             // If none of the checkbox items are selected and selectedIndex is not
             // initialized then provide a default value.
-            var selectedIndexes = this.selectedIndex_ === numbers$2.UNSET_INDEX ?
+            var selectedIndexes = this.selectedIndex_ === numbers$9.UNSET_INDEX ?
                 [] :
                 this.selectedIndex_.slice();
             if (isChecked) {
@@ -3277,7 +3277,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 // Otherwise select all enabled options.
                 var allIndexes = [];
                 for (var i = 0; i < count; i++) {
-                    if (!this.adapter.listItemAtIndexHasClass(i, cssClasses$3.LIST_ITEM_DISABLED_CLASS) ||
+                    if (!this.adapter.listItemAtIndexHasClass(i, cssClasses$n.LIST_ITEM_DISABLED_CLASS) ||
                         currentlySelectedIndexes.indexOf(i) > -1) {
                         allIndexes.push(i);
                     }
@@ -3309,7 +3309,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 nextChar: nextChar,
                 sortedIndexByFirstChar: this.sortedIndexByFirstChar,
                 skipFocus: skipFocus,
-                isItemAtIndexDisabled: function (index) { return _this.adapter.listItemAtIndexHasClass(index, cssClasses$3.LIST_ITEM_DISABLED_CLASS); }
+                isItemAtIndexDisabled: function (index) { return _this.adapter.listItemAtIndexHasClass(index, cssClasses$n.LIST_ITEM_DISABLED_CLASS); }
             };
             return matchItem(opts, this.typeaheadState);
         };
@@ -3367,7 +3367,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         });
         Object.defineProperty(MDCList.prototype, "listElements", {
             get: function () {
-                return Array.from(this.root.querySelectorAll("." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS]));
+                return Array.from(this.root.querySelectorAll("." + this.classNameMap[cssClasses$n.LIST_ITEM_CLASS]));
             },
             enumerable: true,
             configurable: true
@@ -3425,7 +3425,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 evolutionAttribute in this.root.dataset;
             this.classNameMap = this.isEvolutionEnabled ?
                 evolutionClassNameMap :
-                Object.values(cssClasses$3)
+                Object.values(cssClasses$n)
                     .reduce(function (obj, className) {
                     obj[className] = className;
                     return obj;
@@ -3449,10 +3449,10 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.unlisten('focusout', this.focusOutEventListener);
         };
         MDCList.prototype.layout = function () {
-            var direction = this.root.getAttribute(strings$2.ARIA_ORIENTATION);
-            this.vertical = direction !== strings$2.ARIA_ORIENTATION_HORIZONTAL;
-            var itemSelector = "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + ":not([tabindex])";
-            var childSelector = "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + " " + strings$2.FOCUSABLE_CHILD_ELEMENTS;
+            var direction = this.root.getAttribute(strings$r.ARIA_ORIENTATION);
+            this.vertical = direction !== strings$r.ARIA_ORIENTATION_HORIZONTAL;
+            var itemSelector = "." + this.classNameMap[cssClasses$n.LIST_ITEM_CLASS] + ":not([tabindex])";
+            var childSelector = "." + this.classNameMap[cssClasses$n.LIST_ITEM_CLASS] + " " + strings$r.FOCUSABLE_CHILD_ELEMENTS;
             // List items need to have at least tabindex=-1 to be focusable.
             Array.prototype.forEach.call(this.root.querySelectorAll(itemSelector), function (el) {
                 el.setAttribute('tabindex', '-1');
@@ -3473,11 +3473,11 @@ var TropicBirdModule = (function (exports, sargasso) {
          */
         MDCList.prototype.getPrimaryText = function (item) {
             var _a;
-            var primaryText = item.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_PRIMARY_TEXT_CLASS]);
+            var primaryText = item.querySelector("." + this.classNameMap[cssClasses$n.LIST_ITEM_PRIMARY_TEXT_CLASS]);
             if (this.isEvolutionEnabled || primaryText) {
                 return (_a = primaryText === null || primaryText === void 0 ? void 0 : primaryText.textContent) !== null && _a !== void 0 ? _a : '';
             }
-            var singleLineText = item.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_TEXT_CLASS]);
+            var singleLineText = item.querySelector("." + this.classNameMap[cssClasses$n.LIST_ITEM_TEXT_CLASS]);
             return (singleLineText && singleLineText.textContent) || '';
         };
         /**
@@ -3486,10 +3486,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCList.prototype.initializeListType = function () {
             var _this = this;
             this.isInteractive =
-                matches(this.root, strings$2.ARIA_INTERACTIVE_ROLES_SELECTOR);
+                matches(this.root, strings$r.ARIA_INTERACTIVE_ROLES_SELECTOR);
             if (this.isEvolutionEnabled && this.isInteractive) {
-                var selection = Array.from(this.root.querySelectorAll(strings$2.SELECTED_ITEM_SELECTOR), function (listItem) { return _this.listElements.indexOf(listItem); });
-                if (matches(this.root, strings$2.ARIA_MULTI_SELECTABLE_SELECTOR)) {
+                var selection = Array.from(this.root.querySelectorAll(strings$r.SELECTED_ITEM_SELECTOR), function (listItem) { return _this.listElements.indexOf(listItem); });
+                if (matches(this.root, strings$r.ARIA_MULTI_SELECTABLE_SELECTOR)) {
                     this.selectedIndex = selection;
                 }
                 else if (selection.length > 0) {
@@ -3497,10 +3497,10 @@ var TropicBirdModule = (function (exports, sargasso) {
                 }
                 return;
             }
-            var checkboxListItems = this.root.querySelectorAll(strings$2.ARIA_ROLE_CHECKBOX_SELECTOR);
-            var radioSelectedListItem = this.root.querySelector(strings$2.ARIA_CHECKED_RADIO_SELECTOR);
+            var checkboxListItems = this.root.querySelectorAll(strings$r.ARIA_ROLE_CHECKBOX_SELECTOR);
+            var radioSelectedListItem = this.root.querySelector(strings$r.ARIA_CHECKED_RADIO_SELECTOR);
             if (checkboxListItems.length) {
-                var preselectedItems = this.root.querySelectorAll(strings$2.ARIA_CHECKED_CHECKBOX_SELECTOR);
+                var preselectedItems = this.root.querySelectorAll(strings$r.ARIA_CHECKED_CHECKBOX_SELECTOR);
                 this.selectedIndex = Array.from(preselectedItems, function (listItem) { return _this.listElements.indexOf(listItem); });
             }
             else if (radioSelectedListItem) {
@@ -3558,15 +3558,15 @@ var TropicBirdModule = (function (exports, sargasso) {
                 },
                 hasCheckboxAtIndex: function (index) {
                     var listItem = _this.listElements[index];
-                    return !!listItem.querySelector(strings$2.CHECKBOX_SELECTOR);
+                    return !!listItem.querySelector(strings$r.CHECKBOX_SELECTOR);
                 },
                 hasRadioAtIndex: function (index) {
                     var listItem = _this.listElements[index];
-                    return !!listItem.querySelector(strings$2.RADIO_SELECTOR);
+                    return !!listItem.querySelector(strings$r.RADIO_SELECTOR);
                 },
                 isCheckboxCheckedAtIndex: function (index) {
                     var listItem = _this.listElements[index];
-                    var toggleEl = listItem.querySelector(strings$2.CHECKBOX_SELECTOR);
+                    var toggleEl = listItem.querySelector(strings$r.CHECKBOX_SELECTOR);
                     return toggleEl.checked;
                 },
                 isFocusInsideList: function () {
@@ -3578,7 +3578,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                     return _this.listElements[index].classList.contains(_this.classNameMap[className]);
                 },
                 notifyAction: function (index) {
-                    _this.emit(strings$2.ACTION_EVENT, { index: index }, /** shouldBubble */ true);
+                    _this.emit(strings$r.ACTION_EVENT, { index: index }, /** shouldBubble */ true);
                 },
                 removeClassForElementIndex: function (index, className) {
                     var element = _this.listElements[index];
@@ -3594,7 +3594,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 },
                 setCheckedCheckboxOrRadioAtIndex: function (index, isChecked) {
                     var listItem = _this.listElements[index];
-                    var toggleEl = listItem.querySelector(strings$2.CHECKBOX_RADIO_SELECTOR);
+                    var toggleEl = listItem.querySelector(strings$r.CHECKBOX_RADIO_SELECTOR);
                     toggleEl.checked = isChecked;
                     var event = document.createEvent('Event');
                     event.initEvent('change', true, true);
@@ -3602,7 +3602,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 },
                 setTabIndexForListItemChildren: function (listItemIndex, tabIndexValue) {
                     var element = _this.listElements[listItemIndex];
-                    var selector = "." + _this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + " " + strings$2.CHILD_ELEMENTS_TO_TOGGLE_TABINDEX;
+                    var selector = "." + _this.classNameMap[cssClasses$n.LIST_ITEM_CLASS] + " " + strings$r.CHILD_ELEMENTS_TO_TOGGLE_TABINDEX;
                     Array.prototype.forEach.call(element.querySelectorAll(selector), function (el) {
                         el.setAttribute('tabindex', tabIndexValue);
                     });
@@ -3616,7 +3616,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          */
         MDCList.prototype.ensureFocusable = function () {
             if (this.isEvolutionEnabled && this.isInteractive) {
-                if (!this.root.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + "[tabindex=\"0\"]")) {
+                if (!this.root.querySelector("." + this.classNameMap[cssClasses$n.LIST_ITEM_CLASS] + "[tabindex=\"0\"]")) {
                     var index = this.initialFocusIndex();
                     if (index !== -1) {
                         this.listElements[index].tabIndex = 0;
@@ -3629,10 +3629,10 @@ var TropicBirdModule = (function (exports, sargasso) {
                 return this.selectedIndex[0];
             }
             if (typeof this.selectedIndex === 'number' &&
-                this.selectedIndex !== numbers$2.UNSET_INDEX) {
+                this.selectedIndex !== numbers$9.UNSET_INDEX) {
                 return this.selectedIndex;
             }
-            var el = this.root.querySelector("." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + ":not(." + this.classNameMap[cssClasses$3.LIST_ITEM_DISABLED_CLASS] + ")");
+            var el = this.root.querySelector("." + this.classNameMap[cssClasses$n.LIST_ITEM_CLASS] + ":not(." + this.classNameMap[cssClasses$n.LIST_ITEM_DISABLED_CLASS] + ")");
             if (el === null) {
                 return -1;
             }
@@ -3643,10 +3643,10 @@ var TropicBirdModule = (function (exports, sargasso) {
          * if there is no list item
          */
         MDCList.prototype.getListItemIndex = function (el) {
-            var nearestParent = closest(el, "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS] + ", ." + this.classNameMap[cssClasses$3.ROOT]);
+            var nearestParent = closest(el, "." + this.classNameMap[cssClasses$n.LIST_ITEM_CLASS] + ", ." + this.classNameMap[cssClasses$n.ROOT]);
             // Get the index of the element if it is a list item.
             if (nearestParent &&
-                matches(nearestParent, "." + this.classNameMap[cssClasses$3.LIST_ITEM_CLASS])) {
+                matches(nearestParent, "." + this.classNameMap[cssClasses$n.LIST_ITEM_CLASS])) {
                 return this.listElements.indexOf(nearestParent);
             }
             return -1;
@@ -3674,7 +3674,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCList.prototype.handleKeydownEvent = function (evt) {
             var index = this.getListItemIndex(evt.target);
             var target = evt.target;
-            this.foundation.handleKeydown(evt, target.classList.contains(this.classNameMap[cssClasses$3.LIST_ITEM_CLASS]), index);
+            this.foundation.handleKeydown(evt, target.classList.contains(this.classNameMap[cssClasses$n.LIST_ITEM_CLASS]), index);
         };
         /**
          * Used to figure out which element was clicked before sending the event to
@@ -3685,7 +3685,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             var target = evt.target;
             // Toggle the checkbox only if it's not the target of the event, or the
             // checkbox will have 2 change events.
-            var toggleCheckbox = !matches(target, strings$2.CHECKBOX_RADIO_SELECTOR);
+            var toggleCheckbox = !matches(target, strings$r.CHECKBOX_RADIO_SELECTOR);
             this.foundation.handleClick(index, toggleCheckbox);
         };
         return MDCList;
@@ -3713,7 +3713,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$4 = {
+    var cssClasses$m = {
         ANIMATE: 'mdc-drawer--animate',
         CLOSING: 'mdc-drawer--closing',
         DISMISSIBLE: 'mdc-drawer--dismissible',
@@ -3722,7 +3722,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         OPENING: 'mdc-drawer--opening',
         ROOT: 'mdc-drawer',
     };
-    var strings$3 = {
+    var strings$q = {
         APP_CONTENT_SELECTOR: '.mdc-drawer-app-content',
         CLOSE_EVENT: 'MDCDrawer:closed',
         OPEN_EVENT: 'MDCDrawer:opened',
@@ -3761,14 +3761,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCDismissibleDrawerFoundation, "strings", {
             get: function () {
-                return strings$3;
+                return strings$q;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCDismissibleDrawerFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$4;
+                return cssClasses$m;
             },
             enumerable: true,
             configurable: true
@@ -3810,11 +3810,11 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (this.isOpen() || this.isOpening() || this.isClosing()) {
                 return;
             }
-            this.adapter.addClass(cssClasses$4.OPEN);
-            this.adapter.addClass(cssClasses$4.ANIMATE);
+            this.adapter.addClass(cssClasses$m.OPEN);
+            this.adapter.addClass(cssClasses$m.ANIMATE);
             // Wait a frame once display is no longer "none", to establish basis for animation
             this.runNextAnimationFrame_(function () {
-                _this.adapter.addClass(cssClasses$4.OPENING);
+                _this.adapter.addClass(cssClasses$m.OPENING);
             });
             this.adapter.saveFocus();
         };
@@ -3825,29 +3825,29 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (!this.isOpen() || this.isOpening() || this.isClosing()) {
                 return;
             }
-            this.adapter.addClass(cssClasses$4.CLOSING);
+            this.adapter.addClass(cssClasses$m.CLOSING);
         };
         /**
          * Returns true if the drawer is in the open position.
          * @return true if drawer is in open state.
          */
         MDCDismissibleDrawerFoundation.prototype.isOpen = function () {
-            return this.adapter.hasClass(cssClasses$4.OPEN);
+            return this.adapter.hasClass(cssClasses$m.OPEN);
         };
         /**
          * Returns true if the drawer is animating open.
          * @return true if drawer is animating open.
          */
         MDCDismissibleDrawerFoundation.prototype.isOpening = function () {
-            return this.adapter.hasClass(cssClasses$4.OPENING) ||
-                this.adapter.hasClass(cssClasses$4.ANIMATE);
+            return this.adapter.hasClass(cssClasses$m.OPENING) ||
+                this.adapter.hasClass(cssClasses$m.ANIMATE);
         };
         /**
          * Returns true if the drawer is animating closed.
          * @return true if drawer is animating closed.
          */
         MDCDismissibleDrawerFoundation.prototype.isClosing = function () {
-            return this.adapter.hasClass(cssClasses$4.CLOSING);
+            return this.adapter.hasClass(cssClasses$m.CLOSING);
         };
         /**
          * Keydown handler to close drawer when key is escape.
@@ -3863,7 +3863,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Handles the `transitionend` event when the drawer finishes opening/closing.
          */
         MDCDismissibleDrawerFoundation.prototype.handleTransitionEnd = function (evt) {
-            var OPENING = cssClasses$4.OPENING, CLOSING = cssClasses$4.CLOSING, OPEN = cssClasses$4.OPEN, ANIMATE = cssClasses$4.ANIMATE, ROOT = cssClasses$4.ROOT;
+            var OPENING = cssClasses$m.OPENING, CLOSING = cssClasses$m.CLOSING, OPEN = cssClasses$m.OPEN, ANIMATE = cssClasses$m.ANIMATE, ROOT = cssClasses$m.ROOT;
             // In Edge, transitionend on ripple pseudo-elements yields a target without classList, so check for Element first.
             var isRootElement = this.isElement_(evt.target) &&
                 this.adapter.elementHasClass(evt.target, ROOT);
@@ -3983,7 +3983,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$5 = MDCDismissibleDrawerFoundation.cssClasses, strings$4 = MDCDismissibleDrawerFoundation.strings;
+    var cssClasses$l = MDCDismissibleDrawerFoundation.cssClasses, strings$p = MDCDismissibleDrawerFoundation.strings;
     /**
      * @events `MDCDrawer:closed {}` Emits when the navigation drawer has closed.
      * @events `MDCDrawer:opened {}` Emits when the navigation drawer has opened.
@@ -4037,8 +4037,8 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCDrawer.prototype.initialSyncWithDOM = function () {
             var _this = this;
-            var MODAL = cssClasses$5.MODAL;
-            var SCRIM_SELECTOR = strings$4.SCRIM_SELECTOR;
+            var MODAL = cssClasses$l.MODAL;
+            var SCRIM_SELECTOR = strings$p.SCRIM_SELECTOR;
             this.scrim_ = this.root.parentNode
                 .querySelector(SCRIM_SELECTOR);
             if (this.scrim_ && this.root.classList.contains(MODAL)) {
@@ -4046,7 +4046,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                     return _this.foundation.handleScrimClick();
                 };
                 this.scrim_.addEventListener('click', this.handleScrimClick_);
-                this.focusTrap_ = createFocusTrapInstance(this.root, this.focusTrapFactory_);
+                this.focusTrap_ = createFocusTrapInstance$1(this.root, this.focusTrapFactory_);
             }
             this.handleKeydown_ = function (evt) { return _this.foundation.handleKeydown(evt); };
             this.handleTransitionEnd_ = function (evt) {
@@ -4061,7 +4061,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (this.list_) {
                 this.list_.destroy();
             }
-            var MODAL = cssClasses$5.MODAL;
+            var MODAL = cssClasses$l.MODAL;
             if (this.scrim_ && this.handleScrimClick_ &&
                 this.root.classList.contains(MODAL)) {
                 this.scrim_.removeEventListener('click', this.handleScrimClick_);
@@ -4096,16 +4096,16 @@ var TropicBirdModule = (function (exports, sargasso) {
                     }
                 },
                 notifyClose: function () {
-                    return _this.emit(strings$4.CLOSE_EVENT, {}, true /* shouldBubble */);
+                    return _this.emit(strings$p.CLOSE_EVENT, {}, true /* shouldBubble */);
                 },
                 notifyOpen: function () {
-                    return _this.emit(strings$4.OPEN_EVENT, {}, true /* shouldBubble */);
+                    return _this.emit(strings$p.OPEN_EVENT, {}, true /* shouldBubble */);
                 },
                 trapFocus: function () { return _this.focusTrap_.trapFocus(); },
                 releaseFocus: function () { return _this.focusTrap_.releaseFocus(); },
             };
             // tslint:enable:object-literal-sort-keys
-            var DISMISSIBLE = cssClasses$5.DISMISSIBLE, MODAL = cssClasses$5.MODAL;
+            var DISMISSIBLE = cssClasses$l.DISMISSIBLE, MODAL = cssClasses$l.MODAL;
             if (this.root.classList.contains(DISMISSIBLE)) {
                 return new MDCDismissibleDrawerFoundation(adapter);
             }
@@ -4164,7 +4164,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    function createFocusTrapInstance$1(surfaceEl, focusTrapFactory, initialFocusEl) {
+    function createFocusTrapInstance(surfaceEl, focusTrapFactory, initialFocusEl) {
         return focusTrapFactory(surfaceEl, { initialFocusEl: initialFocusEl });
     }
     function isScrollable(el) {
@@ -4302,7 +4302,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$6 = {
+    var cssClasses$k = {
         CLOSING: 'mdc-dialog--closing',
         OPEN: 'mdc-dialog--open',
         OPENING: 'mdc-dialog--opening',
@@ -4319,7 +4319,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         // obscured "underneath" the footer.
         SCROLL_DIVIDER_FOOTER: 'mdc-dialog-scroll-divider-footer',
     };
-    var strings$5 = {
+    var strings$o = {
         ACTION_ATTRIBUTE: 'data-mdc-dialog-action',
         BUTTON_DEFAULT_ATTRIBUTE: 'data-mdc-dialog-button-default',
         BUTTON_SELECTOR: '.mdc-dialog__button',
@@ -4339,7 +4339,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         ].join(', '),
         SURFACE_SELECTOR: '.mdc-dialog__surface',
     };
-    var numbers$3 = {
+    var numbers$8 = {
         DIALOG_ANIMATION_CLOSE_TIME_MS: 75,
         DIALOG_ANIMATION_OPEN_TIME_MS: 150,
     };
@@ -4379,11 +4379,11 @@ var TropicBirdModule = (function (exports, sargasso) {
             _this.animationFrame = 0;
             _this.animationTimer = 0;
             _this.layoutFrame = 0;
-            _this.escapeKeyAction = strings$5.CLOSE_ACTION;
-            _this.scrimClickAction = strings$5.CLOSE_ACTION;
+            _this.escapeKeyAction = strings$o.CLOSE_ACTION;
+            _this.scrimClickAction = strings$o.CLOSE_ACTION;
             _this.autoStackButtons = true;
             _this.areButtonsStacked = false;
-            _this.suppressDefaultPressSelector = strings$5.SUPPRESS_DEFAULT_PRESS_SELECTOR;
+            _this.suppressDefaultPressSelector = strings$o.SUPPRESS_DEFAULT_PRESS_SELECTOR;
             _this.animFrame = new AnimationFrame();
             _this.contentScrollHandler = function () {
                 _this.handleScrollEvent();
@@ -4392,21 +4392,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCDialogFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$6;
+                return cssClasses$k;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCDialogFoundation, "strings", {
             get: function () {
-                return strings$5;
+                return strings$o;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCDialogFoundation, "numbers", {
             get: function () {
-                return numbers$3;
+                return numbers$8;
             },
             enumerable: true,
             configurable: true
@@ -4442,14 +4442,14 @@ var TropicBirdModule = (function (exports, sargasso) {
             configurable: true
         });
         MDCDialogFoundation.prototype.init = function () {
-            if (this.adapter.hasClass(cssClasses$6.STACKED)) {
+            if (this.adapter.hasClass(cssClasses$k.STACKED)) {
                 this.setAutoStackButtons(false);
             }
-            this.isFullscreen = this.adapter.hasClass(cssClasses$6.FULLSCREEN);
+            this.isFullscreen = this.adapter.hasClass(cssClasses$k.FULLSCREEN);
         };
         MDCDialogFoundation.prototype.destroy = function () {
             if (this.dialogOpen) {
-                this.close(strings$5.DESTROY_ACTION);
+                this.close(strings$o.DESTROY_ACTION);
             }
             if (this.animationTimer) {
                 clearTimeout(this.animationTimer);
@@ -4467,21 +4467,21 @@ var TropicBirdModule = (function (exports, sargasso) {
             var _this = this;
             this.dialogOpen = true;
             this.adapter.notifyOpening();
-            this.adapter.addClass(cssClasses$6.OPENING);
+            this.adapter.addClass(cssClasses$k.OPENING);
             if (this.isFullscreen && this.adapter.isContentScrollable()) {
                 this.adapter.registerContentEventHandler('scroll', this.contentScrollHandler);
             }
             // Wait a frame once display is no longer "none", to establish basis for
             // animation
             this.runNextAnimationFrame(function () {
-                _this.adapter.addClass(cssClasses$6.OPEN);
-                _this.adapter.addBodyClass(cssClasses$6.SCROLL_LOCK);
+                _this.adapter.addClass(cssClasses$k.OPEN);
+                _this.adapter.addBodyClass(cssClasses$k.SCROLL_LOCK);
                 _this.layout();
                 _this.animationTimer = setTimeout(function () {
                     _this.handleAnimationTimerEnd();
                     _this.adapter.trapFocus(_this.adapter.getInitialFocusEl());
                     _this.adapter.notifyOpened();
-                }, numbers$3.DIALOG_ANIMATION_OPEN_TIME_MS);
+                }, numbers$8.DIALOG_ANIMATION_OPEN_TIME_MS);
             });
         };
         MDCDialogFoundation.prototype.close = function (action) {
@@ -4494,9 +4494,9 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             this.dialogOpen = false;
             this.adapter.notifyClosing(action);
-            this.adapter.addClass(cssClasses$6.CLOSING);
-            this.adapter.removeClass(cssClasses$6.OPEN);
-            this.adapter.removeBodyClass(cssClasses$6.SCROLL_LOCK);
+            this.adapter.addClass(cssClasses$k.CLOSING);
+            this.adapter.removeClass(cssClasses$k.OPEN);
+            this.adapter.removeBodyClass(cssClasses$k.SCROLL_LOCK);
             if (this.isFullscreen && this.adapter.isContentScrollable()) {
                 this.adapter.deregisterContentEventHandler('scroll', this.contentScrollHandler);
             }
@@ -4507,7 +4507,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 _this.adapter.releaseFocus();
                 _this.handleAnimationTimerEnd();
                 _this.adapter.notifyClosed(action);
-            }, numbers$3.DIALOG_ANIMATION_CLOSE_TIME_MS);
+            }, numbers$8.DIALOG_ANIMATION_CLOSE_TIME_MS);
         };
         MDCDialogFoundation.prototype.isOpen = function () {
             return this.dialogOpen;
@@ -4548,7 +4548,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         /** Handles click on the dialog root element. */
         MDCDialogFoundation.prototype.handleClick = function (evt) {
-            var isScrim = this.adapter.eventTargetMatches(evt.target, strings$5.SCRIM_SELECTOR);
+            var isScrim = this.adapter.eventTargetMatches(evt.target, strings$o.SCRIM_SELECTOR);
             // Check for scrim click first since it doesn't require querying ancestors.
             if (isScrim && this.scrimClickAction !== '') {
                 this.close(this.scrimClickAction);
@@ -4622,8 +4622,8 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCDialogFoundation.prototype.handleAnimationTimerEnd = function () {
             this.animationTimer = 0;
-            this.adapter.removeClass(cssClasses$6.OPENING);
-            this.adapter.removeClass(cssClasses$6.CLOSING);
+            this.adapter.removeClass(cssClasses$k.OPENING);
+            this.adapter.removeClass(cssClasses$k.CLOSING);
         };
         /**
          * Runs the given logic on the next animation frame, using setTimeout to
@@ -4640,10 +4640,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCDialogFoundation.prototype.detectStackedButtons = function () {
             // Remove the class first to let us measure the buttons' natural positions.
-            this.adapter.removeClass(cssClasses$6.STACKED);
+            this.adapter.removeClass(cssClasses$k.STACKED);
             var areButtonsStacked = this.adapter.areButtonsStacked();
             if (areButtonsStacked) {
-                this.adapter.addClass(cssClasses$6.STACKED);
+                this.adapter.addClass(cssClasses$k.STACKED);
             }
             if (areButtonsStacked !== this.areButtonsStacked) {
                 this.adapter.reverseButtons();
@@ -4653,9 +4653,9 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCDialogFoundation.prototype.toggleScrollableClasses = function () {
             // Remove the class first to let us measure the natural height of the
             // content.
-            this.adapter.removeClass(cssClasses$6.SCROLLABLE);
+            this.adapter.removeClass(cssClasses$k.SCROLLABLE);
             if (this.adapter.isContentScrollable()) {
-                this.adapter.addClass(cssClasses$6.SCROLLABLE);
+                this.adapter.addClass(cssClasses$k.SCROLLABLE);
                 if (this.isFullscreen) {
                     // If dialog is full-screen and scrollable, check if a scroll divider
                     // should be shown.
@@ -4666,18 +4666,18 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCDialogFoundation.prototype.toggleScrollDividerHeader = function () {
             if (!this.adapter.isScrollableContentAtTop()) {
-                this.adapter.addClass(cssClasses$6.SCROLL_DIVIDER_HEADER);
+                this.adapter.addClass(cssClasses$k.SCROLL_DIVIDER_HEADER);
             }
-            else if (this.adapter.hasClass(cssClasses$6.SCROLL_DIVIDER_HEADER)) {
-                this.adapter.removeClass(cssClasses$6.SCROLL_DIVIDER_HEADER);
+            else if (this.adapter.hasClass(cssClasses$k.SCROLL_DIVIDER_HEADER)) {
+                this.adapter.removeClass(cssClasses$k.SCROLL_DIVIDER_HEADER);
             }
         };
         MDCDialogFoundation.prototype.toggleScrollDividerFooter = function () {
             if (!this.adapter.isScrollableContentAtBottom()) {
-                this.adapter.addClass(cssClasses$6.SCROLL_DIVIDER_FOOTER);
+                this.adapter.addClass(cssClasses$k.SCROLL_DIVIDER_FOOTER);
             }
-            else if (this.adapter.hasClass(cssClasses$6.SCROLL_DIVIDER_FOOTER)) {
-                this.adapter.removeClass(cssClasses$6.SCROLL_DIVIDER_FOOTER);
+            else if (this.adapter.hasClass(cssClasses$k.SCROLL_DIVIDER_FOOTER)) {
+                this.adapter.removeClass(cssClasses$k.SCROLL_DIVIDER_FOOTER);
             }
         };
         return MDCDialogFoundation;
@@ -4705,7 +4705,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$6 = MDCDialogFoundation.strings;
+    var strings$n = MDCDialogFoundation.strings;
     var MDCDialog = /** @class */ (function (_super) {
         __extends(MDCDialog, _super);
         function MDCDialog() {
@@ -4754,15 +4754,15 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCDialog.prototype.initialize = function (focusTrapFactory) {
             var e_1, _a;
             if (focusTrapFactory === void 0) { focusTrapFactory = function (el, focusOptions) { return new FocusTrap(el, focusOptions); }; }
-            var container = this.root.querySelector(strings$6.CONTAINER_SELECTOR);
+            var container = this.root.querySelector(strings$n.CONTAINER_SELECTOR);
             if (!container) {
-                throw new Error("Dialog component requires a " + strings$6.CONTAINER_SELECTOR + " container element");
+                throw new Error("Dialog component requires a " + strings$n.CONTAINER_SELECTOR + " container element");
             }
             this.container = container;
             this.content =
-                this.root.querySelector(strings$6.CONTENT_SELECTOR);
-            this.buttons = [].slice.call(this.root.querySelectorAll(strings$6.BUTTON_SELECTOR));
-            this.defaultButton = this.root.querySelector("[" + strings$6.BUTTON_DEFAULT_ATTRIBUTE + "]");
+                this.root.querySelector(strings$n.CONTENT_SELECTOR);
+            this.buttons = [].slice.call(this.root.querySelectorAll(strings$n.BUTTON_SELECTOR));
+            this.defaultButton = this.root.querySelector("[" + strings$n.BUTTON_DEFAULT_ATTRIBUTE + "]");
             this.focusTrapFactory = focusTrapFactory;
             this.buttonRipples = [];
             try {
@@ -4781,7 +4781,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCDialog.prototype.initialSyncWithDOM = function () {
             var _this = this;
-            this.focusTrap = createFocusTrapInstance$1(this.container, this.focusTrapFactory, this.getInitialFocusEl() || undefined);
+            this.focusTrap = createFocusTrapInstance(this.container, this.focusTrapFactory, this.getInitialFocusEl() || undefined);
             this.handleClick = this.foundation.handleClick.bind(this.foundation);
             this.handleKeydown = this.foundation.handleKeydown.bind(this.foundation);
             this.handleDocumentKeydown =
@@ -4802,14 +4802,14 @@ var TropicBirdModule = (function (exports, sargasso) {
             };
             this.listen('click', this.handleClick);
             this.listen('keydown', this.handleKeydown);
-            this.listen(strings$6.OPENING_EVENT, this.handleOpening);
-            this.listen(strings$6.CLOSING_EVENT, this.handleClosing);
+            this.listen(strings$n.OPENING_EVENT, this.handleOpening);
+            this.listen(strings$n.CLOSING_EVENT, this.handleClosing);
         };
         MDCDialog.prototype.destroy = function () {
             this.unlisten('click', this.handleClick);
             this.unlisten('keydown', this.handleKeydown);
-            this.unlisten(strings$6.OPENING_EVENT, this.handleOpening);
-            this.unlisten(strings$6.CLOSING_EVENT, this.handleClosing);
+            this.unlisten(strings$n.OPENING_EVENT, this.handleOpening);
+            this.unlisten(strings$n.CLOSING_EVENT, this.handleClosing);
             this.handleClosing();
             this.buttonRipples.forEach(function (ripple) {
                 ripple.destroy();
@@ -4846,16 +4846,16 @@ var TropicBirdModule = (function (exports, sargasso) {
                     if (!evt.target) {
                         return '';
                     }
-                    var element = closest(evt.target, "[" + strings$6.ACTION_ATTRIBUTE + "]");
-                    return element && element.getAttribute(strings$6.ACTION_ATTRIBUTE);
+                    var element = closest(evt.target, "[" + strings$n.ACTION_ATTRIBUTE + "]");
+                    return element && element.getAttribute(strings$n.ACTION_ATTRIBUTE);
                 },
                 getInitialFocusEl: function () { return _this.getInitialFocusEl(); },
                 hasClass: function (className) { return _this.root.classList.contains(className); },
                 isContentScrollable: function () { return isScrollable(_this.content); },
-                notifyClosed: function (action) { return _this.emit(strings$6.CLOSED_EVENT, action ? { action: action } : {}); },
-                notifyClosing: function (action) { return _this.emit(strings$6.CLOSING_EVENT, action ? { action: action } : {}); },
-                notifyOpened: function () { return _this.emit(strings$6.OPENED_EVENT, {}); },
-                notifyOpening: function () { return _this.emit(strings$6.OPENING_EVENT, {}); },
+                notifyClosed: function (action) { return _this.emit(strings$n.CLOSED_EVENT, action ? { action: action } : {}); },
+                notifyClosing: function (action) { return _this.emit(strings$n.CLOSING_EVENT, action ? { action: action } : {}); },
+                notifyOpened: function () { return _this.emit(strings$n.OPENED_EVENT, {}); },
+                notifyOpening: function () { return _this.emit(strings$n.OPENING_EVENT, {}); },
                 releaseFocus: function () {
                     _this.focusTrap.releaseFocus();
                 },
@@ -4890,7 +4890,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             return new MDCDialogFoundation(adapter);
         };
         MDCDialog.prototype.getInitialFocusEl = function () {
-            return this.root.querySelector("[" + strings$6.INITIAL_FOCUS_ATTRIBUTE + "]");
+            return this.root.querySelector("[" + strings$n.INITIAL_FOCUS_ATTRIBUTE + "]");
         };
         return MDCDialog;
     }(MDCComponent));
@@ -4940,7 +4940,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$7 = {
+    var cssClasses$j = {
         LABEL_FLOAT_ABOVE: 'mdc-floating-label--float-above',
         LABEL_REQUIRED: 'mdc-floating-label--required',
         LABEL_SHAKE: 'mdc-floating-label--shake',
@@ -4978,7 +4978,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCFloatingLabelFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$7;
+                return cssClasses$j;
             },
             enumerable: true,
             configurable: true
@@ -5158,14 +5158,14 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$7 = {
+    var strings$m = {
         NOTCH_ELEMENT_SELECTOR: '.mdc-notched-outline__notch',
     };
-    var numbers$4 = {
+    var numbers$7 = {
         // This should stay in sync with $mdc-notched-outline-padding * 2.
         NOTCH_ELEMENT_PADDING: 8,
     };
-    var cssClasses$8 = {
+    var cssClasses$i = {
         NO_LABEL: 'mdc-notched-outline--no-label',
         OUTLINE_NOTCHED: 'mdc-notched-outline--notched',
         OUTLINE_UPGRADED: 'mdc-notched-outline--upgraded',
@@ -5200,21 +5200,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCNotchedOutlineFoundation, "strings", {
             get: function () {
-                return strings$7;
+                return strings$m;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCNotchedOutlineFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$8;
+                return cssClasses$i;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCNotchedOutlineFoundation, "numbers", {
             get: function () {
-                return numbers$4;
+                return numbers$7;
             },
             enumerable: true,
             configurable: true
@@ -5242,7 +5242,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCNotchedOutlineFoundation.prototype.notch = function (notchWidth) {
             var OUTLINE_NOTCHED = MDCNotchedOutlineFoundation.cssClasses.OUTLINE_NOTCHED;
             if (notchWidth > 0) {
-                notchWidth += numbers$4.NOTCH_ELEMENT_PADDING; // Add padding from left/right.
+                notchWidth += numbers$7.NOTCH_ELEMENT_PADDING; // Add padding from left/right.
             }
             this.adapter.setNotchWidthProperty(notchWidth);
             this.adapter.addClass(OUTLINE_NOTCHED);
@@ -5290,17 +5290,17 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCNotchedOutline.prototype.initialSyncWithDOM = function () {
             this.notchElement_ =
-                this.root.querySelector(strings$7.NOTCH_ELEMENT_SELECTOR);
+                this.root.querySelector(strings$m.NOTCH_ELEMENT_SELECTOR);
             var label = this.root.querySelector('.' + MDCFloatingLabelFoundation.cssClasses.ROOT);
             if (label) {
                 label.style.transitionDuration = '0s';
-                this.root.classList.add(cssClasses$8.OUTLINE_UPGRADED);
+                this.root.classList.add(cssClasses$i.OUTLINE_UPGRADED);
                 requestAnimationFrame(function () {
                     label.style.transitionDuration = '';
                 });
             }
             else {
-                this.root.classList.add(cssClasses$8.NO_LABEL);
+                this.root.classList.add(cssClasses$i.NO_LABEL);
             }
         };
         /**
@@ -5359,11 +5359,11 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$9 = {
+    var cssClasses$h = {
         ROOT: 'mdc-text-field-character-counter',
     };
-    var strings$8 = {
-        ROOT_SELECTOR: "." + cssClasses$9.ROOT,
+    var strings$l = {
+        ROOT_SELECTOR: "." + cssClasses$h.ROOT,
     };
 
     /**
@@ -5395,14 +5395,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTextFieldCharacterCounterFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$9;
+                return cssClasses$h;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTextFieldCharacterCounterFoundation, "strings", {
             get: function () {
-                return strings$8;
+                return strings$l;
             },
             enumerable: true,
             configurable: true
@@ -5500,7 +5500,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$9 = {
+    var strings$k = {
         ARIA_CONTROLS: 'aria-controls',
         ARIA_DESCRIBEDBY: 'aria-describedby',
         INPUT_SELECTOR: '.mdc-text-field__input',
@@ -5512,7 +5512,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         SUFFIX_SELECTOR: '.mdc-text-field__affix--suffix',
         TRAILING_ICON_SELECTOR: '.mdc-text-field__icon--trailing'
     };
-    var cssClasses$a = {
+    var cssClasses$g = {
         DISABLED: 'mdc-text-field--disabled',
         FOCUSED: 'mdc-text-field--focused',
         HELPER_LINE: 'mdc-text-field-helper-line',
@@ -5525,7 +5525,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         WITH_LEADING_ICON: 'mdc-text-field--with-leading-icon',
         WITH_TRAILING_ICON: 'mdc-text-field--with-trailing-icon',
     };
-    var numbers$5 = {
+    var numbers$6 = {
         LABEL_SCALE: 0.75,
     };
     /**
@@ -5565,7 +5565,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * THE SOFTWARE.
      */
     var POINTERDOWN_EVENTS = ['mousedown', 'touchstart'];
-    var INTERACTION_EVENTS = ['click', 'keydown'];
+    var INTERACTION_EVENTS$2 = ['click', 'keydown'];
     var MDCTextFieldFoundation = /** @class */ (function (_super) {
         __extends(MDCTextFieldFoundation, _super);
         /**
@@ -5596,21 +5596,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTextFieldFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$a;
+                return cssClasses$g;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTextFieldFoundation, "strings", {
             get: function () {
-                return strings$9;
+                return strings$k;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTextFieldFoundation, "numbers", {
             get: function () {
-                return numbers$5;
+                return numbers$6;
             },
             enumerable: true,
             configurable: true
@@ -5697,7 +5697,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             POINTERDOWN_EVENTS.forEach(function (evtType) {
                 _this.adapter.registerInputInteractionHandler(evtType, _this.setPointerXOffset_);
             });
-            INTERACTION_EVENTS.forEach(function (evtType) {
+            INTERACTION_EVENTS$2.forEach(function (evtType) {
                 _this.adapter.registerTextFieldInteractionHandler(evtType, _this.textFieldInteractionHandler_);
             });
             this.validationObserver_ =
@@ -5712,7 +5712,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             POINTERDOWN_EVENTS.forEach(function (evtType) {
                 _this.adapter.deregisterInputInteractionHandler(evtType, _this.setPointerXOffset_);
             });
-            INTERACTION_EVENTS.forEach(function (evtType) {
+            INTERACTION_EVENTS$2.forEach(function (evtType) {
                 _this.adapter.deregisterTextFieldInteractionHandler(evtType, _this.textFieldInteractionHandler_);
             });
             this.adapter.deregisterValidationAttributeChangeHandler(this.validationObserver_);
@@ -5752,7 +5752,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 return;
             }
             if (openNotch) {
-                var labelWidth = this.adapter.getLabelWidth() * numbers$5.LABEL_SCALE;
+                var labelWidth = this.adapter.getLabelWidth() * numbers$6.LABEL_SCALE;
                 this.adapter.notchOutline(labelWidth);
             }
             else {
@@ -5995,10 +5995,10 @@ var TropicBirdModule = (function (exports, sargasso) {
                 var helperTextVisible = this.helperText_.isVisible();
                 var helperTextId = this.helperText_.getId();
                 if (helperTextVisible && helperTextId) {
-                    this.adapter.setInputAttr(strings$9.ARIA_DESCRIBEDBY, helperTextId);
+                    this.adapter.setInputAttr(strings$k.ARIA_DESCRIBEDBY, helperTextId);
                 }
                 else {
-                    this.adapter.removeInputAttr(strings$9.ARIA_DESCRIBEDBY);
+                    this.adapter.removeInputAttr(strings$k.ARIA_DESCRIBEDBY);
                 }
             }
         };
@@ -6093,15 +6093,15 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$b = {
+    var cssClasses$f = {
         HELPER_TEXT_PERSISTENT: 'mdc-text-field-helper-text--persistent',
         HELPER_TEXT_VALIDATION_MSG: 'mdc-text-field-helper-text--validation-msg',
         ROOT: 'mdc-text-field-helper-text',
     };
-    var strings$a = {
+    var strings$j = {
         ARIA_HIDDEN: 'aria-hidden',
         ROLE: 'role',
-        ROOT_SELECTOR: "." + cssClasses$b.ROOT,
+        ROOT_SELECTOR: "." + cssClasses$f.ROOT,
     };
 
     /**
@@ -6133,14 +6133,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTextFieldHelperTextFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$b;
+                return cssClasses$f;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTextFieldHelperTextFoundation, "strings", {
             get: function () {
-                return strings$a;
+                return strings$j;
             },
             enumerable: true,
             configurable: true
@@ -6169,7 +6169,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             return this.adapter.getAttr('id');
         };
         MDCTextFieldHelperTextFoundation.prototype.isVisible = function () {
-            return this.adapter.getAttr(strings$a.ARIA_HIDDEN) !== 'true';
+            return this.adapter.getAttr(strings$j.ARIA_HIDDEN) !== 'true';
         };
         /**
          * Sets the content of the helper text field.
@@ -6178,55 +6178,55 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.adapter.setContent(content);
         };
         MDCTextFieldHelperTextFoundation.prototype.isPersistent = function () {
-            return this.adapter.hasClass(cssClasses$b.HELPER_TEXT_PERSISTENT);
+            return this.adapter.hasClass(cssClasses$f.HELPER_TEXT_PERSISTENT);
         };
         /**
          * @param isPersistent Sets the persistency of the helper text.
          */
         MDCTextFieldHelperTextFoundation.prototype.setPersistent = function (isPersistent) {
             if (isPersistent) {
-                this.adapter.addClass(cssClasses$b.HELPER_TEXT_PERSISTENT);
+                this.adapter.addClass(cssClasses$f.HELPER_TEXT_PERSISTENT);
             }
             else {
-                this.adapter.removeClass(cssClasses$b.HELPER_TEXT_PERSISTENT);
+                this.adapter.removeClass(cssClasses$f.HELPER_TEXT_PERSISTENT);
             }
         };
         /**
          * @return whether the helper text acts as an error validation message.
          */
         MDCTextFieldHelperTextFoundation.prototype.isValidation = function () {
-            return this.adapter.hasClass(cssClasses$b.HELPER_TEXT_VALIDATION_MSG);
+            return this.adapter.hasClass(cssClasses$f.HELPER_TEXT_VALIDATION_MSG);
         };
         /**
          * @param isValidation True to make the helper text act as an error validation message.
          */
         MDCTextFieldHelperTextFoundation.prototype.setValidation = function (isValidation) {
             if (isValidation) {
-                this.adapter.addClass(cssClasses$b.HELPER_TEXT_VALIDATION_MSG);
+                this.adapter.addClass(cssClasses$f.HELPER_TEXT_VALIDATION_MSG);
             }
             else {
-                this.adapter.removeClass(cssClasses$b.HELPER_TEXT_VALIDATION_MSG);
+                this.adapter.removeClass(cssClasses$f.HELPER_TEXT_VALIDATION_MSG);
             }
         };
         /**
          * Makes the helper text visible to the screen reader.
          */
         MDCTextFieldHelperTextFoundation.prototype.showToScreenReader = function () {
-            this.adapter.removeAttr(strings$a.ARIA_HIDDEN);
+            this.adapter.removeAttr(strings$j.ARIA_HIDDEN);
         };
         /**
          * Sets the validity of the helper text based on the input validity.
          */
         MDCTextFieldHelperTextFoundation.prototype.setValidity = function (inputIsValid) {
-            var helperTextIsPersistent = this.adapter.hasClass(cssClasses$b.HELPER_TEXT_PERSISTENT);
-            var helperTextIsValidationMsg = this.adapter.hasClass(cssClasses$b.HELPER_TEXT_VALIDATION_MSG);
+            var helperTextIsPersistent = this.adapter.hasClass(cssClasses$f.HELPER_TEXT_PERSISTENT);
+            var helperTextIsValidationMsg = this.adapter.hasClass(cssClasses$f.HELPER_TEXT_VALIDATION_MSG);
             var validationMsgNeedsDisplay = helperTextIsValidationMsg && !inputIsValid;
             if (validationMsgNeedsDisplay) {
                 this.showToScreenReader();
-                this.adapter.setAttr(strings$a.ROLE, 'alert');
+                this.adapter.setAttr(strings$j.ROLE, 'alert');
             }
             else {
-                this.adapter.removeAttr(strings$a.ROLE);
+                this.adapter.removeAttr(strings$j.ROLE);
             }
             if (!helperTextIsPersistent && !validationMsgNeedsDisplay) {
                 this.hide_();
@@ -6236,7 +6236,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Hides the help text from screen readers.
          */
         MDCTextFieldHelperTextFoundation.prototype.hide_ = function () {
-            this.adapter.setAttr(strings$a.ARIA_HIDDEN, 'true');
+            this.adapter.setAttr(strings$j.ARIA_HIDDEN, 'true');
         };
         return MDCTextFieldHelperTextFoundation;
     }(MDCFoundation));
@@ -6323,11 +6323,11 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$b = {
+    var strings$i = {
         ICON_EVENT: 'MDCTextField:icon',
         ICON_ROLE: 'button',
     };
-    var cssClasses$c = {
+    var cssClasses$e = {
         ROOT: 'mdc-text-field__icon',
     };
 
@@ -6364,14 +6364,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTextFieldIconFoundation, "strings", {
             get: function () {
-                return strings$b;
+                return strings$i;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTextFieldIconFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$c;
+                return cssClasses$e;
             },
             enumerable: true,
             configurable: true
@@ -6419,7 +6419,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             else {
                 this.adapter.setAttr('tabindex', this.savedTabIndex_);
-                this.adapter.setAttr('role', strings$b.ICON_ROLE);
+                this.adapter.setAttr('role', strings$i.ICON_ROLE);
             }
         };
         MDCTextFieldIconFoundation.prototype.setAriaLabel = function (label) {
@@ -6537,17 +6537,17 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (iconFactory === void 0) { iconFactory = function (el) { return new MDCTextFieldIcon(el); }; }
             if (labelFactory === void 0) { labelFactory = function (el) { return new MDCFloatingLabel(el); }; }
             if (outlineFactory === void 0) { outlineFactory = function (el) { return new MDCNotchedOutline(el); }; }
-            this.input_ = this.root.querySelector(strings$9.INPUT_SELECTOR);
-            var labelElement = this.root.querySelector(strings$9.LABEL_SELECTOR);
+            this.input_ = this.root.querySelector(strings$k.INPUT_SELECTOR);
+            var labelElement = this.root.querySelector(strings$k.LABEL_SELECTOR);
             this.label_ = labelElement ? labelFactory(labelElement) : null;
-            var lineRippleElement = this.root.querySelector(strings$9.LINE_RIPPLE_SELECTOR);
+            var lineRippleElement = this.root.querySelector(strings$k.LINE_RIPPLE_SELECTOR);
             this.lineRipple_ = lineRippleElement ? lineRippleFactory(lineRippleElement) : null;
-            var outlineElement = this.root.querySelector(strings$9.OUTLINE_SELECTOR);
+            var outlineElement = this.root.querySelector(strings$k.OUTLINE_SELECTOR);
             this.outline_ = outlineElement ? outlineFactory(outlineElement) : null;
             // Helper text
             var helperTextStrings = MDCTextFieldHelperTextFoundation.strings;
             var nextElementSibling = this.root.nextElementSibling;
-            var hasHelperLine = (nextElementSibling && nextElementSibling.classList.contains(cssClasses$a.HELPER_LINE));
+            var hasHelperLine = (nextElementSibling && nextElementSibling.classList.contains(cssClasses$g.HELPER_LINE));
             var helperTextEl = hasHelperLine && nextElementSibling && nextElementSibling.querySelector(helperTextStrings.ROOT_SELECTOR);
             this.helperText_ = helperTextEl ? helperTextFactory(helperTextEl) : null;
             // Character counter
@@ -6559,14 +6559,14 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             this.characterCounter_ = characterCounterEl ? characterCounterFactory(characterCounterEl) : null;
             // Leading icon
-            var leadingIconEl = this.root.querySelector(strings$9.LEADING_ICON_SELECTOR);
+            var leadingIconEl = this.root.querySelector(strings$k.LEADING_ICON_SELECTOR);
             this.leadingIcon_ = leadingIconEl ? iconFactory(leadingIconEl) : null;
             // Trailing icon
-            var trailingIconEl = this.root.querySelector(strings$9.TRAILING_ICON_SELECTOR);
+            var trailingIconEl = this.root.querySelector(strings$k.TRAILING_ICON_SELECTOR);
             this.trailingIcon_ = trailingIconEl ? iconFactory(trailingIconEl) : null;
             // Prefix and Suffix
-            this.prefix_ = this.root.querySelector(strings$9.PREFIX_SELECTOR);
-            this.suffix_ = this.root.querySelector(strings$9.SUFFIX_SELECTOR);
+            this.prefix_ = this.root.querySelector(strings$k.PREFIX_SELECTOR);
+            this.suffix_ = this.root.querySelector(strings$k.SUFFIX_SELECTOR);
             this.ripple = this.createRipple_(rippleFactory);
         };
         MDCTextField.prototype.destroy = function () {
@@ -6966,8 +6966,8 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCTextField.prototype.createRipple_ = function (rippleFactory) {
             var _this = this;
-            var isTextArea = this.root.classList.contains(cssClasses$a.TEXTAREA);
-            var isOutlined = this.root.classList.contains(cssClasses$a.OUTLINED);
+            var isTextArea = this.root.classList.contains(cssClasses$g.TEXTAREA);
+            var isOutlined = this.root.classList.contains(cssClasses$g.OUTLINED);
             if (isTextArea || isOutlined) {
                 return null;
             }
@@ -7107,7 +7107,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         ROOT: 'mdc-menu-surface',
     };
     // tslint:disable:object-literal-sort-keys
-    var strings$c = {
+    var strings$h = {
         CLOSED_EVENT: 'MDCMenuSurface:closed',
         CLOSING_EVENT: 'MDCMenuSurface:closing',
         OPENED_EVENT: 'MDCMenuSurface:opened',
@@ -7121,7 +7121,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         ].join(', '),
     };
     // tslint:enable:object-literal-sort-keys
-    var numbers$6 = {
+    var numbers$5 = {
         /** Total duration of menu-surface open animation. */
         TRANSITION_OPEN_DURATION: 120,
         /** Total duration of menu-surface close animation. */
@@ -7222,14 +7222,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         });
         Object.defineProperty(MDCMenuSurfaceFoundation, "strings", {
             get: function () {
-                return strings$c;
+                return strings$h;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCMenuSurfaceFoundation, "numbers", {
             get: function () {
-                return numbers$6;
+                return numbers$5;
             },
             enumerable: true,
             configurable: true
@@ -7355,7 +7355,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                         _this.openAnimationEndTimerId = 0;
                         _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_OPEN);
                         _this.adapter.notifyOpen();
-                    }, numbers$6.TRANSITION_OPEN_DURATION);
+                    }, numbers$5.TRANSITION_OPEN_DURATION);
                 });
                 this.isSurfaceOpen = true;
             }
@@ -7388,7 +7388,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                     _this.closeAnimationEndTimerId = 0;
                     _this.adapter.removeClass(MDCMenuSurfaceFoundation.cssClasses.ANIMATING_CLOSED);
                     _this.adapter.notifyClose();
-                }, numbers$6.TRANSITION_CLOSE_DURATION);
+                }, numbers$5.TRANSITION_CLOSE_DURATION);
             });
             this.isSurfaceOpen = false;
             if (!skipRestoreFocus) {
@@ -7427,7 +7427,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 _a[verticalAlignment] = verticalOffset,
                 _a);
             // Center align when anchor width is comparable or greater than menu surface, otherwise keep corner.
-            if (anchorSize.width / surfaceSize.width > numbers$6.ANCHOR_TO_MENU_SURFACE_WIDTH_RATIO) {
+            if (anchorSize.width / surfaceSize.width > numbers$5.ANCHOR_TO_MENU_SURFACE_WIDTH_RATIO) {
                 horizontalAlignment = 'center';
             }
             // If the menu-surface has been hoisted to the body, it's no longer relative to the anchor element
@@ -7826,13 +7826,13 @@ var TropicBirdModule = (function (exports, sargasso) {
                 document.body.removeEventListener('click', _this.handleBodyClick, { capture: true });
             };
             this.listen('keydown', this.handleKeydown);
-            this.listen(strings$c.OPENED_EVENT, this.registerBodyClickListener);
-            this.listen(strings$c.CLOSED_EVENT, this.deregisterBodyClickListener);
+            this.listen(strings$h.OPENED_EVENT, this.registerBodyClickListener);
+            this.listen(strings$h.CLOSED_EVENT, this.deregisterBodyClickListener);
         };
         MDCMenuSurface.prototype.destroy = function () {
             this.unlisten('keydown', this.handleKeydown);
-            this.unlisten(strings$c.OPENED_EVENT, this.registerBodyClickListener);
-            this.unlisten(strings$c.CLOSED_EVENT, this.deregisterBodyClickListener);
+            this.unlisten(strings$h.OPENED_EVENT, this.registerBodyClickListener);
+            this.unlisten(strings$h.CLOSED_EVENT, this.deregisterBodyClickListener);
             _super.prototype.destroy.call(this);
         };
         MDCMenuSurface.prototype.isOpen = function () {
@@ -7981,19 +7981,19 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$e = {
+    var cssClasses$c = {
         MENU_SELECTED_LIST_ITEM: 'mdc-menu-item--selected',
         MENU_SELECTION_GROUP: 'mdc-menu__selection-group',
         ROOT: 'mdc-menu',
     };
-    var strings$d = {
+    var strings$g = {
         ARIA_CHECKED_ATTR: 'aria-checked',
         ARIA_DISABLED_ATTR: 'aria-disabled',
         CHECKBOX_SELECTOR: 'input[type="checkbox"]',
         LIST_SELECTOR: '.mdc-list',
         SELECTED_EVENT: 'MDCMenu:selected',
     };
-    var numbers$7 = {
+    var numbers$4 = {
         FOCUS_ROOT_INDEX: -1,
     };
     var DefaultFocusState;
@@ -8036,21 +8036,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCMenuFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$e;
+                return cssClasses$c;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCMenuFoundation, "strings", {
             get: function () {
-                return strings$d;
+                return strings$g;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCMenuFoundation, "numbers", {
             get: function () {
-                return numbers$7;
+                return numbers$4;
             },
             enumerable: true,
             configurable: true
@@ -8147,11 +8147,11 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             var prevSelectedIndex = this.adapter.getSelectedSiblingOfItemAtIndex(index);
             if (prevSelectedIndex >= 0) {
-                this.adapter.removeAttributeFromElementAtIndex(prevSelectedIndex, strings$d.ARIA_CHECKED_ATTR);
-                this.adapter.removeClassFromElementAtIndex(prevSelectedIndex, cssClasses$e.MENU_SELECTED_LIST_ITEM);
+                this.adapter.removeAttributeFromElementAtIndex(prevSelectedIndex, strings$g.ARIA_CHECKED_ATTR);
+                this.adapter.removeClassFromElementAtIndex(prevSelectedIndex, cssClasses$c.MENU_SELECTED_LIST_ITEM);
             }
-            this.adapter.addClassToElementAtIndex(index, cssClasses$e.MENU_SELECTED_LIST_ITEM);
-            this.adapter.addAttributeToElementAtIndex(index, strings$d.ARIA_CHECKED_ATTR, 'true');
+            this.adapter.addClassToElementAtIndex(index, cssClasses$c.MENU_SELECTED_LIST_ITEM);
+            this.adapter.addAttributeToElementAtIndex(index, strings$g.ARIA_CHECKED_ATTR, 'true');
         };
         /**
          * Sets the enabled state to isEnabled for the menu item at the given index.
@@ -8161,12 +8161,12 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCMenuFoundation.prototype.setEnabled = function (index, isEnabled) {
             this.validatedIndex_(index);
             if (isEnabled) {
-                this.adapter.removeClassFromElementAtIndex(index, cssClasses$3.LIST_ITEM_DISABLED_CLASS);
-                this.adapter.addAttributeToElementAtIndex(index, strings$d.ARIA_DISABLED_ATTR, 'false');
+                this.adapter.removeClassFromElementAtIndex(index, cssClasses$n.LIST_ITEM_DISABLED_CLASS);
+                this.adapter.addAttributeToElementAtIndex(index, strings$g.ARIA_DISABLED_ATTR, 'false');
             }
             else {
-                this.adapter.addClassToElementAtIndex(index, cssClasses$3.LIST_ITEM_DISABLED_CLASS);
-                this.adapter.addAttributeToElementAtIndex(index, strings$d.ARIA_DISABLED_ATTR, 'true');
+                this.adapter.addClassToElementAtIndex(index, cssClasses$n.LIST_ITEM_DISABLED_CLASS);
+                this.adapter.addAttributeToElementAtIndex(index, strings$g.ARIA_DISABLED_ATTR, 'true');
             }
         };
         MDCMenuFoundation.prototype.validatedIndex_ = function (index) {
@@ -8218,7 +8218,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCMenu.prototype.initialSyncWithDOM = function () {
             var _this = this;
             this.menuSurface_ = this.menuSurfaceFactory_(this.root);
-            var list = this.root.querySelector(strings$d.LIST_SELECTOR);
+            var list = this.root.querySelector(strings$g.LIST_SELECTOR);
             if (list) {
                 this.list_ = this.listFactory_(list);
                 this.list_.wrapFocus = true;
@@ -8359,7 +8359,7 @@ var TropicBirdModule = (function (exports, sargasso) {
              *     radio lists, and an array of numbers for checkbox lists.
              */
             get: function () {
-                return this.list_ ? this.list_.selectedIndex : numbers$2.UNSET_INDEX;
+                return this.list_ ? this.list_.selectedIndex : numbers$9.UNSET_INDEX;
             },
             /**
              * Sets the selected index of the list. Only applicable to select menus.
@@ -8482,7 +8482,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 },
                 getElementIndex: function (element) { return _this.items.indexOf(element); },
                 notifySelected: function (evtData) {
-                    return _this.emit(strings$d.SELECTED_EVENT, {
+                    return _this.emit(strings$g.SELECTED_EVENT, {
                         index: evtData.index,
                         item: _this.items[evtData.index],
                     });
@@ -8490,15 +8490,15 @@ var TropicBirdModule = (function (exports, sargasso) {
                 getMenuItemCount: function () { return _this.items.length; },
                 focusItemAtIndex: function (index) { return _this.items[index].focus(); },
                 focusListRoot: function () {
-                    return _this.root.querySelector(strings$d.LIST_SELECTOR)
+                    return _this.root.querySelector(strings$g.LIST_SELECTOR)
                         .focus();
                 },
                 isSelectableItemAtIndex: function (index) {
-                    return !!closest(_this.items[index], "." + cssClasses$e.MENU_SELECTION_GROUP);
+                    return !!closest(_this.items[index], "." + cssClasses$c.MENU_SELECTION_GROUP);
                 },
                 getSelectedSiblingOfItemAtIndex: function (index) {
-                    var selectionGroupEl = closest(_this.items[index], "." + cssClasses$e.MENU_SELECTION_GROUP);
-                    var selectedItemEl = selectionGroupEl.querySelector("." + cssClasses$e.MENU_SELECTED_LIST_ITEM);
+                    var selectionGroupEl = closest(_this.items[index], "." + cssClasses$c.MENU_SELECTION_GROUP);
+                    var selectedItemEl = selectionGroupEl.querySelector("." + cssClasses$c.MENU_SELECTED_LIST_ITEM);
                     return selectedItemEl ? _this.items.indexOf(selectedItemEl) : -1;
                 },
             };
@@ -8530,7 +8530,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$f = {
+    var cssClasses$b = {
         ACTIVATED: 'mdc-select--activated',
         DISABLED: 'mdc-select--disabled',
         FOCUSED: 'mdc-select--focused',
@@ -8541,7 +8541,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         ROOT: 'mdc-select',
         WITH_LEADING_ICON: 'mdc-select--with-leading-icon',
     };
-    var strings$e = {
+    var strings$f = {
         ARIA_CONTROLS: 'aria-controls',
         ARIA_DESCRIBEDBY: 'aria-describedby',
         ARIA_SELECTED_ATTR: 'aria-selected',
@@ -8556,7 +8556,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         SELECT_ANCHOR_SELECTOR: '.mdc-select__anchor',
         VALUE_ATTR: 'data-value',
     };
-    var numbers$8 = {
+    var numbers$3 = {
         LABEL_SCALE: 0.75,
         UNSET_INDEX: -1,
         CLICK_DEBOUNCE_TIMEOUT_MS: 330,
@@ -8604,7 +8604,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             // By default, select is invalid if it is required but no value is selected.
             _this.useDefaultValidation = true;
             _this.customValidity = true;
-            _this.lastSelectedIndex = numbers$8.UNSET_INDEX;
+            _this.lastSelectedIndex = numbers$3.UNSET_INDEX;
             _this.clickDebounceTimeout = 0;
             _this.recentlyClicked = false;
             _this.leadingIcon = foundationMap.leadingIcon;
@@ -8613,21 +8613,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCSelectFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$f;
+                return cssClasses$b;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCSelectFoundation, "numbers", {
             get: function () {
-                return numbers$8;
+                return numbers$3;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCSelectFoundation, "strings", {
             get: function () {
-                return strings$e;
+                return strings$f;
             },
             enumerable: true,
             configurable: true
@@ -8690,7 +8690,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (index >= this.adapter.getMenuItemCount()) {
                 return;
             }
-            if (index === numbers$8.UNSET_INDEX) {
+            if (index === numbers$3.UNSET_INDEX) {
                 this.adapter.setSelectedText('');
             }
             else {
@@ -8713,7 +8713,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCSelectFoundation.prototype.getValue = function () {
             var index = this.adapter.getSelectedIndex();
             var menuItemValues = this.adapter.getMenuItemValues();
-            return index !== numbers$8.UNSET_INDEX ? menuItemValues[index] : '';
+            return index !== numbers$3.UNSET_INDEX ? menuItemValues[index] : '';
         };
         MDCSelectFoundation.prototype.getDisabled = function () {
             return this.disabled;
@@ -8721,11 +8721,11 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCSelectFoundation.prototype.setDisabled = function (isDisabled) {
             this.disabled = isDisabled;
             if (this.disabled) {
-                this.adapter.addClass(cssClasses$f.DISABLED);
+                this.adapter.addClass(cssClasses$b.DISABLED);
                 this.adapter.closeMenu();
             }
             else {
-                this.adapter.removeClass(cssClasses$f.DISABLED);
+                this.adapter.removeClass(cssClasses$b.DISABLED);
             }
             if (this.leadingIcon) {
                 this.leadingIcon.setDisabled(this.disabled);
@@ -8742,7 +8742,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         /** Opens the menu. */
         MDCSelectFoundation.prototype.openMenu = function () {
-            this.adapter.addClass(cssClasses$f.ACTIVATED);
+            this.adapter.addClass(cssClasses$b.ACTIVATED);
             this.adapter.openMenu();
             this.isMenuOpen = true;
             this.adapter.setSelectAnchorAttr('aria-expanded', 'true');
@@ -8762,9 +8762,9 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCSelectFoundation.prototype.layout = function () {
             if (this.adapter.hasLabel()) {
                 var optionHasValue = this.getValue().length > 0;
-                var isFocused = this.adapter.hasClass(cssClasses$f.FOCUSED);
+                var isFocused = this.adapter.hasClass(cssClasses$b.FOCUSED);
                 var shouldFloatAndNotch = optionHasValue || isFocused;
-                var isRequired = this.adapter.hasClass(cssClasses$f.REQUIRED);
+                var isRequired = this.adapter.hasClass(cssClasses$b.REQUIRED);
                 this.notchOutline(shouldFloatAndNotch);
                 this.adapter.floatLabel(shouldFloatAndNotch);
                 this.adapter.setLabelRequired(isRequired);
@@ -8792,7 +8792,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.adapter.setSelectAnchorAttr('aria-expanded', 'false');
         };
         MDCSelectFoundation.prototype.handleMenuClosed = function () {
-            this.adapter.removeClass(cssClasses$f.ACTIVATED);
+            this.adapter.removeClass(cssClasses$b.ACTIVATED);
             this.isMenuOpen = false;
             // Unfocus the select if menu is closed without a selection
             if (!this.adapter.isSelectAnchorFocused()) {
@@ -8805,7 +8805,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCSelectFoundation.prototype.handleChange = function () {
             this.layout();
             this.adapter.notifyChange(this.getValue());
-            var isRequired = this.adapter.hasClass(cssClasses$f.REQUIRED);
+            var isRequired = this.adapter.hasClass(cssClasses$b.REQUIRED);
             if (isRequired && this.useDefaultValidation) {
                 this.setValid(this.isValid());
             }
@@ -8817,7 +8817,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Handles focus events from select element.
          */
         MDCSelectFoundation.prototype.handleFocus = function () {
-            this.adapter.addClass(cssClasses$f.FOCUSED);
+            this.adapter.addClass(cssClasses$b.FOCUSED);
             this.layout();
             this.adapter.activateBottomLine();
         };
@@ -8847,7 +8847,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * character typed, does typeahead matching or opens menu.
          */
         MDCSelectFoundation.prototype.handleKeydown = function (event) {
-            if (this.isMenuOpen || !this.adapter.hasClass(cssClasses$f.FOCUSED)) {
+            if (this.isMenuOpen || !this.adapter.hasClass(cssClasses$b.FOCUSED)) {
                 return;
             }
             var isEnter = normalizeKey(event) === KEY.ENTER;
@@ -8886,9 +8886,9 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (!this.adapter.hasOutline()) {
                 return;
             }
-            var isFocused = this.adapter.hasClass(cssClasses$f.FOCUSED);
+            var isFocused = this.adapter.hasClass(cssClasses$b.FOCUSED);
             if (openNotch) {
-                var labelScale = numbers$8.LABEL_SCALE;
+                var labelScale = numbers$3.LABEL_SCALE;
                 var labelWidth = this.adapter.getLabelWidth() * labelScale;
                 this.adapter.notchOutline(labelWidth);
             }
@@ -8921,32 +8921,32 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             this.adapter.setSelectAnchorAttr('aria-invalid', (!isValid).toString());
             if (isValid) {
-                this.adapter.removeClass(cssClasses$f.INVALID);
-                this.adapter.removeMenuClass(cssClasses$f.MENU_INVALID);
+                this.adapter.removeClass(cssClasses$b.INVALID);
+                this.adapter.removeMenuClass(cssClasses$b.MENU_INVALID);
             }
             else {
-                this.adapter.addClass(cssClasses$f.INVALID);
-                this.adapter.addMenuClass(cssClasses$f.MENU_INVALID);
+                this.adapter.addClass(cssClasses$b.INVALID);
+                this.adapter.addMenuClass(cssClasses$b.MENU_INVALID);
             }
             this.syncHelperTextValidity(isValid);
         };
         MDCSelectFoundation.prototype.isValid = function () {
             if (this.useDefaultValidation &&
-                this.adapter.hasClass(cssClasses$f.REQUIRED) &&
-                !this.adapter.hasClass(cssClasses$f.DISABLED)) {
+                this.adapter.hasClass(cssClasses$b.REQUIRED) &&
+                !this.adapter.hasClass(cssClasses$b.DISABLED)) {
                 // See notes for required attribute under https://www.w3.org/TR/html52/sec-forms.html#the-select-element
                 // TL;DR: Invalid if no index is selected, or if the first index is selected and has an empty value.
-                return this.getSelectedIndex() !== numbers$8.UNSET_INDEX &&
+                return this.getSelectedIndex() !== numbers$3.UNSET_INDEX &&
                     (this.getSelectedIndex() !== 0 || Boolean(this.getValue()));
             }
             return this.customValidity;
         };
         MDCSelectFoundation.prototype.setRequired = function (isRequired) {
             if (isRequired) {
-                this.adapter.addClass(cssClasses$f.REQUIRED);
+                this.adapter.addClass(cssClasses$b.REQUIRED);
             }
             else {
-                this.adapter.removeClass(cssClasses$f.REQUIRED);
+                this.adapter.removeClass(cssClasses$b.REQUIRED);
             }
             this.adapter.setSelectAnchorAttr('aria-required', isRequired.toString());
             this.adapter.setLabelRequired(isRequired);
@@ -8961,8 +8961,8 @@ var TropicBirdModule = (function (exports, sargasso) {
                 this.adapter.setMenuAnchorCorner(Corner.BOTTOM_START);
             }
             this.adapter.setMenuWrapFocus(false);
-            this.setDisabled(this.adapter.hasClass(cssClasses$f.DISABLED));
-            this.syncHelperTextValidity(!this.adapter.hasClass(cssClasses$f.INVALID));
+            this.setDisabled(this.adapter.hasClass(cssClasses$b.DISABLED));
+            this.syncHelperTextValidity(!this.adapter.hasClass(cssClasses$b.INVALID));
             this.layout();
             this.layoutOptions();
         };
@@ -8970,10 +8970,10 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Unfocuses the select component.
          */
         MDCSelectFoundation.prototype.blur = function () {
-            this.adapter.removeClass(cssClasses$f.FOCUSED);
+            this.adapter.removeClass(cssClasses$b.FOCUSED);
             this.layout();
             this.adapter.deactivateBottomLine();
-            var isRequired = this.adapter.hasClass(cssClasses$f.REQUIRED);
+            var isRequired = this.adapter.hasClass(cssClasses$b.REQUIRED);
             if (isRequired && this.useDefaultValidation) {
                 this.setValid(this.isValid());
             }
@@ -8986,12 +8986,12 @@ var TropicBirdModule = (function (exports, sargasso) {
             var helperTextVisible = this.helperText.isVisible();
             var helperTextId = this.helperText.getId();
             if (helperTextVisible && helperTextId) {
-                this.adapter.setSelectAnchorAttr(strings$e.ARIA_DESCRIBEDBY, helperTextId);
+                this.adapter.setSelectAnchorAttr(strings$f.ARIA_DESCRIBEDBY, helperTextId);
             }
             else {
                 // Needed because screenreaders will read labels pointed to by
                 // `aria-describedby` even if they are `aria-hidden`.
-                this.adapter.removeSelectAnchorAttr(strings$e.ARIA_DESCRIBEDBY);
+                this.adapter.removeSelectAnchorAttr(strings$f.ARIA_DESCRIBEDBY);
             }
         };
         MDCSelectFoundation.prototype.setClickDebounceTimeout = function () {
@@ -8999,7 +8999,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             clearTimeout(this.clickDebounceTimeout);
             this.clickDebounceTimeout = setTimeout(function () {
                 _this.recentlyClicked = false;
-            }, numbers$8.CLICK_DEBOUNCE_TIMEOUT_MS);
+            }, numbers$3.CLICK_DEBOUNCE_TIMEOUT_MS);
             this.recentlyClicked = true;
         };
         return MDCSelectFoundation;
@@ -9027,11 +9027,11 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$f = {
+    var strings$e = {
         ARIA_HIDDEN: 'aria-hidden',
         ROLE: 'role',
     };
-    var cssClasses$g = {
+    var cssClasses$a = {
         HELPER_TEXT_VALIDATION_MSG: 'mdc-select-helper-text--validation-msg',
         HELPER_TEXT_VALIDATION_MSG_PERSISTENT: 'mdc-select-helper-text--validation-msg-persistent',
     };
@@ -9065,14 +9065,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCSelectHelperTextFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$g;
+                return cssClasses$a;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCSelectHelperTextFoundation, "strings", {
             get: function () {
-                return strings$f;
+                return strings$e;
             },
             enumerable: true,
             configurable: true
@@ -9107,7 +9107,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * @return Whether the helper text is currently visible.
          */
         MDCSelectHelperTextFoundation.prototype.isVisible = function () {
-            return this.adapter.getAttr(strings$f.ARIA_HIDDEN) !== 'true';
+            return this.adapter.getAttr(strings$e.ARIA_HIDDEN) !== 'true';
         };
         /**
          * Sets the content of the helper text field.
@@ -9125,10 +9125,10 @@ var TropicBirdModule = (function (exports, sargasso) {
          */
         MDCSelectHelperTextFoundation.prototype.setValidation = function (isValidation) {
             if (isValidation) {
-                this.adapter.addClass(cssClasses$g.HELPER_TEXT_VALIDATION_MSG);
+                this.adapter.addClass(cssClasses$a.HELPER_TEXT_VALIDATION_MSG);
             }
             else {
-                this.adapter.removeClass(cssClasses$g.HELPER_TEXT_VALIDATION_MSG);
+                this.adapter.removeClass(cssClasses$a.HELPER_TEXT_VALIDATION_MSG);
             }
         };
         /**
@@ -9138,10 +9138,10 @@ var TropicBirdModule = (function (exports, sargasso) {
          */
         MDCSelectHelperTextFoundation.prototype.setValidationMsgPersistent = function (isPersistent) {
             if (isPersistent) {
-                this.adapter.addClass(cssClasses$g.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
+                this.adapter.addClass(cssClasses$a.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
             }
             else {
-                this.adapter.removeClass(cssClasses$g.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
+                this.adapter.removeClass(cssClasses$a.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
             }
         };
         /**
@@ -9149,13 +9149,13 @@ var TropicBirdModule = (function (exports, sargasso) {
          * triggers alerts as necessary based on the select's validity.
          */
         MDCSelectHelperTextFoundation.prototype.setValidity = function (selectIsValid) {
-            var isValidationMsg = this.adapter.hasClass(cssClasses$g.HELPER_TEXT_VALIDATION_MSG);
+            var isValidationMsg = this.adapter.hasClass(cssClasses$a.HELPER_TEXT_VALIDATION_MSG);
             if (!isValidationMsg) {
                 // Non-validating helper-text is always displayed and does not participate
                 // in validation logic.
                 return;
             }
-            var isPersistentValidationMsg = this.adapter.hasClass(cssClasses$g.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
+            var isPersistentValidationMsg = this.adapter.hasClass(cssClasses$a.HELPER_TEXT_VALIDATION_MSG_PERSISTENT);
             // Validating helper text is displayed if select is invalid, unless it is
             // set as persistent, in which case it always displays.
             var msgShouldDisplay = !selectIsValid || isPersistentValidationMsg;
@@ -9164,28 +9164,28 @@ var TropicBirdModule = (function (exports, sargasso) {
                 // In addition to displaying, also trigger an alert if the select
                 // has become invalid.
                 if (!selectIsValid) {
-                    this.adapter.setAttr(strings$f.ROLE, 'alert');
+                    this.adapter.setAttr(strings$e.ROLE, 'alert');
                 }
                 else {
-                    this.adapter.removeAttr(strings$f.ROLE);
+                    this.adapter.removeAttr(strings$e.ROLE);
                 }
                 return;
             }
             // Hide everything.
-            this.adapter.removeAttr(strings$f.ROLE);
+            this.adapter.removeAttr(strings$e.ROLE);
             this.hide();
         };
         /**
          * Makes the helper text visible to screen readers.
          */
         MDCSelectHelperTextFoundation.prototype.showToScreenReader = function () {
-            this.adapter.removeAttr(strings$f.ARIA_HIDDEN);
+            this.adapter.removeAttr(strings$e.ARIA_HIDDEN);
         };
         /**
          * Hides the help text from screen readers.
          */
         MDCSelectHelperTextFoundation.prototype.hide = function () {
-            this.adapter.setAttr(strings$f.ARIA_HIDDEN, 'true');
+            this.adapter.setAttr(strings$e.ARIA_HIDDEN, 'true');
         };
         return MDCSelectHelperTextFoundation;
     }(MDCFoundation));
@@ -9272,7 +9272,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$g = {
+    var strings$d = {
         ICON_EVENT: 'MDCSelect:icon',
         ICON_ROLE: 'button',
     };
@@ -9299,7 +9299,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var INTERACTION_EVENTS$2 = ['click', 'keydown'];
+    var INTERACTION_EVENTS = ['click', 'keydown'];
     var MDCSelectIconFoundation = /** @class */ (function (_super) {
         __extends(MDCSelectIconFoundation, _super);
         function MDCSelectIconFoundation(adapter) {
@@ -9310,7 +9310,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCSelectIconFoundation, "strings", {
             get: function () {
-                return strings$g;
+                return strings$d;
             },
             enumerable: true,
             configurable: true
@@ -9338,13 +9338,13 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCSelectIconFoundation.prototype.init = function () {
             var _this = this;
             this.savedTabIndex_ = this.adapter.getAttr('tabindex');
-            INTERACTION_EVENTS$2.forEach(function (evtType) {
+            INTERACTION_EVENTS.forEach(function (evtType) {
                 _this.adapter.registerInteractionHandler(evtType, _this.interactionHandler_);
             });
         };
         MDCSelectIconFoundation.prototype.destroy = function () {
             var _this = this;
-            INTERACTION_EVENTS$2.forEach(function (evtType) {
+            INTERACTION_EVENTS.forEach(function (evtType) {
                 _this.adapter.deregisterInteractionHandler(evtType, _this.interactionHandler_);
             });
         };
@@ -9358,7 +9358,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             else {
                 this.adapter.setAttr('tabindex', this.savedTabIndex_);
-                this.adapter.setAttr('role', strings$g.ICON_ROLE);
+                this.adapter.setAttr('role', strings$d.ICON_ROLE);
             }
         };
         MDCSelectIconFoundation.prototype.setAriaLabel = function (label) {
@@ -9478,33 +9478,33 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (iconFactory === void 0) { iconFactory = function (el) { return new MDCSelectIcon(el); }; }
             if (helperTextFactory === void 0) { helperTextFactory = function (el) { return new MDCSelectHelperText(el); }; }
             this.selectAnchor =
-                this.root.querySelector(strings$e.SELECT_ANCHOR_SELECTOR);
+                this.root.querySelector(strings$f.SELECT_ANCHOR_SELECTOR);
             this.selectedText =
-                this.root.querySelector(strings$e.SELECTED_TEXT_SELECTOR);
-            this.hiddenInput = this.root.querySelector(strings$e.HIDDEN_INPUT_SELECTOR);
+                this.root.querySelector(strings$f.SELECTED_TEXT_SELECTOR);
+            this.hiddenInput = this.root.querySelector(strings$f.HIDDEN_INPUT_SELECTOR);
             if (!this.selectedText) {
                 throw new Error('MDCSelect: Missing required element: The following selector must be present: ' +
-                    ("'" + strings$e.SELECTED_TEXT_SELECTOR + "'"));
+                    ("'" + strings$f.SELECTED_TEXT_SELECTOR + "'"));
             }
-            if (this.selectAnchor.hasAttribute(strings$e.ARIA_CONTROLS)) {
-                var helperTextElement = document.getElementById(this.selectAnchor.getAttribute(strings$e.ARIA_CONTROLS));
+            if (this.selectAnchor.hasAttribute(strings$f.ARIA_CONTROLS)) {
+                var helperTextElement = document.getElementById(this.selectAnchor.getAttribute(strings$f.ARIA_CONTROLS));
                 if (helperTextElement) {
                     this.helperText = helperTextFactory(helperTextElement);
                 }
             }
             this.menuSetup(menuFactory);
-            var labelElement = this.root.querySelector(strings$e.LABEL_SELECTOR);
+            var labelElement = this.root.querySelector(strings$f.LABEL_SELECTOR);
             this.label = labelElement ? labelFactory(labelElement) : null;
-            var lineRippleElement = this.root.querySelector(strings$e.LINE_RIPPLE_SELECTOR);
+            var lineRippleElement = this.root.querySelector(strings$f.LINE_RIPPLE_SELECTOR);
             this.lineRipple =
                 lineRippleElement ? lineRippleFactory(lineRippleElement) : null;
-            var outlineElement = this.root.querySelector(strings$e.OUTLINE_SELECTOR);
+            var outlineElement = this.root.querySelector(strings$f.OUTLINE_SELECTOR);
             this.outline = outlineElement ? outlineFactory(outlineElement) : null;
-            var leadingIcon = this.root.querySelector(strings$e.LEADING_ICON_SELECTOR);
+            var leadingIcon = this.root.querySelector(strings$f.LEADING_ICON_SELECTOR);
             if (leadingIcon) {
                 this.leadingIcon = iconFactory(leadingIcon);
             }
-            if (!this.root.classList.contains(cssClasses$f.OUTLINED)) {
+            if (!this.root.classList.contains(cssClasses$b.OUTLINED)) {
                 this.ripple = this.createRipple();
             }
         };
@@ -9543,10 +9543,10 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.selectAnchor.addEventListener('blur', this.handleBlur);
             this.selectAnchor.addEventListener('click', this.handleClick);
             this.selectAnchor.addEventListener('keydown', this.handleKeydown);
-            this.menu.listen(strings$c.CLOSED_EVENT, this.handleMenuClosed);
-            this.menu.listen(strings$c.CLOSING_EVENT, this.handleMenuClosing);
-            this.menu.listen(strings$c.OPENED_EVENT, this.handleMenuOpened);
-            this.menu.listen(strings$d.SELECTED_EVENT, this.handleMenuItemAction);
+            this.menu.listen(strings$h.CLOSED_EVENT, this.handleMenuClosed);
+            this.menu.listen(strings$h.CLOSING_EVENT, this.handleMenuClosing);
+            this.menu.listen(strings$h.OPENED_EVENT, this.handleMenuOpened);
+            this.menu.listen(strings$g.SELECTED_EVENT, this.handleMenuItemAction);
             if (this.hiddenInput) {
                 if (this.hiddenInput.value) {
                     // If the hidden input already has a value, use it to restore the
@@ -9564,9 +9564,9 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.selectAnchor.removeEventListener('blur', this.handleBlur);
             this.selectAnchor.removeEventListener('keydown', this.handleKeydown);
             this.selectAnchor.removeEventListener('click', this.handleClick);
-            this.menu.unlisten(strings$c.CLOSED_EVENT, this.handleMenuClosed);
-            this.menu.unlisten(strings$c.OPENED_EVENT, this.handleMenuOpened);
-            this.menu.unlisten(strings$d.SELECTED_EVENT, this.handleMenuItemAction);
+            this.menu.unlisten(strings$h.CLOSED_EVENT, this.handleMenuClosed);
+            this.menu.unlisten(strings$h.OPENED_EVENT, this.handleMenuOpened);
+            this.menu.unlisten(strings$g.SELECTED_EVENT, this.handleMenuItemAction);
             this.menu.destroy();
             if (this.ripple) {
                 this.ripple.destroy();
@@ -9703,7 +9703,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.menu.layout();
             // Update cached menuItemValues for adapter.
             this.menuItemValues =
-                this.menu.items.map(function (el) { return el.getAttribute(strings$e.VALUE_ATTR) || ''; });
+                this.menu.items.map(function (el) { return el.getAttribute(strings$f.VALUE_ATTR) || ''; });
             if (this.hiddenInput) {
                 this.hiddenInput.value = this.value;
             }
@@ -9718,12 +9718,12 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Handles setup for the menu.
          */
         MDCSelect.prototype.menuSetup = function (menuFactory) {
-            this.menuElement = this.root.querySelector(strings$e.MENU_SELECTOR);
+            this.menuElement = this.root.querySelector(strings$f.MENU_SELECTOR);
             this.menu = menuFactory(this.menuElement);
             this.menu.hasTypeahead = true;
             this.menu.singleSelection = true;
             this.menuItemValues =
-                this.menu.items.map(function (el) { return el.getAttribute(strings$e.VALUE_ATTR) || ''; });
+                this.menu.items.map(function (el) { return el.getAttribute(strings$f.VALUE_ATTR) || ''; });
         };
         MDCSelect.prototype.createRipple = function () {
             var _this = this;
@@ -9771,7 +9771,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                     _this.menu.open = false;
                 },
                 getAnchorElement: function () {
-                    return _this.root.querySelector(strings$e.SELECT_ANCHOR_SELECTOR);
+                    return _this.root.querySelector(strings$f.SELECT_ANCHOR_SELECTOR);
                 },
                 setMenuAnchorElement: function (anchorEl) {
                     _this.menu.setAnchorElement(anchorEl);
@@ -9827,7 +9827,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 },
                 notifyChange: function (value) {
                     var index = _this.selectedIndex;
-                    _this.emit(strings$e.CHANGE_EVENT, { value: value, index: index }, true /* shouldBubble  */);
+                    _this.emit(strings$f.CHANGE_EVENT, { value: value, index: index }, true /* shouldBubble  */);
                     if (_this.hiddenInput) {
                         _this.hiddenInput.value = value;
                     }
@@ -9981,14 +9981,14 @@ var TropicBirdModule = (function (exports, sargasso) {
      * THE SOFTWARE.
      */
     /** CSS classes used by the switch. */
-    var cssClasses$h = {
+    var cssClasses$9 = {
         /** Class used for a switch that is in the "checked" (on) position. */
         CHECKED: 'mdc-switch--checked',
         /** Class used for a switch that is disabled. */
         DISABLED: 'mdc-switch--disabled',
     };
     /** String constants used by the switch. */
-    var strings$h = {
+    var strings$c = {
         /** Aria attribute for checked or unchecked state of switch */
         ARIA_CHECKED_ATTR: 'aria-checked',
         /** A CSS selector used to locate the native HTML control for the switch.  */
@@ -10027,7 +10027,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         Object.defineProperty(MDCSwitchFoundation, "strings", {
             /** The string constants used by the switch. */
             get: function () {
-                return strings$h;
+                return strings$c;
             },
             enumerable: true,
             configurable: true
@@ -10035,7 +10035,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         Object.defineProperty(MDCSwitchFoundation, "cssClasses", {
             /** The CSS classes used by the switch. */
             get: function () {
-                return cssClasses$h;
+                return cssClasses$9;
             },
             enumerable: true,
             configurable: true
@@ -10064,10 +10064,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCSwitchFoundation.prototype.setDisabled = function (disabled) {
             this.adapter.setNativeControlDisabled(disabled);
             if (disabled) {
-                this.adapter.addClass(cssClasses$h.DISABLED);
+                this.adapter.addClass(cssClasses$9.DISABLED);
             }
             else {
-                this.adapter.removeClass(cssClasses$h.DISABLED);
+                this.adapter.removeClass(cssClasses$9.DISABLED);
             }
         };
         /** Handles the change event for the switch native control. */
@@ -10079,14 +10079,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         /** Updates the styling of the switch based on its checked state. */
         MDCSwitchFoundation.prototype.updateCheckedStyling_ = function (checked) {
             if (checked) {
-                this.adapter.addClass(cssClasses$h.CHECKED);
+                this.adapter.addClass(cssClasses$9.CHECKED);
             }
             else {
-                this.adapter.removeClass(cssClasses$h.CHECKED);
+                this.adapter.removeClass(cssClasses$9.CHECKED);
             }
         };
         MDCSwitchFoundation.prototype.updateAriaChecked_ = function (checked) {
-            this.adapter.setNativeControlAttr(strings$h.ARIA_CHECKED_ATTR, "" + !!checked);
+            this.adapter.setNativeControlAttr(strings$c.ARIA_CHECKED_ATTR, "" + !!checked);
         };
         return MDCSwitchFoundation;
     }(MDCFoundation));
@@ -10261,12 +10261,12 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$i = {
+    var cssClasses$8 = {
         CLOSING: 'mdc-snackbar--closing',
         OPEN: 'mdc-snackbar--open',
         OPENING: 'mdc-snackbar--opening',
     };
-    var strings$i = {
+    var strings$b = {
         ACTION_SELECTOR: '.mdc-snackbar__action',
         ARIA_LIVE_LABEL_TEXT_ATTR: 'data-mdc-snackbar-label-text',
         CLOSED_EVENT: 'MDCSnackbar:closed',
@@ -10279,7 +10279,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         REASON_DISMISS: 'dismiss',
         SURFACE_SELECTOR: '.mdc-snackbar__surface',
     };
-    var numbers$9 = {
+    var numbers$2 = {
         DEFAULT_AUTO_DISMISS_TIMEOUT_MS: 5000,
         INDETERMINATE: -1,
         MAX_AUTO_DISMISS_TIMEOUT_MS: 10000,
@@ -10317,9 +10317,9 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var ARIA_LIVE_DELAY_MS = numbers$9.ARIA_LIVE_DELAY_MS;
-    var ARIA_LIVE_LABEL_TEXT_ATTR = strings$i.ARIA_LIVE_LABEL_TEXT_ATTR;
-    function announce(ariaEl, labelEl) {
+    var ARIA_LIVE_DELAY_MS = numbers$2.ARIA_LIVE_DELAY_MS;
+    var ARIA_LIVE_LABEL_TEXT_ATTR = strings$b.ARIA_LIVE_LABEL_TEXT_ATTR;
+    function announce$1(ariaEl, labelEl) {
         if (labelEl === void 0) { labelEl = ariaEl; }
         var priority = ariaEl.getAttribute('aria-live');
         // Trim text to ignore `&nbsp;` (see below).
@@ -10396,8 +10396,8 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var OPENING = cssClasses$i.OPENING, OPEN = cssClasses$i.OPEN, CLOSING = cssClasses$i.CLOSING;
-    var REASON_ACTION = strings$i.REASON_ACTION, REASON_DISMISS = strings$i.REASON_DISMISS;
+    var OPENING = cssClasses$8.OPENING, OPEN = cssClasses$8.OPEN, CLOSING = cssClasses$8.CLOSING;
+    var REASON_ACTION = strings$b.REASON_ACTION, REASON_DISMISS = strings$b.REASON_DISMISS;
     var MDCSnackbarFoundation = /** @class */ (function (_super) {
         __extends(MDCSnackbarFoundation, _super);
         function MDCSnackbarFoundation(adapter) {
@@ -10406,27 +10406,27 @@ var TropicBirdModule = (function (exports, sargasso) {
             _this.animationFrame_ = 0;
             _this.animationTimer_ = 0;
             _this.autoDismissTimer_ = 0;
-            _this.autoDismissTimeoutMs_ = numbers$9.DEFAULT_AUTO_DISMISS_TIMEOUT_MS;
+            _this.autoDismissTimeoutMs_ = numbers$2.DEFAULT_AUTO_DISMISS_TIMEOUT_MS;
             _this.closeOnEscape_ = true;
             return _this;
         }
         Object.defineProperty(MDCSnackbarFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$i;
+                return cssClasses$8;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCSnackbarFoundation, "strings", {
             get: function () {
-                return strings$i;
+                return strings$b;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCSnackbarFoundation, "numbers", {
             get: function () {
-                return numbers$9;
+                return numbers$2;
             },
             enumerable: true,
             configurable: true
@@ -10471,12 +10471,12 @@ var TropicBirdModule = (function (exports, sargasso) {
                     var timeoutMs = _this.getTimeoutMs();
                     _this.handleAnimationTimerEnd_();
                     _this.adapter.notifyOpened();
-                    if (timeoutMs !== numbers$9.INDETERMINATE) {
+                    if (timeoutMs !== numbers$2.INDETERMINATE) {
                         _this.autoDismissTimer_ = setTimeout(function () {
                             _this.close(REASON_DISMISS);
                         }, timeoutMs);
                     }
-                }, numbers$9.SNACKBAR_ANIMATION_OPEN_TIME_MS);
+                }, numbers$2.SNACKBAR_ANIMATION_OPEN_TIME_MS);
             });
         };
         /**
@@ -10496,14 +10496,14 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.clearAutoDismissTimer_();
             this.isOpen_ = false;
             this.adapter.notifyClosing(reason);
-            this.adapter.addClass(cssClasses$i.CLOSING);
-            this.adapter.removeClass(cssClasses$i.OPEN);
-            this.adapter.removeClass(cssClasses$i.OPENING);
+            this.adapter.addClass(cssClasses$8.CLOSING);
+            this.adapter.removeClass(cssClasses$8.OPEN);
+            this.adapter.removeClass(cssClasses$8.OPENING);
             clearTimeout(this.animationTimer_);
             this.animationTimer_ = setTimeout(function () {
                 _this.handleAnimationTimerEnd_();
                 _this.adapter.notifyClosed(reason);
-            }, numbers$9.SNACKBAR_ANIMATION_CLOSE_TIME_MS);
+            }, numbers$2.SNACKBAR_ANIMATION_CLOSE_TIME_MS);
         };
         MDCSnackbarFoundation.prototype.isOpen = function () {
             return this.isOpen_;
@@ -10513,10 +10513,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCSnackbarFoundation.prototype.setTimeoutMs = function (timeoutMs) {
             // Use shorter variable names to make the code more readable
-            var minValue = numbers$9.MIN_AUTO_DISMISS_TIMEOUT_MS;
-            var maxValue = numbers$9.MAX_AUTO_DISMISS_TIMEOUT_MS;
-            var indeterminateValue = numbers$9.INDETERMINATE;
-            if (timeoutMs === numbers$9.INDETERMINATE || (timeoutMs <= maxValue && timeoutMs >= minValue)) {
+            var minValue = numbers$2.MIN_AUTO_DISMISS_TIMEOUT_MS;
+            var maxValue = numbers$2.MAX_AUTO_DISMISS_TIMEOUT_MS;
+            var indeterminateValue = numbers$2.INDETERMINATE;
+            if (timeoutMs === numbers$2.INDETERMINATE || (timeoutMs <= maxValue && timeoutMs >= minValue)) {
                 this.autoDismissTimeoutMs_ = timeoutMs;
             }
             else {
@@ -10547,8 +10547,8 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCSnackbarFoundation.prototype.handleAnimationTimerEnd_ = function () {
             this.animationTimer_ = 0;
-            this.adapter.removeClass(cssClasses$i.OPENING);
-            this.adapter.removeClass(cssClasses$i.CLOSING);
+            this.adapter.removeClass(cssClasses$8.OPENING);
+            this.adapter.removeClass(cssClasses$8.CLOSING);
         };
         /**
          * Runs the given logic on the next animation frame, using setTimeout to factor in Firefox reflow behavior.
@@ -10587,7 +10587,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var SURFACE_SELECTOR = strings$i.SURFACE_SELECTOR, LABEL_SELECTOR = strings$i.LABEL_SELECTOR, ACTION_SELECTOR = strings$i.ACTION_SELECTOR, DISMISS_SELECTOR = strings$i.DISMISS_SELECTOR, OPENING_EVENT = strings$i.OPENING_EVENT, OPENED_EVENT = strings$i.OPENED_EVENT, CLOSING_EVENT = strings$i.CLOSING_EVENT, CLOSED_EVENT = strings$i.CLOSED_EVENT;
+    var SURFACE_SELECTOR = strings$b.SURFACE_SELECTOR, LABEL_SELECTOR = strings$b.LABEL_SELECTOR, ACTION_SELECTOR = strings$b.ACTION_SELECTOR, DISMISS_SELECTOR = strings$b.DISMISS_SELECTOR, OPENING_EVENT = strings$b.OPENING_EVENT, OPENED_EVENT = strings$b.OPENED_EVENT, CLOSING_EVENT = strings$b.CLOSING_EVENT, CLOSED_EVENT = strings$b.CLOSED_EVENT;
     var MDCSnackbar = /** @class */ (function (_super) {
         __extends(MDCSnackbar, _super);
         function MDCSnackbar() {
@@ -10597,7 +10597,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             return new MDCSnackbar(root);
         };
         MDCSnackbar.prototype.initialize = function (announcerFactory) {
-            if (announcerFactory === void 0) { announcerFactory = function () { return announce; }; }
+            if (announcerFactory === void 0) { announcerFactory = function () { return announce$1; }; }
             this.announce_ = announcerFactory();
         };
         MDCSnackbar.prototype.initialSyncWithDOM = function () {
@@ -10765,10 +10765,10 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$j = {
+    var cssClasses$7 = {
         ROOT: 'mdc-form-field',
     };
-    var strings$j = {
+    var strings$a = {
         LABEL_SELECTOR: '.mdc-form-field > label',
     };
 
@@ -10805,14 +10805,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCFormFieldFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$j;
+                return cssClasses$7;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCFormFieldFoundation, "strings", {
             get: function () {
-                return strings$j;
+                return strings$a;
             },
             enumerable: true,
             configurable: true
@@ -10957,7 +10957,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$k = {
+    var cssClasses$6 = {
         ANIM_CHECKED_INDETERMINATE: 'mdc-checkbox--anim-checked-indeterminate',
         ANIM_CHECKED_UNCHECKED: 'mdc-checkbox--anim-checked-unchecked',
         ANIM_INDETERMINATE_CHECKED: 'mdc-checkbox--anim-indeterminate-checked',
@@ -10976,7 +10976,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         SELECTED: 'mdc-checkbox--selected',
         UPGRADED: 'mdc-checkbox--upgraded',
     };
-    var strings$k = {
+    var strings$9 = {
         ARIA_CHECKED_ATTR: 'aria-checked',
         ARIA_CHECKED_INDETERMINATE_VALUE: 'mixed',
         DATA_INDETERMINATE_ATTR: 'data-indeterminate',
@@ -10986,7 +10986,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         TRANSITION_STATE_INIT: 'init',
         TRANSITION_STATE_UNCHECKED: 'unchecked',
     };
-    var numbers$a = {
+    var numbers$1 = {
         ANIM_END_LATCH_MS: 250,
     };
 
@@ -11016,7 +11016,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         __extends(MDCCheckboxFoundation, _super);
         function MDCCheckboxFoundation(adapter) {
             var _this = _super.call(this, __assign(__assign({}, MDCCheckboxFoundation.defaultAdapter), adapter)) || this;
-            _this.currentCheckState_ = strings$k.TRANSITION_STATE_INIT;
+            _this.currentCheckState_ = strings$9.TRANSITION_STATE_INIT;
             _this.currentAnimationClass_ = '';
             _this.animEndLatchTimer_ = 0;
             _this.enableAnimationEndHandler_ = false;
@@ -11024,21 +11024,21 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCCheckboxFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$k;
+                return cssClasses$6;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCCheckboxFoundation, "strings", {
             get: function () {
-                return strings$k;
+                return strings$9;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCCheckboxFoundation, "numbers", {
             get: function () {
-                return numbers$a;
+                return numbers$1;
             },
             enumerable: true,
             configurable: true
@@ -11064,7 +11064,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCCheckboxFoundation.prototype.init = function () {
             this.currentCheckState_ = this.determineCheckState_();
             this.updateAriaChecked_();
-            this.adapter.addClass(cssClasses$k.UPGRADED);
+            this.adapter.addClass(cssClasses$6.UPGRADED);
         };
         MDCCheckboxFoundation.prototype.destroy = function () {
             clearTimeout(this.animEndLatchTimer_);
@@ -11072,10 +11072,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCCheckboxFoundation.prototype.setDisabled = function (disabled) {
             this.adapter.setNativeControlDisabled(disabled);
             if (disabled) {
-                this.adapter.addClass(cssClasses$k.DISABLED);
+                this.adapter.addClass(cssClasses$6.DISABLED);
             }
             else {
-                this.adapter.removeClass(cssClasses$k.DISABLED);
+                this.adapter.removeClass(cssClasses$6.DISABLED);
             }
         };
         /**
@@ -11090,7 +11090,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.animEndLatchTimer_ = setTimeout(function () {
                 _this.adapter.removeClass(_this.currentAnimationClass_);
                 _this.enableAnimationEndHandler_ = false;
-            }, numbers$a.ANIM_END_LATCH_MS);
+            }, numbers$1.ANIM_END_LATCH_MS);
         };
         /**
          * Handles the change event for the checkbox
@@ -11108,8 +11108,8 @@ var TropicBirdModule = (function (exports, sargasso) {
                 return;
             }
             this.updateAriaChecked_();
-            var TRANSITION_STATE_UNCHECKED = strings$k.TRANSITION_STATE_UNCHECKED;
-            var SELECTED = cssClasses$k.SELECTED;
+            var TRANSITION_STATE_UNCHECKED = strings$9.TRANSITION_STATE_UNCHECKED;
+            var SELECTED = cssClasses$6.SELECTED;
             if (newState === TRANSITION_STATE_UNCHECKED) {
                 this.adapter.removeClass(SELECTED);
             }
@@ -11134,7 +11134,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
         };
         MDCCheckboxFoundation.prototype.determineCheckState_ = function () {
-            var TRANSITION_STATE_INDETERMINATE = strings$k.TRANSITION_STATE_INDETERMINATE, TRANSITION_STATE_CHECKED = strings$k.TRANSITION_STATE_CHECKED, TRANSITION_STATE_UNCHECKED = strings$k.TRANSITION_STATE_UNCHECKED;
+            var TRANSITION_STATE_INDETERMINATE = strings$9.TRANSITION_STATE_INDETERMINATE, TRANSITION_STATE_CHECKED = strings$9.TRANSITION_STATE_CHECKED, TRANSITION_STATE_UNCHECKED = strings$9.TRANSITION_STATE_UNCHECKED;
             if (this.adapter.isIndeterminate()) {
                 return TRANSITION_STATE_INDETERMINATE;
             }
@@ -11142,7 +11142,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 TRANSITION_STATE_UNCHECKED;
         };
         MDCCheckboxFoundation.prototype.getTransitionAnimationClass_ = function (oldState, newState) {
-            var TRANSITION_STATE_INIT = strings$k.TRANSITION_STATE_INIT, TRANSITION_STATE_CHECKED = strings$k.TRANSITION_STATE_CHECKED, TRANSITION_STATE_UNCHECKED = strings$k.TRANSITION_STATE_UNCHECKED;
+            var TRANSITION_STATE_INIT = strings$9.TRANSITION_STATE_INIT, TRANSITION_STATE_CHECKED = strings$9.TRANSITION_STATE_CHECKED, TRANSITION_STATE_UNCHECKED = strings$9.TRANSITION_STATE_UNCHECKED;
             var _a = MDCCheckboxFoundation.cssClasses, ANIM_UNCHECKED_CHECKED = _a.ANIM_UNCHECKED_CHECKED, ANIM_UNCHECKED_INDETERMINATE = _a.ANIM_UNCHECKED_INDETERMINATE, ANIM_CHECKED_UNCHECKED = _a.ANIM_CHECKED_UNCHECKED, ANIM_CHECKED_INDETERMINATE = _a.ANIM_CHECKED_INDETERMINATE, ANIM_INDETERMINATE_CHECKED = _a.ANIM_INDETERMINATE_CHECKED, ANIM_INDETERMINATE_UNCHECKED = _a.ANIM_INDETERMINATE_UNCHECKED;
             switch (oldState) {
                 case TRANSITION_STATE_INIT:
@@ -11161,12 +11161,12 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCCheckboxFoundation.prototype.updateAriaChecked_ = function () {
             // Ensure aria-checked is set to mixed if checkbox is in indeterminate state.
             if (this.adapter.isIndeterminate()) {
-                this.adapter.setNativeControlAttr(strings$k.ARIA_CHECKED_ATTR, strings$k.ARIA_CHECKED_INDETERMINATE_VALUE);
+                this.adapter.setNativeControlAttr(strings$9.ARIA_CHECKED_ATTR, strings$9.ARIA_CHECKED_INDETERMINATE_VALUE);
             }
             else {
                 // The on/off state does not need to keep track of aria-checked, since
                 // the screenreader uses the checked property on the checkbox element.
-                this.adapter.removeNativeControlAttr(strings$k.ARIA_CHECKED_ATTR);
+                this.adapter.removeNativeControlAttr(strings$9.ARIA_CHECKED_ATTR);
             }
         };
         return MDCCheckboxFoundation;
@@ -11253,7 +11253,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             configurable: true
         });
         MDCCheckbox.prototype.initialize = function () {
-            var DATA_INDETERMINATE_ATTR = strings$k.DATA_INDETERMINATE_ATTR;
+            var DATA_INDETERMINATE_ATTR = strings$9.DATA_INDETERMINATE_ATTR;
             this.nativeControl_.indeterminate =
                 this.nativeControl_.getAttribute(DATA_INDETERMINATE_ATTR) === 'true';
             this.nativeControl_.removeAttribute(DATA_INDETERMINATE_ATTR);
@@ -11344,7 +11344,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         Object.defineProperty(MDCCheckbox.prototype, "nativeControl_", {
             get: function () {
-                var NATIVE_CONTROL_SELECTOR = strings$k.NATIVE_CONTROL_SELECTOR;
+                var NATIVE_CONTROL_SELECTOR = strings$9.NATIVE_CONTROL_SELECTOR;
                 var el = this.root.querySelector(NATIVE_CONTROL_SELECTOR);
                 if (!el) {
                     throw new Error("Checkbox component requires a " + NATIVE_CONTROL_SELECTOR + " element");
@@ -11405,14 +11405,14 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$l = {
+    var cssClasses$5 = {
         CLOSED_CLASS: 'mdc-linear-progress--closed',
         CLOSED_ANIMATION_OFF_CLASS: 'mdc-linear-progress--closed-animation-off',
         INDETERMINATE_CLASS: 'mdc-linear-progress--indeterminate',
         REVERSED_CLASS: 'mdc-linear-progress--reversed',
         ANIMATION_READY_CLASS: 'mdc-linear-progress--animation-ready',
     };
-    var strings$l = {
+    var strings$8 = {
         ARIA_VALUEMAX: 'aria-valuemax',
         ARIA_VALUEMIN: 'aria-valuemin',
         ARIA_VALUENOW: 'aria-valuenow',
@@ -11460,14 +11460,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCLinearProgressFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$l;
+                return cssClasses$5;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCLinearProgressFoundation, "strings", {
             get: function () {
-                return strings$l;
+                return strings$8;
             },
             enumerable: true,
             configurable: true
@@ -11493,8 +11493,8 @@ var TropicBirdModule = (function (exports, sargasso) {
         });
         MDCLinearProgressFoundation.prototype.init = function () {
             var _this = this;
-            this.isDeterminate = !this.adapter.hasClass(cssClasses$l.INDETERMINATE_CLASS);
-            this.adapter.addClass(cssClasses$l.ANIMATION_READY_CLASS);
+            this.isDeterminate = !this.adapter.hasClass(cssClasses$5.INDETERMINATE_CLASS);
+            this.adapter.addClass(cssClasses$5.ANIMATION_READY_CLASS);
             this.progress = 0;
             this.buffer = 1;
             this.observer = this.adapter.attachResizeObserver(function (entries) {
@@ -11525,10 +11525,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCLinearProgressFoundation.prototype.setDeterminate = function (isDeterminate) {
             this.isDeterminate = isDeterminate;
             if (this.isDeterminate) {
-                this.adapter.removeClass(cssClasses$l.INDETERMINATE_CLASS);
-                this.adapter.setAttribute(strings$l.ARIA_VALUENOW, this.progress.toString());
-                this.adapter.setAttribute(strings$l.ARIA_VALUEMAX, '1');
-                this.adapter.setAttribute(strings$l.ARIA_VALUEMIN, '0');
+                this.adapter.removeClass(cssClasses$5.INDETERMINATE_CLASS);
+                this.adapter.setAttribute(strings$8.ARIA_VALUENOW, this.progress.toString());
+                this.adapter.setAttribute(strings$8.ARIA_VALUEMAX, '1');
+                this.adapter.setAttribute(strings$8.ARIA_VALUEMIN, '0');
                 this.setPrimaryBarProgress(this.progress);
                 this.setBufferBarProgress(this.buffer);
                 return;
@@ -11536,10 +11536,10 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (this.observer) {
                 this.calculateAndSetDimensions(this.adapter.getWidth());
             }
-            this.adapter.addClass(cssClasses$l.INDETERMINATE_CLASS);
-            this.adapter.removeAttribute(strings$l.ARIA_VALUENOW);
-            this.adapter.removeAttribute(strings$l.ARIA_VALUEMAX);
-            this.adapter.removeAttribute(strings$l.ARIA_VALUEMIN);
+            this.adapter.addClass(cssClasses$5.INDETERMINATE_CLASS);
+            this.adapter.removeAttribute(strings$8.ARIA_VALUENOW);
+            this.adapter.removeAttribute(strings$8.ARIA_VALUEMAX);
+            this.adapter.removeAttribute(strings$8.ARIA_VALUEMIN);
             this.setPrimaryBarProgress(1);
             this.setBufferBarProgress(1);
         };
@@ -11550,7 +11550,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.progress = value;
             if (this.isDeterminate) {
                 this.setPrimaryBarProgress(value);
-                this.adapter.setAttribute(strings$l.ARIA_VALUENOW, value.toString());
+                this.adapter.setAttribute(strings$8.ARIA_VALUENOW, value.toString());
             }
         };
         MDCLinearProgressFoundation.prototype.getProgress = function () {
@@ -11563,11 +11563,11 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
         };
         MDCLinearProgressFoundation.prototype.open = function () {
-            this.adapter.removeClass(cssClasses$l.CLOSED_CLASS);
-            this.adapter.removeClass(cssClasses$l.CLOSED_ANIMATION_OFF_CLASS);
+            this.adapter.removeClass(cssClasses$5.CLOSED_CLASS);
+            this.adapter.removeClass(cssClasses$5.CLOSED_ANIMATION_OFF_CLASS);
         };
         MDCLinearProgressFoundation.prototype.close = function () {
-            this.adapter.addClass(cssClasses$l.CLOSED_CLASS);
+            this.adapter.addClass(cssClasses$5.CLOSED_CLASS);
         };
         /**
          * Handles the transitionend event emitted after `close()` is called and the
@@ -11575,8 +11575,8 @@ var TropicBirdModule = (function (exports, sargasso) {
          * progress indicator is completely hidden.
          */
         MDCLinearProgressFoundation.prototype.handleTransitionEnd = function () {
-            if (this.adapter.hasClass(cssClasses$l.CLOSED_CLASS)) {
-                this.adapter.addClass(cssClasses$l.CLOSED_ANIMATION_OFF_CLASS);
+            if (this.adapter.hasClass(cssClasses$5.CLOSED_CLASS)) {
+                this.adapter.addClass(cssClasses$5.CLOSED_ANIMATION_OFF_CLASS);
             }
         };
         MDCLinearProgressFoundation.prototype.destroy = function () {
@@ -11586,9 +11586,9 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
         };
         MDCLinearProgressFoundation.prototype.restartAnimation = function () {
-            this.adapter.removeClass(cssClasses$l.ANIMATION_READY_CLASS);
+            this.adapter.removeClass(cssClasses$5.ANIMATION_READY_CLASS);
             this.adapter.forceLayout();
-            this.adapter.addClass(cssClasses$l.ANIMATION_READY_CLASS);
+            this.adapter.addClass(cssClasses$5.ANIMATION_READY_CLASS);
         };
         MDCLinearProgressFoundation.prototype.setPrimaryBarProgress = function (progressValue) {
             var value = "scaleX(" + progressValue + ")";
@@ -11601,7 +11601,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCLinearProgressFoundation.prototype.setBufferBarProgress = function (progressValue) {
             var value = progressValue * 100 + "%";
-            this.adapter.setBufferBarStyle(strings$l.FLEX_BASIS, value);
+            this.adapter.setBufferBarStyle(strings$8.FLEX_BASIS, value);
         };
         MDCLinearProgressFoundation.prototype.calculateAndSetDimensions = function (width) {
             var primaryHalf = width * animationDimensionPercentages.PRIMARY_HALF;
@@ -11795,7 +11795,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         InteractionTrigger[InteractionTrigger["SPACEBAR_KEY"] = 4] = "SPACEBAR_KEY";
         InteractionTrigger[InteractionTrigger["ENTER_KEY"] = 5] = "ENTER_KEY";
     })(InteractionTrigger || (InteractionTrigger = {}));
-    var strings$m = {
+    var strings$7 = {
         ARIA_HIDDEN: 'aria-hidden',
         INTERACTION_EVENT: 'MDCChipTrailingAction:interaction',
         NAVIGATION_EVENT: 'MDCChipTrailingAction:navigation',
@@ -11831,7 +11831,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCChipTrailingActionFoundation, "strings", {
             get: function () {
-                return strings$m;
+                return strings$7;
             },
             enumerable: true,
             configurable: true
@@ -11867,14 +11867,14 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
         };
         MDCChipTrailingActionFoundation.prototype.removeFocus = function () {
-            this.adapter.setAttribute(strings$m.TAB_INDEX, '-1');
+            this.adapter.setAttribute(strings$7.TAB_INDEX, '-1');
         };
         MDCChipTrailingActionFoundation.prototype.focus = function () {
-            this.adapter.setAttribute(strings$m.TAB_INDEX, '0');
+            this.adapter.setAttribute(strings$7.TAB_INDEX, '0');
             this.adapter.focus();
         };
         MDCChipTrailingActionFoundation.prototype.isNavigable = function () {
-            return this.adapter.getAttribute(strings$m.ARIA_HIDDEN) !== 'true';
+            return this.adapter.getAttribute(strings$7.ARIA_HIDDEN) !== 'true';
         };
         MDCChipTrailingActionFoundation.prototype.shouldNotifyInteractionFromKey_ = function (key) {
             var isFromActionKey = key === KEY.ENTER || key === KEY.SPACEBAR;
@@ -11977,10 +11977,10 @@ var TropicBirdModule = (function (exports, sargasso) {
                 },
                 getAttribute: function (attr) { return _this.root.getAttribute(attr); },
                 notifyInteraction: function (trigger) {
-                    return _this.emit(strings$m.INTERACTION_EVENT, { trigger: trigger }, true /* shouldBubble */);
+                    return _this.emit(strings$7.INTERACTION_EVENT, { trigger: trigger }, true /* shouldBubble */);
                 },
                 notifyNavigation: function (key) {
-                    _this.emit(strings$m.NAVIGATION_EVENT, { key: key }, true /* shouldBubble */);
+                    _this.emit(strings$7.NAVIGATION_EVENT, { key: key }, true /* shouldBubble */);
                 },
                 setAttribute: function (attr, value) {
                     _this.root.setAttribute(attr, value);
@@ -12056,7 +12056,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         EventSource["TRAILING"] = "trailing";
         EventSource["NONE"] = "none";
     })(EventSource || (EventSource = {}));
-    var strings$n = {
+    var strings$6 = {
         ADDED_ANNOUNCEMENT_ATTRIBUTE: 'data-mdc-chip-added-announcement',
         ARIA_CHECKED: 'aria-checked',
         ARROW_DOWN_KEY: 'ArrowDown',
@@ -12088,7 +12088,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         TRAILING_ICON_INTERACTION_EVENT: 'MDCChip:trailingIconInteraction',
         TRAILING_ICON_SELECTOR: '.mdc-chip__icon--trailing',
     };
-    var cssClasses$m = {
+    var cssClasses$4 = {
         CHECKMARK: 'mdc-chip__checkmark',
         CHIP_EXIT: 'mdc-chip--exit',
         DELETABLE: 'mdc-chip--deletable',
@@ -12103,26 +12103,26 @@ var TropicBirdModule = (function (exports, sargasso) {
         TRAILING_ACTION: 'mdc-chip__trailing-action',
         TRAILING_ICON: 'mdc-chip__icon--trailing',
     };
-    var navigationKeys$1 = new Set();
+    var navigationKeys = new Set();
     // IE11 has no support for new Set with iterable so we need to initialize this by hand
-    navigationKeys$1.add(strings$n.ARROW_LEFT_KEY);
-    navigationKeys$1.add(strings$n.ARROW_RIGHT_KEY);
-    navigationKeys$1.add(strings$n.ARROW_DOWN_KEY);
-    navigationKeys$1.add(strings$n.ARROW_UP_KEY);
-    navigationKeys$1.add(strings$n.END_KEY);
-    navigationKeys$1.add(strings$n.HOME_KEY);
-    navigationKeys$1.add(strings$n.IE_ARROW_LEFT_KEY);
-    navigationKeys$1.add(strings$n.IE_ARROW_RIGHT_KEY);
-    navigationKeys$1.add(strings$n.IE_ARROW_DOWN_KEY);
-    navigationKeys$1.add(strings$n.IE_ARROW_UP_KEY);
+    navigationKeys.add(strings$6.ARROW_LEFT_KEY);
+    navigationKeys.add(strings$6.ARROW_RIGHT_KEY);
+    navigationKeys.add(strings$6.ARROW_DOWN_KEY);
+    navigationKeys.add(strings$6.ARROW_UP_KEY);
+    navigationKeys.add(strings$6.END_KEY);
+    navigationKeys.add(strings$6.HOME_KEY);
+    navigationKeys.add(strings$6.IE_ARROW_LEFT_KEY);
+    navigationKeys.add(strings$6.IE_ARROW_RIGHT_KEY);
+    navigationKeys.add(strings$6.IE_ARROW_DOWN_KEY);
+    navigationKeys.add(strings$6.IE_ARROW_UP_KEY);
     var jumpChipKeys = new Set();
     // IE11 has no support for new Set with iterable so we need to initialize this by hand
-    jumpChipKeys.add(strings$n.ARROW_UP_KEY);
-    jumpChipKeys.add(strings$n.ARROW_DOWN_KEY);
-    jumpChipKeys.add(strings$n.HOME_KEY);
-    jumpChipKeys.add(strings$n.END_KEY);
-    jumpChipKeys.add(strings$n.IE_ARROW_UP_KEY);
-    jumpChipKeys.add(strings$n.IE_ARROW_DOWN_KEY);
+    jumpChipKeys.add(strings$6.ARROW_UP_KEY);
+    jumpChipKeys.add(strings$6.ARROW_DOWN_KEY);
+    jumpChipKeys.add(strings$6.HOME_KEY);
+    jumpChipKeys.add(strings$6.END_KEY);
+    jumpChipKeys.add(strings$6.IE_ARROW_UP_KEY);
+    jumpChipKeys.add(strings$6.IE_ARROW_DOWN_KEY);
 
     /**
      * @license
@@ -12175,14 +12175,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCChipFoundation, "strings", {
             get: function () {
-                return strings$n;
+                return strings$6;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCChipFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$m;
+                return cssClasses$4;
             },
             enumerable: true,
             configurable: true
@@ -12221,13 +12221,13 @@ var TropicBirdModule = (function (exports, sargasso) {
             configurable: true
         });
         MDCChipFoundation.prototype.isSelected = function () {
-            return this.adapter.hasClass(cssClasses$m.SELECTED);
+            return this.adapter.hasClass(cssClasses$4.SELECTED);
         };
         MDCChipFoundation.prototype.isEditable = function () {
-            return this.adapter.hasClass(cssClasses$m.EDITABLE);
+            return this.adapter.hasClass(cssClasses$4.EDITABLE);
         };
         MDCChipFoundation.prototype.isEditing = function () {
-            return this.adapter.hasClass(cssClasses$m.EDITING);
+            return this.adapter.hasClass(cssClasses$4.EDITING);
         };
         MDCChipFoundation.prototype.setSelected = function (selected) {
             this.setSelected_(selected);
@@ -12280,7 +12280,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Begins the exit animation which leads to removal of the chip.
          */
         MDCChipFoundation.prototype.beginExit = function () {
-            this.adapter.addClass(cssClasses$m.CHIP_EXIT);
+            this.adapter.addClass(cssClasses$4.CHIP_EXIT);
         };
         MDCChipFoundation.prototype.handleClick = function () {
             this.adapter.notifyInteraction();
@@ -12297,7 +12297,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCChipFoundation.prototype.handleTransitionEnd = function (evt) {
             var _this = this;
             // Handle transition end event on the chip when it is about to be removed.
-            var shouldHandle = this.adapter.eventTargetHasClass(evt.target, cssClasses$m.CHIP_EXIT);
+            var shouldHandle = this.adapter.eventTargetHasClass(evt.target, cssClasses$4.CHIP_EXIT);
             var widthIsAnimating = evt.propertyName === 'width';
             var opacityIsAnimating = evt.propertyName === 'opacity';
             if (shouldHandle && opacityIsAnimating) {
@@ -12319,23 +12319,23 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
             if (shouldHandle && widthIsAnimating) {
                 this.removeFocus();
-                var removedAnnouncement = this.adapter.getAttribute(strings$n.REMOVED_ANNOUNCEMENT_ATTRIBUTE);
+                var removedAnnouncement = this.adapter.getAttribute(strings$6.REMOVED_ANNOUNCEMENT_ATTRIBUTE);
                 this.adapter.notifyRemoval(removedAnnouncement);
             }
             // Handle a transition end event on the leading icon or checkmark, since the transition end event bubbles.
             if (!opacityIsAnimating) {
                 return;
             }
-            var shouldHideLeadingIcon = this.adapter.eventTargetHasClass(evt.target, cssClasses$m.LEADING_ICON) &&
-                this.adapter.hasClass(cssClasses$m.SELECTED);
-            var shouldShowLeadingIcon = this.adapter.eventTargetHasClass(evt.target, cssClasses$m.CHECKMARK) &&
-                !this.adapter.hasClass(cssClasses$m.SELECTED);
+            var shouldHideLeadingIcon = this.adapter.eventTargetHasClass(evt.target, cssClasses$4.LEADING_ICON) &&
+                this.adapter.hasClass(cssClasses$4.SELECTED);
+            var shouldShowLeadingIcon = this.adapter.eventTargetHasClass(evt.target, cssClasses$4.CHECKMARK) &&
+                !this.adapter.hasClass(cssClasses$4.SELECTED);
             if (shouldHideLeadingIcon) {
-                this.adapter.addClassToLeadingIcon(cssClasses$m.HIDDEN_LEADING_ICON);
+                this.adapter.addClassToLeadingIcon(cssClasses$4.HIDDEN_LEADING_ICON);
                 return;
             }
             if (shouldShowLeadingIcon) {
-                this.adapter.removeClassFromLeadingIcon(cssClasses$m.HIDDEN_LEADING_ICON);
+                this.adapter.removeClassFromLeadingIcon(cssClasses$4.HIDDEN_LEADING_ICON);
                 return;
             }
         };
@@ -12344,7 +12344,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (!this.eventFromPrimaryAction_(evt)) {
                 return;
             }
-            this.adapter.addClass(cssClasses$m.PRIMARY_ACTION_FOCUSED);
+            this.adapter.addClass(cssClasses$4.PRIMARY_ACTION_FOCUSED);
         };
         MDCChipFoundation.prototype.handleFocusOut = function (evt) {
             // Early exit if the event doesn't come from the primary action
@@ -12354,7 +12354,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (this.isEditing()) {
                 this.finishEditing();
             }
-            this.adapter.removeClass(cssClasses$m.PRIMARY_ACTION_FOCUSED);
+            this.adapter.removeClass(cssClasses$4.PRIMARY_ACTION_FOCUSED);
         };
         /**
          * Handles an interaction event on the trailing icon element. This is used to
@@ -12394,7 +12394,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                 return;
             }
             // Early exit if the key is not usable
-            if (!navigationKeys$1.has(evt.key)) {
+            if (!navigationKeys.has(evt.key)) {
                 return;
             }
             // Prevent default behavior for movement keys which could include scrolling
@@ -12408,7 +12408,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Called by the chip set to remove focus from the chip actions.
          */
         MDCChipFoundation.prototype.removeFocus = function () {
-            this.adapter.setPrimaryActionAttr(strings$n.TAB_INDEX, '-1');
+            this.adapter.setPrimaryActionAttr(strings$6.TAB_INDEX, '-1');
             this.adapter.removeTrailingActionFocus();
         };
         /**
@@ -12425,14 +12425,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCChipFoundation.prototype.focusTrailingAction = function () {
             var trailingActionIsNavigable = this.adapter.isTrailingActionNavigable();
             if (trailingActionIsNavigable) {
-                this.adapter.setPrimaryActionAttr(strings$n.TAB_INDEX, '-1');
+                this.adapter.setPrimaryActionAttr(strings$6.TAB_INDEX, '-1');
                 this.adapter.focusTrailingAction();
                 return;
             }
             this.focusPrimaryAction();
         };
         MDCChipFoundation.prototype.setPrimaryActionFocusable_ = function (focusBehavior) {
-            this.adapter.setPrimaryActionAttr(strings$n.TAB_INDEX, '0');
+            this.adapter.setPrimaryActionAttr(strings$6.TAB_INDEX, '0');
             if (focusBehavior === FocusBehavior.SHOULD_FOCUS) {
                 this.adapter.focusPrimaryAction();
             }
@@ -12461,8 +12461,8 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCChipFoundation.prototype.getDirection_ = function (key) {
             var isRTL = this.adapter.isRTL();
-            var isLeftKey = key === strings$n.ARROW_LEFT_KEY || key === strings$n.IE_ARROW_LEFT_KEY;
-            var isRightKey = key === strings$n.ARROW_RIGHT_KEY || key === strings$n.IE_ARROW_RIGHT_KEY;
+            var isLeftKey = key === strings$6.ARROW_LEFT_KEY || key === strings$6.IE_ARROW_LEFT_KEY;
+            var isRightKey = key === strings$6.ARROW_RIGHT_KEY || key === strings$6.IE_ARROW_RIGHT_KEY;
             if (!isRTL && isLeftKey || isRTL && isRightKey) {
                 return Direction.LEFT;
             }
@@ -12474,28 +12474,28 @@ var TropicBirdModule = (function (exports, sargasso) {
             }
         };
         MDCChipFoundation.prototype.shouldStartEditing = function (evt) {
-            return this.eventFromPrimaryAction_(evt) && evt.key === strings$n.ENTER_KEY;
+            return this.eventFromPrimaryAction_(evt) && evt.key === strings$6.ENTER_KEY;
         };
         MDCChipFoundation.prototype.shouldFinishEditing = function (evt) {
-            return evt.key === strings$n.ENTER_KEY;
+            return evt.key === strings$6.ENTER_KEY;
         };
         MDCChipFoundation.prototype.shouldNotifyInteraction_ = function (evt) {
-            return evt.key === strings$n.ENTER_KEY || evt.key === strings$n.SPACEBAR_KEY;
+            return evt.key === strings$6.ENTER_KEY || evt.key === strings$6.SPACEBAR_KEY;
         };
         MDCChipFoundation.prototype.isDeleteAction_ = function (evt) {
-            var isDeletable = this.adapter.hasClass(cssClasses$m.DELETABLE);
+            var isDeletable = this.adapter.hasClass(cssClasses$4.DELETABLE);
             return isDeletable &&
-                (evt.key === strings$n.BACKSPACE_KEY || evt.key === strings$n.DELETE_KEY ||
-                    evt.key === strings$n.IE_DELETE_KEY);
+                (evt.key === strings$6.BACKSPACE_KEY || evt.key === strings$6.DELETE_KEY ||
+                    evt.key === strings$6.IE_DELETE_KEY);
         };
         MDCChipFoundation.prototype.setSelected_ = function (selected) {
             if (selected) {
-                this.adapter.addClass(cssClasses$m.SELECTED);
-                this.adapter.setPrimaryActionAttr(strings$n.ARIA_CHECKED, 'true');
+                this.adapter.addClass(cssClasses$4.SELECTED);
+                this.adapter.setPrimaryActionAttr(strings$6.ARIA_CHECKED, 'true');
             }
             else {
-                this.adapter.removeClass(cssClasses$m.SELECTED);
-                this.adapter.setPrimaryActionAttr(strings$n.ARIA_CHECKED, 'false');
+                this.adapter.removeClass(cssClasses$4.SELECTED);
+                this.adapter.setPrimaryActionAttr(strings$6.ARIA_CHECKED, 'false');
             }
         };
         MDCChipFoundation.prototype.notifySelection_ = function (selected) {
@@ -12505,14 +12505,14 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.adapter.notifySelection(selected, true);
         };
         MDCChipFoundation.prototype.eventFromPrimaryAction_ = function (evt) {
-            return this.adapter.eventTargetHasClass(evt.target, cssClasses$m.PRIMARY_ACTION);
+            return this.adapter.eventTargetHasClass(evt.target, cssClasses$4.PRIMARY_ACTION);
         };
         MDCChipFoundation.prototype.startEditing = function () {
-            this.adapter.addClass(cssClasses$m.EDITING);
+            this.adapter.addClass(cssClasses$4.EDITING);
             this.adapter.notifyEditStart();
         };
         MDCChipFoundation.prototype.finishEditing = function () {
-            this.adapter.removeClass(cssClasses$m.EDITING);
+            this.adapter.removeClass(cssClasses$4.EDITING);
             this.adapter.notifyEditFinish();
         };
         return MDCChipFoundation;
@@ -12608,11 +12608,11 @@ var TropicBirdModule = (function (exports, sargasso) {
             var _this = this;
             if (rippleFactory === void 0) { rippleFactory = function (el, foundation) { return new MDCRipple(el, foundation); }; }
             if (trailingActionFactory === void 0) { trailingActionFactory = function (el) { return new MDCChipTrailingAction(el); }; }
-            this.leadingIcon_ = this.root.querySelector(strings$n.LEADING_ICON_SELECTOR);
-            this.checkmark_ = this.root.querySelector(strings$n.CHECKMARK_SELECTOR);
+            this.leadingIcon_ = this.root.querySelector(strings$6.LEADING_ICON_SELECTOR);
+            this.checkmark_ = this.root.querySelector(strings$6.CHECKMARK_SELECTOR);
             this.primaryAction_ =
-                this.root.querySelector(strings$n.PRIMARY_ACTION_SELECTOR);
-            var trailingActionEl = this.root.querySelector(strings$n.TRAILING_ACTION_SELECTOR);
+                this.root.querySelector(strings$6.PRIMARY_ACTION_SELECTOR);
+            var trailingActionEl = this.root.querySelector(strings$6.TRAILING_ACTION_SELECTOR);
             if (trailingActionEl) {
                 this.trailingAction_ = trailingActionFactory(trailingActionEl);
             }
@@ -12654,8 +12654,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.listen('focusin', this.handleFocusIn_);
             this.listen('focusout', this.handleFocusOut_);
             if (this.trailingAction_) {
-                this.listen(strings$m.INTERACTION_EVENT, this.handleTrailingActionInteraction_);
-                this.listen(strings$m.NAVIGATION_EVENT, this.handleTrailingActionNavigation_);
+                this.listen(strings$7.INTERACTION_EVENT, this.handleTrailingActionInteraction_);
+                this.listen(strings$7.NAVIGATION_EVENT, this.handleTrailingActionNavigation_);
             }
         };
         MDCChip.prototype.destroy = function () {
@@ -12666,8 +12666,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.unlisten('focusin', this.handleFocusIn_);
             this.unlisten('focusout', this.handleFocusOut_);
             if (this.trailingAction_) {
-                this.unlisten(strings$m.INTERACTION_EVENT, this.handleTrailingActionInteraction_);
-                this.unlisten(strings$m.NAVIGATION_EVENT, this.handleTrailingActionNavigation_);
+                this.unlisten(strings$7.INTERACTION_EVENT, this.handleTrailingActionInteraction_);
+                this.unlisten(strings$7.NAVIGATION_EVENT, this.handleTrailingActionNavigation_);
             }
             _super.prototype.destroy.call(this);
         };
@@ -12718,18 +12718,18 @@ var TropicBirdModule = (function (exports, sargasso) {
                     }
                     return false;
                 },
-                notifyInteraction: function () { return _this.emit(strings$n.INTERACTION_EVENT, { chipId: _this.id }, true /* shouldBubble */); },
+                notifyInteraction: function () { return _this.emit(strings$6.INTERACTION_EVENT, { chipId: _this.id }, true /* shouldBubble */); },
                 notifyNavigation: function (key, source) {
-                    return _this.emit(strings$n.NAVIGATION_EVENT, { chipId: _this.id, key: key, source: source }, true /* shouldBubble */);
+                    return _this.emit(strings$6.NAVIGATION_EVENT, { chipId: _this.id, key: key, source: source }, true /* shouldBubble */);
                 },
                 notifyRemoval: function (removedAnnouncement) {
-                    _this.emit(strings$n.REMOVAL_EVENT, { chipId: _this.id, removedAnnouncement: removedAnnouncement }, true /* shouldBubble */);
+                    _this.emit(strings$6.REMOVAL_EVENT, { chipId: _this.id, removedAnnouncement: removedAnnouncement }, true /* shouldBubble */);
                 },
                 notifySelection: function (selected, shouldIgnore) {
-                    return _this.emit(strings$n.SELECTION_EVENT, { chipId: _this.id, selected: selected, shouldIgnore: shouldIgnore }, true /* shouldBubble */);
+                    return _this.emit(strings$6.SELECTION_EVENT, { chipId: _this.id, selected: selected, shouldIgnore: shouldIgnore }, true /* shouldBubble */);
                 },
                 notifyTrailingIconInteraction: function () {
-                    return _this.emit(strings$n.TRAILING_ICON_INTERACTION_EVENT, { chipId: _this.id }, true /* shouldBubble */);
+                    return _this.emit(strings$6.TRAILING_ICON_INTERACTION_EVENT, { chipId: _this.id }, true /* shouldBubble */);
                 },
                 notifyEditStart: function () { },
                 notifyEditFinish: function () { },
@@ -12836,7 +12836,7 @@ var TropicBirdModule = (function (exports, sargasso) {
     /**
      * Announces the given message with optional priority, defaulting to "polite"
      */
-    function announce$1(message, priority) {
+    function announce(message, priority) {
         Announcer.getInstance().say(message, priority);
     }
     var Announcer = /** @class */ (function () {
@@ -12914,10 +12914,10 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$o = {
+    var strings$5 = {
         CHIP_SELECTOR: '.mdc-chip',
     };
-    var cssClasses$n = {
+    var cssClasses$3 = {
         CHOICE: 'mdc-chip-set--choice',
         FILTER: 'mdc-chip-set--filter',
     };
@@ -12956,14 +12956,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCChipSetFoundation, "strings", {
             get: function () {
-                return strings$o;
+                return strings$5;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCChipSetFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$n;
+                return cssClasses$3;
             },
             enumerable: true,
             configurable: true
@@ -13006,8 +13006,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             var chipId = _a.chipId;
             var index = this.adapter.getIndexOfChipById(chipId);
             this.removeFocusFromChipsExcept_(index);
-            if (this.adapter.hasClass(cssClasses$n.CHOICE) ||
-                this.adapter.hasClass(cssClasses$n.FILTER)) {
+            if (this.adapter.hasClass(cssClasses$3.CHOICE) ||
+                this.adapter.hasClass(cssClasses$3.FILTER)) {
                 this.toggleSelect_(chipId);
             }
         };
@@ -13056,19 +13056,19 @@ var TropicBirdModule = (function (exports, sargasso) {
             var maxIndex = this.adapter.getChipListCount() - 1;
             var index = this.adapter.getIndexOfChipById(chipId);
             // Early exit if the index is out of range or the key is unusable
-            if (index === -1 || !navigationKeys$1.has(key)) {
+            if (index === -1 || !navigationKeys.has(key)) {
                 return;
             }
             var isRTL = this.adapter.isRTL();
-            var isLeftKey = key === strings$n.ARROW_LEFT_KEY ||
-                key === strings$n.IE_ARROW_LEFT_KEY;
-            var isRightKey = key === strings$n.ARROW_RIGHT_KEY ||
-                key === strings$n.IE_ARROW_RIGHT_KEY;
-            var isDownKey = key === strings$n.ARROW_DOWN_KEY ||
-                key === strings$n.IE_ARROW_DOWN_KEY;
+            var isLeftKey = key === strings$6.ARROW_LEFT_KEY ||
+                key === strings$6.IE_ARROW_LEFT_KEY;
+            var isRightKey = key === strings$6.ARROW_RIGHT_KEY ||
+                key === strings$6.IE_ARROW_RIGHT_KEY;
+            var isDownKey = key === strings$6.ARROW_DOWN_KEY ||
+                key === strings$6.IE_ARROW_DOWN_KEY;
             var shouldIncrement = !isRTL && isRightKey || isRTL && isLeftKey || isDownKey;
-            var isHome = key === strings$n.HOME_KEY;
-            var isEnd = key === strings$n.END_KEY;
+            var isHome = key === strings$6.HOME_KEY;
+            var isEnd = key === strings$6.END_KEY;
             if (shouldIncrement) {
                 index++;
             }
@@ -13106,10 +13106,10 @@ var TropicBirdModule = (function (exports, sargasso) {
         };
         MDCChipSetFoundation.prototype.getDirection_ = function (key) {
             var isRTL = this.adapter.isRTL();
-            var isLeftKey = key === strings$n.ARROW_LEFT_KEY ||
-                key === strings$n.IE_ARROW_LEFT_KEY;
-            var isRightKey = key === strings$n.ARROW_RIGHT_KEY ||
-                key === strings$n.IE_ARROW_RIGHT_KEY;
+            var isLeftKey = key === strings$6.ARROW_LEFT_KEY ||
+                key === strings$6.IE_ARROW_LEFT_KEY;
+            var isRightKey = key === strings$6.ARROW_RIGHT_KEY ||
+                key === strings$6.IE_ARROW_RIGHT_KEY;
             if (!isRTL && isLeftKey || isRTL && isRightKey) {
                 return Direction.LEFT;
             }
@@ -13159,7 +13159,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (this.selectedChipIds_.indexOf(chipId) >= 0) {
                 return;
             }
-            if (this.adapter.hasClass(cssClasses$n.CHOICE) &&
+            if (this.adapter.hasClass(cssClasses$3.CHOICE) &&
                 this.selectedChipIds_.length > 0) {
                 var previouslySelectedChip = this.selectedChipIds_[0];
                 var previouslySelectedIndex = this.adapter.getIndexOfChipById(previouslySelectedChip);
@@ -13195,7 +13195,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var _a$1 = MDCChipFoundation.strings, INTERACTION_EVENT = _a$1.INTERACTION_EVENT, SELECTION_EVENT = _a$1.SELECTION_EVENT, REMOVAL_EVENT = _a$1.REMOVAL_EVENT, NAVIGATION_EVENT = _a$1.NAVIGATION_EVENT;
+    var _a = MDCChipFoundation.strings, INTERACTION_EVENT = _a.INTERACTION_EVENT, SELECTION_EVENT = _a.SELECTION_EVENT, REMOVAL_EVENT = _a.REMOVAL_EVENT, NAVIGATION_EVENT = _a.NAVIGATION_EVENT;
     var CHIP_SELECTOR = MDCChipSetFoundation.strings.CHIP_SELECTOR;
     var idCounter = 0;
     var MDCChipSet = /** @class */ (function (_super) {
@@ -13278,7 +13278,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             // To ensure we don't accidentally omit any methods, we need a separate, strongly typed adapter variable.
             var adapter = {
                 announceMessage: function (message) {
-                    announce$1(message);
+                    announce(message);
                 },
                 focusChipPrimaryActionAtIndex: function (index) {
                     _this.chips_[index].focusPrimaryAction();
@@ -13402,12 +13402,12 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$o = {
+    var cssClasses$2 = {
         ANIMATING: 'mdc-tab-scroller--animating',
         SCROLL_AREA_SCROLL: 'mdc-tab-scroller__scroll-area--scroll',
         SCROLL_TEST: 'mdc-tab-scroller__test',
     };
-    var strings$p = {
+    var strings$4 = {
         AREA_SELECTOR: '.mdc-tab-scroller__scroll-area',
         CONTENT_SELECTOR: '.mdc-tab-scroller__scroll-content',
     };
@@ -13674,14 +13674,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTabScrollerFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$o;
+                return cssClasses$2;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTabScrollerFoundation, "strings", {
             get: function () {
-                return strings$p;
+                return strings$4;
             },
             enumerable: true,
             configurable: true
@@ -14011,7 +14011,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             return horizontalScrollbarHeight_;
         }
         var el = documentObj.createElement('div');
-        el.classList.add(cssClasses$o.SCROLL_TEST);
+        el.classList.add(cssClasses$2.SCROLL_TEST);
         documentObj.body.appendChild(el);
         var horizontalScrollbarHeight = el.offsetHeight - el.clientHeight;
         documentObj.body.removeChild(el);
@@ -14162,12 +14162,12 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$p = {
+    var cssClasses$1 = {
         ACTIVE: 'mdc-tab-indicator--active',
         FADE: 'mdc-tab-indicator--fade',
         NO_TRANSITION: 'mdc-tab-indicator--no-transition',
     };
-    var strings$q = {
+    var strings$3 = {
         CONTENT_SELECTOR: '.mdc-tab-indicator__content',
     };
 
@@ -14200,14 +14200,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTabIndicatorFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$p;
+                return cssClasses$1;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTabIndicatorFoundation, "strings", {
             get: function () {
-                return strings$q;
+                return strings$3;
             },
             enumerable: true,
             configurable: true
@@ -14411,10 +14411,10 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var cssClasses$q = {
+    var cssClasses = {
         ACTIVE: 'mdc-tab--active',
     };
-    var strings$r = {
+    var strings$2 = {
         ARIA_SELECTED: 'aria-selected',
         CONTENT_SELECTOR: '.mdc-tab__content',
         INTERACTED_EVENT: 'MDCTab:interacted',
@@ -14454,14 +14454,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTabFoundation, "cssClasses", {
             get: function () {
-                return cssClasses$q;
+                return cssClasses;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTabFoundation, "strings", {
             get: function () {
-                return strings$r;
+                return strings$2;
             },
             enumerable: true,
             configurable: true
@@ -14494,7 +14494,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             this.adapter.notifyInteracted();
         };
         MDCTabFoundation.prototype.isActive = function () {
-            return this.adapter.hasClass(cssClasses$q.ACTIVE);
+            return this.adapter.hasClass(cssClasses.ACTIVE);
         };
         /**
          * Sets whether the tab should focus itself when activated
@@ -14506,9 +14506,9 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Activates the Tab
          */
         MDCTabFoundation.prototype.activate = function (previousIndicatorClientRect) {
-            this.adapter.addClass(cssClasses$q.ACTIVE);
-            this.adapter.setAttr(strings$r.ARIA_SELECTED, 'true');
-            this.adapter.setAttr(strings$r.TABINDEX, '0');
+            this.adapter.addClass(cssClasses.ACTIVE);
+            this.adapter.setAttr(strings$2.ARIA_SELECTED, 'true');
+            this.adapter.setAttr(strings$2.TABINDEX, '0');
             this.adapter.activateIndicator(previousIndicatorClientRect);
             if (this.focusOnActivate_) {
                 this.adapter.focus();
@@ -14522,9 +14522,9 @@ var TropicBirdModule = (function (exports, sargasso) {
             if (!this.isActive()) {
                 return;
             }
-            this.adapter.removeClass(cssClasses$q.ACTIVE);
-            this.adapter.setAttr(strings$r.ARIA_SELECTED, 'false');
-            this.adapter.setAttr(strings$r.TABINDEX, '-1');
+            this.adapter.removeClass(cssClasses.ACTIVE);
+            this.adapter.setAttr(strings$2.ARIA_SELECTED, 'false');
+            this.adapter.setAttr(strings$2.TABINDEX, '-1');
             this.adapter.deactivateIndicator();
         };
         /**
@@ -14690,7 +14690,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$s = {
+    var strings$1 = {
         ARROW_LEFT_KEY: 'ArrowLeft',
         ARROW_RIGHT_KEY: 'ArrowRight',
         END_KEY: 'End',
@@ -14701,7 +14701,7 @@ var TropicBirdModule = (function (exports, sargasso) {
         TAB_SCROLLER_SELECTOR: '.mdc-tab-scroller',
         TAB_SELECTOR: '.mdc-tab',
     };
-    var numbers$b = {
+    var numbers = {
         ARROW_LEFT_KEYCODE: 37,
         ARROW_RIGHT_KEYCODE: 39,
         END_KEYCODE: 35,
@@ -14735,20 +14735,20 @@ var TropicBirdModule = (function (exports, sargasso) {
      */
     var ACCEPTABLE_KEYS = new Set();
     // IE11 has no support for new Set with iterable so we need to initialize this by hand
-    ACCEPTABLE_KEYS.add(strings$s.ARROW_LEFT_KEY);
-    ACCEPTABLE_KEYS.add(strings$s.ARROW_RIGHT_KEY);
-    ACCEPTABLE_KEYS.add(strings$s.END_KEY);
-    ACCEPTABLE_KEYS.add(strings$s.HOME_KEY);
-    ACCEPTABLE_KEYS.add(strings$s.ENTER_KEY);
-    ACCEPTABLE_KEYS.add(strings$s.SPACE_KEY);
+    ACCEPTABLE_KEYS.add(strings$1.ARROW_LEFT_KEY);
+    ACCEPTABLE_KEYS.add(strings$1.ARROW_RIGHT_KEY);
+    ACCEPTABLE_KEYS.add(strings$1.END_KEY);
+    ACCEPTABLE_KEYS.add(strings$1.HOME_KEY);
+    ACCEPTABLE_KEYS.add(strings$1.ENTER_KEY);
+    ACCEPTABLE_KEYS.add(strings$1.SPACE_KEY);
     var KEYCODE_MAP = new Map();
     // IE11 has no support for new Map with iterable so we need to initialize this by hand
-    KEYCODE_MAP.set(numbers$b.ARROW_LEFT_KEYCODE, strings$s.ARROW_LEFT_KEY);
-    KEYCODE_MAP.set(numbers$b.ARROW_RIGHT_KEYCODE, strings$s.ARROW_RIGHT_KEY);
-    KEYCODE_MAP.set(numbers$b.END_KEYCODE, strings$s.END_KEY);
-    KEYCODE_MAP.set(numbers$b.HOME_KEYCODE, strings$s.HOME_KEY);
-    KEYCODE_MAP.set(numbers$b.ENTER_KEYCODE, strings$s.ENTER_KEY);
-    KEYCODE_MAP.set(numbers$b.SPACE_KEYCODE, strings$s.SPACE_KEY);
+    KEYCODE_MAP.set(numbers.ARROW_LEFT_KEYCODE, strings$1.ARROW_LEFT_KEY);
+    KEYCODE_MAP.set(numbers.ARROW_RIGHT_KEYCODE, strings$1.ARROW_RIGHT_KEY);
+    KEYCODE_MAP.set(numbers.END_KEYCODE, strings$1.END_KEY);
+    KEYCODE_MAP.set(numbers.HOME_KEYCODE, strings$1.HOME_KEY);
+    KEYCODE_MAP.set(numbers.ENTER_KEYCODE, strings$1.ENTER_KEY);
+    KEYCODE_MAP.set(numbers.SPACE_KEYCODE, strings$1.SPACE_KEY);
     var MDCTabBarFoundation = /** @class */ (function (_super) {
         __extends(MDCTabBarFoundation, _super);
         function MDCTabBarFoundation(adapter) {
@@ -14758,14 +14758,14 @@ var TropicBirdModule = (function (exports, sargasso) {
         }
         Object.defineProperty(MDCTabBarFoundation, "strings", {
             get: function () {
-                return strings$s;
+                return strings$1;
             },
             enumerable: true,
             configurable: true
         });
         Object.defineProperty(MDCTabBarFoundation, "numbers", {
             get: function () {
-                return numbers$b;
+                return numbers;
             },
             enumerable: true,
             configurable: true
@@ -14887,9 +14887,9 @@ var TropicBirdModule = (function (exports, sargasso) {
         MDCTabBarFoundation.prototype.determineTargetFromKey_ = function (origin, key) {
             var isRTL = this.isRTL_();
             var maxIndex = this.adapter.getTabListLength() - 1;
-            var shouldGoToEnd = key === strings$s.END_KEY;
-            var shouldDecrement = key === strings$s.ARROW_LEFT_KEY && !isRTL || key === strings$s.ARROW_RIGHT_KEY && isRTL;
-            var shouldIncrement = key === strings$s.ARROW_RIGHT_KEY && !isRTL || key === strings$s.ARROW_LEFT_KEY && isRTL;
+            var shouldGoToEnd = key === strings$1.END_KEY;
+            var shouldDecrement = key === strings$1.ARROW_LEFT_KEY && !isRTL || key === strings$1.ARROW_RIGHT_KEY && isRTL;
+            var shouldIncrement = key === strings$1.ARROW_RIGHT_KEY && !isRTL || key === strings$1.ARROW_LEFT_KEY && isRTL;
             var index = origin;
             if (shouldGoToEnd) {
                 index = maxIndex;
@@ -14922,8 +14922,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             var nextTabDimensions = this.adapter.getTabDimensionsAtIndex(nextIndex);
             var relativeContentLeft = nextTabDimensions.contentLeft - scrollPosition - barWidth;
             var relativeContentRight = nextTabDimensions.contentRight - scrollPosition;
-            var leftIncrement = relativeContentRight - numbers$b.EXTRA_SCROLL_AMOUNT;
-            var rightIncrement = relativeContentLeft + numbers$b.EXTRA_SCROLL_AMOUNT;
+            var leftIncrement = relativeContentRight - numbers.EXTRA_SCROLL_AMOUNT;
+            var rightIncrement = relativeContentLeft + numbers.EXTRA_SCROLL_AMOUNT;
             if (nextIndex < index) {
                 return Math.min(leftIncrement, 0);
             }
@@ -14941,8 +14941,8 @@ var TropicBirdModule = (function (exports, sargasso) {
             var nextTabDimensions = this.adapter.getTabDimensionsAtIndex(nextIndex);
             var relativeContentLeft = scrollContentWidth - nextTabDimensions.contentLeft - scrollPosition;
             var relativeContentRight = scrollContentWidth - nextTabDimensions.contentRight - scrollPosition - barWidth;
-            var leftIncrement = relativeContentRight + numbers$b.EXTRA_SCROLL_AMOUNT;
-            var rightIncrement = relativeContentLeft - numbers$b.EXTRA_SCROLL_AMOUNT;
+            var leftIncrement = relativeContentRight + numbers.EXTRA_SCROLL_AMOUNT;
+            var rightIncrement = relativeContentLeft - numbers.EXTRA_SCROLL_AMOUNT;
             if (nextIndex > index) {
                 return Math.max(leftIncrement, 0);
             }
@@ -15026,7 +15026,7 @@ var TropicBirdModule = (function (exports, sargasso) {
             return KEYCODE_MAP.get(evt.keyCode);
         };
         MDCTabBarFoundation.prototype.isActivationKey_ = function (key) {
-            return key === strings$s.SPACE_KEY || key === strings$s.ENTER_KEY;
+            return key === strings$1.SPACE_KEY || key === strings$1.ENTER_KEY;
         };
         /**
          * Returns whether a given index is inclusively between the ends
@@ -15097,7 +15097,7 @@ var TropicBirdModule = (function (exports, sargasso) {
      * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
      * THE SOFTWARE.
      */
-    var strings$t = MDCTabBarFoundation.strings;
+    var strings = MDCTabBarFoundation.strings;
     var tabIdCounter = 0;
     var MDCTabBar = /** @class */ (function (_super) {
         __extends(MDCTabBar, _super);
@@ -15199,7 +15199,7 @@ var TropicBirdModule = (function (exports, sargasso) {
                     return -1;
                 },
                 getTabListLength: function () { return _this.tabList_.length; },
-                notifyTabActivated: function (index) { return _this.emit(strings$t.TAB_ACTIVATED_EVENT, { index: index }, true); },
+                notifyTabActivated: function (index) { return _this.emit(strings.TAB_ACTIVATED_EVENT, { index: index }, true); },
             };
             // tslint:enable:object-literal-sort-keys
             return new MDCTabBarFoundation(adapter);
@@ -15222,7 +15222,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Returns all the tab elements in a nice clean array
          */
         MDCTabBar.prototype.getTabElements_ = function () {
-            return [].slice.call(this.root.querySelectorAll(strings$t.TAB_SELECTOR));
+            return [].slice.call(this.root.querySelectorAll(strings.TAB_SELECTOR));
         };
         /**
          * Instantiates tab components on all child tab elements
@@ -15237,7 +15237,7 @@ var TropicBirdModule = (function (exports, sargasso) {
          * Instantiates tab scroller component on the child tab scroller element
          */
         MDCTabBar.prototype.instantiateTabScroller_ = function (tabScrollerFactory) {
-            var tabScrollerElement = this.root.querySelector(strings$t.TAB_SCROLLER_SELECTOR);
+            var tabScrollerElement = this.root.querySelector(strings.TAB_SCROLLER_SELECTOR);
             if (tabScrollerElement) {
                 return tabScrollerFactory(tabScrollerElement);
             }
