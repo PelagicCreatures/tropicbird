@@ -126,8 +126,8 @@ class TropicBird extends Sargasso {
 		this.manageMDCInstances()
 	}
 
-	DOMChanged () {
-		this.manageMDCInstances()
+	DOMChanged (root) {
+		this.manageMDCInstances(root)
 	}
 
 	makeEphemeral () {
@@ -226,7 +226,7 @@ class TropicBird extends Sargasso {
 		}
 	}
 
-	manageMDCInstances () {
+	manageMDCInstances (root = document) {
 		const managedClasses = [
 			'.mdc-top-app-bar',
 			'.mdc-drawer',
@@ -251,7 +251,7 @@ class TropicBird extends Sargasso {
 			'mdc-card__primary-action'
 		]
 
-		const elements = document.querySelectorAll(managedClasses.join(','))
+		const elements = root.querySelectorAll(managedClasses.join(','))
 		for (let i = 0; i < elements.length; i++) {
 			const element = elements[i]
 			if (!utils.elementTools.hasClass(element, 'mdc-instantiated')) {

@@ -282,7 +282,7 @@
 			<div class="mdc-dialog__scrim"></div>
 		</div>
 
-		<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+		<script src="/local/sargasso.iife.js"></script>
 		<script src="/dist/tropicbird.iife.js"></script>
 
 		<script>
@@ -294,13 +294,13 @@
 
 				tropicBird.pushSnackBar('info','hi!',3000)
 
-				document.getElementById('dialog-test').onclick = (e) => {
+				SargassoModule.utils.elementTools.on('open-dialog',document.body,'click','#dialog-test',(e)=>{
 					tropicBird.dialog('#dialog','title','content',true).then((action) =>{
 						tropicBird.pushSnackBar('info','You said ' + action,3000)
 					}).catch((e)=>{
 						console.log(e)
 					})
-				}
+				})
 
 				setTimeout(()=>{
 					tropicBird.progressBar(true)

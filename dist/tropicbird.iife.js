@@ -15340,8 +15340,8 @@ var TropicBirdModule = (function (exports, sargasso) {
     		this.manageMDCInstances();
     	}
 
-    	DOMChanged () {
-    		this.manageMDCInstances();
+    	DOMChanged (root) {
+    		this.manageMDCInstances(root);
     	}
 
     	makeEphemeral () {
@@ -15440,7 +15440,7 @@ var TropicBirdModule = (function (exports, sargasso) {
     		}
     	}
 
-    	manageMDCInstances () {
+    	manageMDCInstances (root = document) {
     		const managedClasses = [
     			'.mdc-top-app-bar',
     			'.mdc-drawer',
@@ -15465,7 +15465,7 @@ var TropicBirdModule = (function (exports, sargasso) {
     			'mdc-card__primary-action'
     		];
 
-    		const elements = document.querySelectorAll(managedClasses.join(','));
+    		const elements = root.querySelectorAll(managedClasses.join(','));
     		for (let i = 0; i < elements.length; i++) {
     			const element = elements[i];
     			if (!sargasso.utils.elementTools.hasClass(element, 'mdc-instantiated')) {
