@@ -1,6 +1,6 @@
 {
 	"name": "@pelagiccreatures/tropicbird",
-	"version": "1.1.1",
+	"version": "1.2.0",
 	"description": "@pelagiccreatures/tropicbird - Sargasso Managed Material Design Components",
 	"type": "module",
 	"browser": "index.js",
