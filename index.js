@@ -66,7 +66,7 @@ import {
 import {
 	MDCChipSet
 }
-	from '@material/chips'
+	from '@material/chips/deprecated'
 
 import {
 	MDCTabBar
