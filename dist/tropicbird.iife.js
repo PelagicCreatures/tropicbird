@@ -28784,14 +28784,16 @@ var TropicBirdModule = (function (exports, sargasso) {
 
     class Reaper extends sargasso.Sargasso {
     	constructor (element, options) {
-    		super(element, options);
-    		this.setMetaData(this.options.MDCThing.constructor.name, this.options.MDCThing);
+    		super(element, {});
+    		this.MDCClassName = options.MDCThing.constructor.name;
+    		this.setMetaData(this.MDCClassName, options.MDCThing);
     	}
 
     	destroy () {
-    		this.setMetaData(this.options.MDCThing.constructor.name, null);
-    		if (this.options.MDCThing && this.options.MDCThing.destroy) {
-    			this.options.MDCThing.destroy();
+    		const thing = this.getMetaData(this.MDCClassName);
+    		this.setMetaData(this.MDCClassName, null);
+    		if (thing && thing.destroy) {
+    			thing.destroy();
     		}
     		super.destroy();
     	}
@@ -28926,17 +28928,13 @@ var TropicBirdModule = (function (exports, sargasso) {
     			'.mdc-chip-set',
     			'.mdc-fab',
     			'.mdc-button',
-    			'.mdc-icon-button',
-    			'.mdc-card__primary-action',
     			'.mdc-tab-bar',
     			'.mdc-tab-scroller'
     		];
 
     		const wantRipple = [
     			'mdc-fab',
-    			'mdc-button',
-    			'mdc-icon-button',
-    			'mdc-card__primary-action'
+    			'mdc-button'
     		];
 
     		const elements = root.querySelectorAll(managedClasses.join(','));
@@ -28947,16 +28945,18 @@ var TropicBirdModule = (function (exports, sargasso) {
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-top-app-bar')) {
     					this.topAppBar = new MDCTopAppBar(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: this.topAppBar
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-drawer')) {
     					this.drawer = new MDCDrawer(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: this.drawer
     					});
+    					r.start();
 
     					// close the drawer on any click
     					element.onclick = (e) => {
@@ -28975,66 +28975,75 @@ var TropicBirdModule = (function (exports, sargasso) {
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-snackbar')) {
     					this.snackBar = new MDCSnackbar(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: this.snackBar
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-linear-progress')) {
     					this.linearProgress = new MDCLinearProgress(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: this.linearProgress
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-text-field')) {
     					const thing = new MDCTextField(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: thing
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-select')) {
     					const thing = new MDCSelect(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: thing
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-switch')) {
     					const thing = new MDCSwitch(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: thing
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-chip-set')) {
     					const thing = new MDCChipSet(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: thing
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-tab-bar')) {
     					const thing = new MDCTabBar(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: thing
     					});
+    					r.start();
     				}
 
     				if (sargasso.utils.elementTools.hasClass(element, 'mdc-tab-scroller')) {
     					const thing = new MDCTabScroller(element);
-    					new Reaper(element, {
+    					const r = new Reaper(element, {
     						MDCThing: thing
     					});
+    					r.start();
     				}
 
     				for (let j = 0; j < wantRipple.length; j++) {
     					if (sargasso.utils.elementTools.hasClass(element, wantRipple[j])) {
     						const thing = new MDCRipple$3(element);
-    						new Reaper(element, {
+    						const r = new Reaper(element, {
     							MDCThing: thing
     						});
+    						r.start();
     					}
     				}
     			}
