@@ -30,21 +30,26 @@ const config = {
 			}, {
 				loader: 'extract-loader'
 			}, {
-				loader: 'css-loader'
+				loader: 'css-loader',
+				options: {
+					esModule: false
+				}
+			}, {
+				loader: 'postcss-loader',
+				options: {
+					postcssOptions: {
+						plugins: [
+							autoprefixer()
+						]
+					}
+				}
 			}, {
 				loader: 'sass-loader',
 				options: {
 					implementation: sass,
 					webpackImporter: false,
 					sassOptions: {
-						includePaths: ['./node_modules']
-					}
-				}
-			}, {
-				loader: 'postcss-loader',
-				options: {
-					postcssOptions: {
-						plugins: () => [autoprefixer()]
+						includePaths: ['./node_modules','./node_modules/material-components-web/node_modules']
 					}
 				}
 			}]
