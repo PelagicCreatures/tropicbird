@@ -28734,7 +28734,7 @@ var TropicBirdModule = (function (exports, sargasso) {
     mdcAutoInit.register('MDCTooltip', MDCTooltip);
     mdcAutoInit.register('MDCTopAppBar', MDCTopAppBar);
 
-    var mdc = /*#__PURE__*/Object.freeze({
+    var components = /*#__PURE__*/Object.freeze({
         __proto__: null,
         autoInit: mdcAutoInit,
         banner: index$w,
@@ -28773,11 +28773,11 @@ var TropicBirdModule = (function (exports, sargasso) {
 
     const MDC = {};
 
-    for (const prop in mdc) {
+    for (const prop in components) {
     	const re = new RegExp('^MDC' + prop + '$', 'i');
-    	for (const lib in mdc[prop]) {
+    	for (const lib in components[prop]) {
     		if (lib.match(re)) {
-    			MDC[lib] = mdc[prop][lib];
+    			MDC[lib] = components[prop][lib];
     		}
     	}
     }
@@ -29064,7 +29064,7 @@ var TropicBirdModule = (function (exports, sargasso) {
 
     exports.MDC = MDC;
     exports.TropicBird = TropicBird;
-    exports.mdc = mdc;
+    exports.components = components;
 
     Object.defineProperty(exports, '__esModule', { value: true });
 
