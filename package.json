@@ -20,6 +20,7 @@
 	"homepage": "https://github.com/PelagicCreatures/tropicbird#readme",
 	"dependencies": {
 		"@pelagiccreatures/sargasso": "^1.7.0",
+		"lit-html": "^2.2.0",
 		"material-components-web": "^13.0.0"
 	},
 	"devDependencies": {
@@ -42,6 +43,8 @@
 		"eslint-plugin-standard": "^5.0.0",
 		"extract-loader": "^5.1.0",
 		"file-loader": "^6.2.0",
+		"grunt": "^1.4.1",
+		"grunt-contrib-sass": "^2.0.0",
 		"node-sass": "7.0.1",
 		"postcss-loader": "6.2.1",
 		"rollup": "^2.70.0",

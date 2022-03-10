@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href='../dist/bundle.css' rel='stylesheet'>
+	</head>
+	<style >
+		:root {
+			--mdc-theme-primary: #ff0000
+		}
+	</style>
+	<body>
+		<section>
+			<h3>Here is a component. </h3>
+			<sargasso-button-component raised label="click me" id="a-button"></sargasso-button-component>
+		</section>
+		<script src="https://cdn.jsdelivr.net/npm/@pelagiccreatures/sargasso/dist/sargasso.iife.js"></script>
+		<script src="../dist/tropicbird.iife.js"></script>
+		<script defer>
+			window.onload= () => {
+				SargassoModule.utils.bootSargasso({hijax:{}})
+				let tropicBird = new TropicBirdModule.TropicBird(document.body)
+				tropicBird.start()
+				document.getElementById('a-button').addEventListener('click', (e) => {
+					document.getElementById('a-button').setAttribute('disabled','')
+					document.getElementById('a-button').setAttribute('label','done')
+				});
+			}
+		</script>
+	</body>
+</html>
