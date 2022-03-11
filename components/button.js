@@ -26,8 +26,9 @@ class ButtonComponent extends Sargasso {
 
 	start () {
 		super.start()
-		this.buildTemplate()
+		
 		this.setTemplateArgs(this.getObservable("MDCOptions-" + this.uid))
+		this.buildTemplate()
 		this.setRenderer(render) // set lit-html render() as the renderer
 
 		// handle changes to host element attributes
