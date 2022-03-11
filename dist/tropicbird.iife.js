@@ -28849,6 +28849,8 @@ var TropicBirdModule = (function (exports, sargasso) {
     	}
 
     	buildTemplate () {
+    		let iconLeading, iconTrailing;
+
     		var classes = ['mdc-button'];
     		if(this.templateOptions.raised) {
     			classes.push('mdc-button--raised');
@@ -28859,22 +28861,27 @@ var TropicBirdModule = (function (exports, sargasso) {
     		if(this.templateOptions.outlined) {
     			classes.push('mdc-button--outlined');
     		}
-    		if(this.templateOptions.iconLeading) {
+    		if(this.templateOptions['icon-leading']) {
     			classes.push('mdc-button--icon-leading');
+    			iconLeading = $`<i class="material-icons mdc-button__icon" aria-hidden="true">${this.templateOptions.icon}</i>`;
     		}
-    		if(this.templateOptions.iconTrailing) {
+    		if(this.templateOptions['icon-trailing']) {
     			classes.push('mdc-button--icon-trailing');
+    			iconTrailing = $`<i class="material-icons mdc-button__icon" aria-hidden="true">${this.templateOptions.icon}</i>`;
     		}
 
-    		let buttonClasses = classes.join(' ');
+    		const buttonClasses = classes.join(' ');
 
     		const template = args => $`
 			<link href="/dist/button.css" rel="stylesheet">
+			<link href="/dist/icons.css" rel="stylesheet">
 			<div class="mdc-touch-target-wrapper">
 				<button class="${buttonClasses}" ?disabled=${args.disabled}>
 					<span class="mdc-button__ripple"></span>
 					<span class="mdc-button__touch"></span>
+					${iconLeading}
 					<span class="mdc-button__label">${args.label}</span>
+					${iconTrailing}
 				</button>
 			</div>
 		`;
