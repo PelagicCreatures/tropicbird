@@ -28814,8 +28814,9 @@ var TropicBirdModule = (function (exports, sargasso) {
 
     	start () {
     		super.start();
-    		this.buildTemplate();
+    		
     		this.setTemplateArgs(this.getObservable("MDCOptions-" + this.uid));
+    		this.buildTemplate();
     		this.setRenderer(x); // set lit-html render() as the renderer
 
     		// handle changes to host element attributes
