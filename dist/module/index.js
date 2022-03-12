@@ -20923,7 +20923,9 @@ null == $f3fc7ba5cdc8c344$var$z || $f3fc7ba5cdc8c344$var$z($f3fc7ba5cdc8c344$var
 
 
 
-class $796b3aab6e3c58e5$export$c3670872e5a4af8e extends $jYp6r$Sargasso {
+
+
+class $13d457d5857ae292$export$c3670872e5a4af8e extends $jYp6r$Sargasso {
     constructor(element, options){
         options.shadowDOM = true;
         super(element, options);
@@ -21034,8 +21036,10 @@ class $796b3aab6e3c58e5$export$c3670872e5a4af8e extends $jYp6r$Sargasso {
         });
     }
 }
-$jYp6r$utils.registerSargassoClass('MDCComponent', $796b3aab6e3c58e5$export$c3670872e5a4af8e);
-class $796b3aab6e3c58e5$export$3b0c38219ddaf128 extends $796b3aab6e3c58e5$export$c3670872e5a4af8e {
+$jYp6r$utils.registerSargassoClass('MDCComponent', $13d457d5857ae292$export$c3670872e5a4af8e);
+
+
+class $796b3aab6e3c58e5$export$3b0c38219ddaf128 extends $13d457d5857ae292$export$c3670872e5a4af8e {
     constructor(element, options){
         options.shadowDOM = true;
         super(element, options);

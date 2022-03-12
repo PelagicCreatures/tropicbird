@@ -23,12 +23,10 @@
 		</script>
 		<script type="module">
 			import { utils } from "/dist/module/sargasso.js"
-			import { TropicBird } from "/dist/module/index.js"
+			import { ButtonComponent } from "/dist/module/index.js"
 
 			window.onload= () => {
-				let tropicBird = new TropicBird(document.body)
 				utils.bootSargasso({hijax:{}})
-				tropicBird.start()
 				document.getElementById('a-button').addEventListener('click', (e) => {
 					document.getElementById('a-button').setAttribute('disabled','')
 					document.getElementById('a-button').setAttribute('label','done')
