@@ -17,13 +17,13 @@
 		<script type="importmap">
 		{
 			"imports": {
-				"@pelagiccreatures/sargasso": "/dist/sargasso.mjs"
+				"@pelagiccreatures/sargasso": "/dist/module/sargasso.js"
 			}
 		}
 		</script>
 		<script type="module">
-			import { utils } from "/dist/sargasso.mjs"
-			import { TropicBird } from "/dist/tropicbird.mjs"
+			import { utils } from "/dist/module/sargasso.js"
+			import { TropicBird } from "/dist/module/index.js"
 
 			window.onload= () => {
 				let tropicBird = new TropicBird(document.body)

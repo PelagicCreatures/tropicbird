@@ -3,10 +3,9 @@
 	"version": "1.3.0",
 	"description": "@pelagiccreatures/tropicbird - Sargasso Managed Material Design Components",
 	"type": "module",
-	"module": ["dist/index.mjs","dist/mdc-bundle.css"],
-	"source": ["index.mjs", "mdc-bundle.scss"],
+	"module": "dist/tropicbird.mjs",
 	"targets": {
-		"module": {
+		"browser": {
 			"includeNodeModules": {
 				"@pelagiccreatures/sargasso": false
 			}
@@ -15,7 +14,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build": "npx rollup --no-treeshake -c rollup.config.js; node ./webpack-cli.mjs; rm dist/main.js",
-		"build-module": "npx parcel build index.mjs; npx parcel build mdc-bundle.scss"
+		"build-module": "npx parcel build tropicbird.mjs; npx parcel build tropicbird.scss --dist-dir dist"
 	},
 	"repository": {
 		"type": "git",
