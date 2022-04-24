@@ -3,7 +3,7 @@ import { html } from 'lit-html'
 import { MDCRipple } from '@material/ripple'
 import { MDCComponent } from './component.js'
 
-class ButtonComponent extends MDCComponent {
+class Button extends MDCComponent {
 	constructor (element, options) {
 		options.shadowDOM = true
 		super(element, options)
@@ -13,6 +13,12 @@ class ButtonComponent extends MDCComponent {
 
 		// observed attributes - change will trigger render only
 		this.renderAttributes = ['label','disabled']
+
+		this.pendingLinkTagCount = 2 // reveal after css files to load
+	}
+
+	start () {
+		super.start()
 	}
 
 	buildTemplate () {
@@ -48,8 +54,8 @@ class ButtonComponent extends MDCComponent {
 				}
 				.web-component-body--loaded { opacity: 1; }
 			</style>
-			<link href="/dist/button.css" rel="stylesheet">
-			<link href="/dist/icons.css" rel="stylesheet">
+			<link href="/dist/module/button.css" rel="stylesheet">
+			<link href="/dist/module/icons.css" rel="stylesheet">
 			<div class="web-component-body">
 				<div class="mdc-touch-target-wrapper">
 					<button class="${buttonClasses}" ?disabled=${args.disabled}>
@@ -75,8 +81,8 @@ class ButtonComponent extends MDCComponent {
 	}
 }
 
-utils.registerSargassoClass('ButtonComponent', ButtonComponent)
+utils.registerSargassoClass('Button', Button)
 
 export {
-	ButtonComponent
+	Button
 }

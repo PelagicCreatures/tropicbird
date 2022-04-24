@@ -296,14 +296,7 @@ class TropicBird extends Sargasso {
 
 utils.registerSargassoClass('TropicBird', TropicBird)
 
-import {
-	ButtonComponent
-}
-	from './components/button.js'
-
 export {
 	TropicBird,
-	MDC,
-	components,
-	ButtonComponent
+	MDC
 }
