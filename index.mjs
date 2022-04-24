@@ -1,109 +1,33 @@
+import * as components from 'material-components-web'
+
 import {
 	Sargasso, utils
 }
 	from '@pelagiccreatures/sargasso'
 
-import {
-	MDCRipple
+const MDC = {}
+
+for (const prop in components) {
+	const re = new RegExp('^MDC' + prop + '$', 'i')
+	for (const lib in components[prop]) {
+		if (lib.match(re)) {
+			MDC[lib] = components[prop][lib]
+		}
+	}
 }
-	from '@material/ripple'
-
-import {
-	MDCLineRipple
-}
-	from '@material/line-ripple'
-
-import {
-	MDCTopAppBar
-}
-	from '@material/top-app-bar'
-
-import {
-	MDCDrawer
-}
-	from '@material/drawer'
-
-import {
-	MDCDialog
-}
-	from '@material/dialog'
-
-import {
-	MDCTextField
-}
-	from '@material/textfield'
-
-import {
-	MDCSelect
-}
-	from '@material/select'
-
-import {
-	MDCSwitch
-}
-	from '@material/switch'
-
-import {
-	MDCSnackbar
-}
-	from '@material/snackbar'
-
-import {
-	MDCFormField
-}
-	from '@material/form-field'
-
-import {
-	MDCCheckbox
-}
-	from '@material/checkbox'
-
-import {
-	MDCLinearProgress
-}
-	from '@material/linear-progress'
-
-import {
-	MDCChipSet
-}
-	from '@material/chips/deprecated'
-
-import {
-	MDCTabBar
-}
-	from '@material/tab-bar'
-
-import {
-	MDCTabScroller
-}
-	from '@material/tab-scroller'
-
-/* TODO ??
-
-MDCTextFieldIcon,
-MDCTextFieldHelperText,
-
-import {
-	MDCTextFieldIcon
-}
-from '@material/textfield/icon';
-
-import {
-	MDCTextFieldHelperText
-}
-from '@material/textfield/helper-text';
-*/
 
 class Reaper extends Sargasso {
 	constructor (element, options) {
-		super(element, options)
-		this.setMetaData(this.options.MDCThing.constructor.name, this.options.MDCThing)
+		super(element, {})
+		this.MDCClassName = options.MDCThing.constructor.name
+		this.setMetaData(this.MDCClassName, options.MDCThing)
 	}
 
 	destroy () {
-		this.setMetaData(this.options.MDCThing.constructor.name, null)
-		if (this.options.MDCThing && this.options.MDCThing.destroy) {
-			this.options.MDCThing.destroy()
+		const thing = this.getMetaData(this.MDCClassName)
+		this.setMetaData(this.MDCClassName, null)
+		if (thing && thing.destroy) {
+			thing.destroy()
 		}
 		super.destroy()
 	}
@@ -156,7 +80,7 @@ class TropicBird extends Sargasso {
 		}
 
 		return new Promise((resolve, reject) => {
-			this.mdcDialog = new MDCDialog(dialogContainer)
+			this.mdcDialog = new components.dialog.MDCDialog(dialogContainer)
 			this.mdcDialog.listen('MDCDialog:closed', (e) => {
 				utils.elementTools.removeClass(document.body, 'modal-open')
 				document.getElementById('ephemeral').getElementsByClassName('mdc-dialog')[0].remove()
@@ -238,17 +162,13 @@ class TropicBird extends Sargasso {
 			'.mdc-chip-set',
 			'.mdc-fab',
 			'.mdc-button',
-			'.mdc-icon-button',
-			'.mdc-card__primary-action',
 			'.mdc-tab-bar',
 			'.mdc-tab-scroller'
 		]
 
 		const wantRipple = [
 			'mdc-fab',
-			'mdc-button',
-			'mdc-icon-button',
-			'mdc-card__primary-action'
+			'mdc-button'
 		]
 
 		const elements = root.querySelectorAll(managedClasses.join(','))
@@ -258,17 +178,19 @@ class TropicBird extends Sargasso {
 				utils.elementTools.addClass(element, 'mdc-instantiated')
 
 				if (utils.elementTools.hasClass(element, 'mdc-top-app-bar')) {
-					this.topAppBar = new MDCTopAppBar(element)
-					new Reaper(element, {
+					this.topAppBar = new components.topAppBar.MDCTopAppBar(element)
+					const r = new Reaper(element, {
 						MDCThing: this.topAppBar
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-drawer')) {
-					this.drawer = new MDCDrawer(element)
-					new Reaper(element, {
+					this.drawer = new components.drawer.MDCDrawer(element)
+					const r = new Reaper(element, {
 						MDCThing: this.drawer
 					})
+					r.start()
 
 					// close the drawer on any click
 					element.onclick = (e) => {
@@ -286,67 +208,76 @@ class TropicBird extends Sargasso {
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-snackbar')) {
-					this.snackBar = new MDCSnackbar(element)
-					new Reaper(element, {
+					this.snackBar = new components.snackbar.MDCSnackbar(element)
+					const r = new Reaper(element, {
 						MDCThing: this.snackBar
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-linear-progress')) {
-					this.linearProgress = new MDCLinearProgress(element)
-					new Reaper(element, {
+					this.linearProgress = new components.linearProgress.MDCLinearProgress(element)
+					const r = new Reaper(element, {
 						MDCThing: this.linearProgress
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-text-field')) {
-					const thing = new MDCTextField(element)
-					new Reaper(element, {
+					const thing = new components.textField.MDCTextField(element)
+					const r = new Reaper(element, {
 						MDCThing: thing
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-select')) {
-					const thing = new MDCSelect(element)
-					new Reaper(element, {
+					const thing = new components.select.MDCSelect(element)
+					const r = new Reaper(element, {
 						MDCThing: thing
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-switch')) {
-					const thing = new MDCSwitch(element)
-					new Reaper(element, {
+					const thing = new components.switchControl.MDCSwitch(element)
+					const r = new Reaper(element, {
 						MDCThing: thing
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-chip-set')) {
-					const thing = new MDCChipSet(element)
-					new Reaper(element, {
+					const thing = new components.chips.MDCChipSet(element)
+					const r = new Reaper(element, {
 						MDCThing: thing
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-tab-bar')) {
-					const thing = new MDCTabBar(element)
-					new Reaper(element, {
+					const thing = new components.tabBar.MDCTabBar(element)
+					const r = new Reaper(element, {
 						MDCThing: thing
 					})
+					r.start()
 				}
 
 				if (utils.elementTools.hasClass(element, 'mdc-tab-scroller')) {
-					const thing = new MDCTabScroller(element)
-					new Reaper(element, {
+					const thing = new components.tabScroller.MDCTabScroller(element)
+					const r = new Reaper(element, {
 						MDCThing: thing
 					})
+					r.start()
 				}
 
 				for (let j = 0; j < wantRipple.length; j++) {
 					if (utils.elementTools.hasClass(element, wantRipple[j])) {
-						const thing = new MDCRipple(element)
-						new Reaper(element, {
+						const thing = new components.ripple.MDCRipple(element)
+						const r = new Reaper(element, {
 							MDCThing: thing
 						})
+						r.start()
 					}
 				}
 			}
@@ -365,23 +296,6 @@ class TropicBird extends Sargasso {
 
 utils.registerSargassoClass('TropicBird', TropicBird)
 
-const MDC = {
-	MDCRipple: MDCRipple,
-	MDCLineRipple: MDCLineRipple,
-	MDCTopAppBar: MDCTopAppBar,
-	MDCDrawer: MDCDrawer,
-	MDCDialog: MDCDialog,
-	MDCTextField: MDCTextField,
-	MDCSnackbar: MDCSnackbar,
-	MDCFormField: MDCFormField,
-	MDCCheckbox: MDCCheckbox,
-	MDCSelect: MDCSelect,
-	MDCSwitch: MDCSwitch,
-	MDCLinearProgress: MDCLinearProgress,
-	MDCChipSet: MDCChipSet,
-	MDCTabBar: MDCTabBar,
-	MDCTabScroller: MDCTabScroller
-}
 export {
 	TropicBird,
 	MDC

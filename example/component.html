@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inspiration&display=swap" rel="stylesheet">
+	<style >
+		:root {
+			--mdc-theme-primary: red;
+			--mdc-theme-secondary: purple;
+			--mdc-theme-background: grey;
+			--mdc-theme-surface: silver;
+			--mdc-theme-on-primary: white;
+			--mdc-theme-on-secondary: blue;
+			--mdc-theme-on-surface: black;
+		}
+
+		.custom-theme1 {
+			--mdc-typography-font-family: 'Inspiration';
+			--mdc-theme-primary: #333;
+		}
+
+		.custom-theme2 {
+			--mdc-theme-primary: aqua;
+		}
+
+	</style>
+	<body class="mdc-typography">
+		<section>
+			<h3>Here is a component. </h3>
+
+			<p>
+				<sargasso-button class="custom-theme1" outlined icon-leading icon="bookmark" label="click me" id="button1"></sargasso-button>
+			</p>
+
+			<p>
+				<sargasso-button raised icon-leading icon="bookmark" label="click me" id="button2"></sargasso-button>
+			</p>
+
+			<p>
+				<sargasso-button class="custom-theme2" icon-leading icon="bookmark" label="click me" id="button3"></sargasso-button>
+			</p>
+
+		</section>
+		<script async src="https://unpkg.com/es-module-shims@0.13.1/dist/es-module-shims.js"></script>
+		<script type="importmap">
+		{
+			"imports": {
+				"@pelagiccreatures/sargasso": "https://unpkg.com/@pelagiccreatures/sargasso@2.0.0/dist/sargasso.mjs",
+				"@pelagiccreatures/tropicbird": "/dist/tropicbird.mjs"
+
+			}
+		}
+		</script>
+		<link href="/dist/module/grid.css" rel="stylesheet">
+		<script type="module">
+			import { utils } from "@pelagiccreatures/sargasso"
+			import { Button } from "@pelagiccreatures/tropicbird"
+
+			window.onload= () => {
+				utils.bootSargasso({hijax:{}})
+				document.getElementById('button1').addEventListener('click', (e) => {
+					document.getElementById('button1').setAttribute('disabled','')
+					document.getElementById('button1').setAttribute('label','done')
+				});
+
+				document.getElementById('button2').addEventListener('click', (e) => {
+					document.getElementById('button2').setAttribute('disabled','')
+					document.getElementById('button2').setAttribute('label','done')
+				});
+
+				document.getElementById('button3').addEventListener('click', (e) => {
+					document.getElementById('button3').setAttribute('disabled','')
+					document.getElementById('button3').setAttribute('label','done')
+				});
+			}
+		</script>
+	</body>
+</html>
